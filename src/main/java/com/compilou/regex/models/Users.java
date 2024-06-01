@@ -2,16 +2,23 @@ package com.compilou.regex.models;
 
 import com.compilou.regex.interfaces.CellPhoneValidator;
 import com.compilou.regex.interfaces.EmailValidator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import org.springframework.hateoas.RepresentationModel;
+import org.springframework.web.bind.annotation.Mapping;
+
+import java.util.Objects;
 
 @Entity
 @Table(name = "users")
-public class Users {
+@JsonPropertyOrder({ "id", "username", "fullname",  "email", "cellphone" })
+public class Users extends RepresentationModel<Users> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long key;
 
     @NotNull(message = "Username cannot be null!")
     @Column(name = "username", unique = true)
@@ -20,6 +27,7 @@ public class Users {
 
     @NotEmpty(message = "The Full Name cannot be null!")
     @Column(name = "full_name")
+    @JsonProperty("fullname")
     private String fullName;
 
     @NotNull(message = "Email cannot be null!")
@@ -34,20 +42,20 @@ public class Users {
 
     public Users() {}
 
-    public Users(Long id, String username, String fullName, String email, String cellphone) {
-        this.id = id;
+    public Users(Long key, String username, String fullName, String email, String cellphone) {
+        this.key = key;
         this.username = username;
         this.fullName = fullName;
         this.email = email;
         this.cellphone = cellphone;
     }
 
-    public Long getId() {
-        return id;
+    public Long getKey() {
+        return key;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setKey(Long key) {
+        this.key = key;
     }
 
     public String getUsername() {
@@ -80,5 +88,19 @@ public class Users {
 
     public void setCellphone(String cellphone) {
         this.cellphone = cellphone;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Users users = (Users) o;
+        return Objects.equals(key, users.key) && Objects.equals(username, users.username) && Objects.equals(fullName, users.fullName) && Objects.equals(email, users.email) && Objects.equals(cellphone, users.cellphone);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), key, username, fullName, email, cellphone);
     }
 }

@@ -2,6 +2,7 @@ package com.compilou.regex.controllers;
 
 import com.compilou.regex.models.Users;
 import com.compilou.regex.services.UsersServices;
+import com.compilou.regex.util.MediaType;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -9,6 +10,13 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.PagedModel;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +34,11 @@ public class UsersController {
         this.usersServices = usersServices;
     }
 
-    @GetMapping(value = "/all")
+    @GetMapping(value = "/all",
+            consumes = { MediaType.APPLICATION_JSON,
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML },
+            produces = { MediaType.APPLICATION_JSON,
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
     @Operation(summary = "Finds all Users", description = "Finds all Users",
             tags = {"User"},
             responses = {
@@ -43,11 +55,22 @@ public class UsersController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
-    public List<Users> findAllUsers() {
-        return usersServices.findAllUsers();
+    public ResponseEntity<PagedModel<EntityModel<Users>>> findAllUsers(
+            @RequestParam(value = "page", defaultValue = "0") Integer page,
+            @RequestParam(value = "size", defaultValue = "12") Integer size,
+            @RequestParam(value = "direction", defaultValue = "asc") String direction) {
+
+        var sortDirection = "desc".equalsIgnoreCase(direction) ? Sort.Direction.DESC : Sort.Direction.ASC;
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortDirection, "username"));
+
+        return ResponseEntity.ok(usersServices.findAllUsers(pageable));
     }
 
-    @GetMapping(value = "/id/{id}")
+    @GetMapping(value = "/id/{id}",
+            consumes = { MediaType.APPLICATION_JSON,
+            MediaType.APPLICATION_XML, MediaType.APPLICATION_YML },
+            produces = { MediaType.APPLICATION_JSON,
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
     @Operation(summary = "Finds Users By Id", description = "Finds Users By Id",
             tags = {"User"},
             responses = {
@@ -69,7 +92,11 @@ public class UsersController {
         return usersServices.findUserById(id);
     }
 
-    @PostMapping(value = "/create")
+    @PostMapping(value = "/create",
+            consumes = { MediaType.APPLICATION_JSON,
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML },
+            produces = { MediaType.APPLICATION_JSON,
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
     @Operation(summary = "Adds a new User",
             description = "Adds a new User by passing in a JSON, representation of the user!",
             tags = {"User"},
@@ -86,7 +113,11 @@ public class UsersController {
         return usersServices.create(user);
     }
 
-    @PutMapping(value = "/update")
+    @PutMapping(value = "/update",
+            consumes = { MediaType.APPLICATION_JSON,
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML },
+            produces = { MediaType.APPLICATION_JSON,
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
     @Operation(summary = "Updates a User",
             description = "Updates a User by passing in a JSON, representation of the user!",
             tags = {"User"},
@@ -104,7 +135,11 @@ public class UsersController {
         return usersServices.updateUser(user);
     }
 
-    @DeleteMapping(value = "/delete/{id}")
+    @DeleteMapping(value = "/delete/{id}",
+            consumes = { MediaType.APPLICATION_JSON,
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML },
+            produces = { MediaType.APPLICATION_JSON,
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
     @Operation(summary = "Deletes a User",
             description = "Deletes a User by passing in a JSON, representation of the user!",
             tags = {"User"},

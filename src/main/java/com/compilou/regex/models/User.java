@@ -1,84 +1,66 @@
 package com.compilou.regex.models;
 
-import com.compilou.regex.interfaces.CellPhoneValidator;
-import com.compilou.regex.interfaces.EmailValidator;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity
 @Table(name = "user")
+@Entity
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message = "Username cannot be null!")
-    @Column(name = "username", unique = true)
-    @Size(min = 6, max = 12, message = "The username must be 6 to 12 characters long")
-    private String username;
-
-    @NotEmpty(message = "The Full Name cannot be null!")
-    @Column(name = "full_name")
-    private String fullName;
-
-    @NotNull(message = "Email cannot be null!")
-    @Column(name = "email", unique = true)
-    @EmailValidator
+    @Column(unique = true)
     private String email;
 
-    @NotNull(message = "Cellphone cannot be null!")
-    @Column(name = "cellphone")
-    @CellPhoneValidator
-    private String cellphone;
+    private String password;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(name="users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name="role_id"))
+    private List<Role> roles = new ArrayList<>();
 
     public User() {}
 
-    public User(Long id, String username, String fullName, String email, String cellphone) {
+    public User(Long id, String email, String password, List<Role> roles) {
         this.id = id;
-        this.username = username;
-        this.fullName = fullName;
         this.email = email;
-        this.cellphone = cellphone;
+        this.password = password;
+        this.roles = roles;
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
     public String getEmail() {
         return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getCellphone() {
-        return cellphone;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public void setCellphone(String cellphone) {
-        this.cellphone = cellphone;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }

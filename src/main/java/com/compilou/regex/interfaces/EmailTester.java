@@ -11,12 +11,12 @@ public class EmailTester implements ConstraintValidator<EmailValidator, String> 
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
 
-        String verificarEmailRegex = "([a-z0-9\\.\\-]{2,})@([a-z0-9]{2,})((\\.[a-z]{2,})+)";
+        String verifyEmail = "([a-z0-9\\.\\-]{2,})@([a-z0-9]{2,})((\\.[a-z]{2,})+)";
 
-        Pattern regexEmail = Pattern.compile(verificarEmailRegex);
-        Matcher compararEmail = regexEmail.matcher(s);
+        Pattern emailRegex = Pattern.compile(verifyEmail);
+        Matcher compare = emailRegex.matcher(s);
 
-        if(compararEmail.find()) return true;
+        if(compare.find()) return true;
         else return false;
     }
 }

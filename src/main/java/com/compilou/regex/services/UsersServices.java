@@ -2,8 +2,8 @@ package com.compilou.regex.services;
 
 import com.compilou.regex.exceptions.CustomDataIntegrityViolationException;
 import com.compilou.regex.exceptions.ResourceNotFoundException;
-import com.compilou.regex.models.User;
-import com.compilou.regex.repositories.UserRepository;
+import com.compilou.regex.models.Users;
+import com.compilou.regex.repositories.UsersRepository;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
@@ -11,46 +11,46 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServices {
+public class UsersServices {
 
-    private final UserRepository userRepository;
+    private final UsersRepository usersRepository;
 
-    public UserServices(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UsersServices(UsersRepository usersRepository) {
+        this.usersRepository = usersRepository;
     }
 
-    public List<User> findAllUsers() {
-        return userRepository.findAll();
+    public List<Users> findAllUsers() {
+        return usersRepository.findAll();
     }
 
-    public User findUserById(Long id) {
-        return userRepository.findById(id)
+    public Users findUserById(Long id) {
+        return usersRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this id!"));
     }
 
-    public User create(User user) {
+    public Users create(Users user) {
         if (user == null) throw new IllegalArgumentException("User cannot be null!");
 
         try {
-            return userRepository.save(user);
+            return usersRepository.save(user);
         } catch (DataIntegrityViolationException e) {
             throw new CustomDataIntegrityViolationException("Duplicated username or email!");
         }
     }
 
-    public User updateUser(User user) {
-        User existingUser = userRepository.findById(user.getId())
+    public Users updateUser(Users user) {
+        Users existingUser = usersRepository.findById(user.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
 
         if (existingUser.getUsername().equals(user.getUsername())) {
-            Optional<User> userByUsername = userRepository.findByUsername(user.getUsername());
+            Optional<Users> userByUsername = usersRepository.findByUsername(user.getUsername());
             if (userByUsername.isPresent()) {
                 throw new CustomDataIntegrityViolationException("Duplicated username!");
             }
         }
 
         if (existingUser.getEmail().equals(user.getEmail())) {
-            Optional<User> userByEmail = userRepository.findByEmail(user.getEmail());
+            Optional<Users> userByEmail = usersRepository.findByEmail(user.getEmail());
             if (userByEmail.isPresent()) {
                 throw new CustomDataIntegrityViolationException("Duplicated email!");
             }
@@ -61,12 +61,12 @@ public class UserServices {
         existingUser.setEmail(user.getEmail());
         existingUser.setCellphone(user.getCellphone());
 
-        return userRepository.save(existingUser);
+        return usersRepository.save(existingUser);
     }
 
     public void deleteUser(Long id) {
-        var entity = userRepository.findById(id)
+        var entity = usersRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
-        userRepository.delete(entity);
+        usersRepository.delete(entity);
     }
 }

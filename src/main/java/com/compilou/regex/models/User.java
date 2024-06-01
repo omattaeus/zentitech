@@ -1,5 +1,7 @@
 package com.compilou.regex.models;
 
+import com.compilou.regex.interfaces.CellPhoneValidator;
+import com.compilou.regex.interfaces.EmailValidator;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
@@ -22,18 +24,12 @@ public class User {
 
     @NotNull(message = "Email cannot be null!")
     @Column(name = "email", unique = true)
-    @Email(
-            regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
-            message = "Invalid email!"
-    )
+    @EmailValidator
     private String email;
 
     @NotNull(message = "Cellphone cannot be null!")
-    @Column(name = "cellphone", unique = true)
-    @Pattern(
-            regexp = "\\(([0-9]{2})\\)\\s([0-9]{5})\\-[0-9]{4}",
-            message = "Invalid cellphone!"
-    )
+    @Column(name = "cellphone")
+    @CellPhoneValidator
     private String cellphone;
 
     public User() {}

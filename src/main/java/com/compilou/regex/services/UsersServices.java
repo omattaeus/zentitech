@@ -38,7 +38,23 @@ public class UsersServices {
 
         usersPageVo.map(
                 p -> p.add(linkTo(methodOn(UsersController.class)
-                        .findUsersById(p.getKey())).withSelfRel()));
+                        .findUsersById(p.getId())).withSelfRel()));
+
+        Link link = linkTo(methodOn(UsersController.class)
+                .findAllUsers(pageable.getPageNumber(), pageable.getPageSize(), "asc"))
+                .withSelfRel();
+
+        return assembler.toModel(usersPageVo, link);
+    }
+
+    public PagedModel<EntityModel<Users>> findUsersByUsernames(String firstname, Pageable pageable) {
+
+        var usersPage = usersRepository.findUsersByUsernames(firstname, pageable);
+        var usersPageVo = usersPage.map(p -> DozerMapper.parseObject(p, Users.class));
+
+        usersPageVo.map(
+                p -> p.add(linkTo(methodOn(UsersController.class)
+                        .findUsersById(p.getId())).withSelfRel()));
 
         Link link = linkTo(methodOn(UsersController.class)
                 .findAllUsers(pageable.getPageNumber(), pageable.getPageSize(), "asc"))
@@ -63,7 +79,7 @@ public class UsersServices {
         try {
             var entity = DozerMapper.parseObject(user, Users.class);
             var users =  DozerMapper.parseObject(usersRepository.save(entity), Users.class);
-            users.add(linkTo(methodOn(UsersController.class).findUsersById(users.getKey())).withSelfRel());
+            users.add(linkTo(methodOn(UsersController.class).findUsersById(users.getId())).withSelfRel());
 
             return users;
         } catch (DataIntegrityViolationException e) {
@@ -72,7 +88,7 @@ public class UsersServices {
     }
 
     public Users updateUser(Users user) {
-        Users existingUser = usersRepository.findById(user.getKey())
+        Users existingUser = usersRepository.findById(user.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
 
         if (existingUser.getUsername().equals(user.getUsername())) {
@@ -95,7 +111,7 @@ public class UsersServices {
         existingUser.setCellphone(user.getCellphone());
 
         var users =  DozerMapper.parseObject(usersRepository.save(existingUser), Users.class);
-        users.add(linkTo(methodOn(UsersController.class).findUsersById(users.getKey())).withSelfRel());
+        users.add(linkTo(methodOn(UsersController.class).findUsersById(users.getId())).withSelfRel());
 
         return users;
     }

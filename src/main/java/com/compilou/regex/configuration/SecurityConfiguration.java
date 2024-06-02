@@ -37,12 +37,13 @@ public class SecurityConfiguration {
             "/regex/create",
             "/regex/all",
             "/regex/id/{id}",
-            "/regex/update"
+            "/regex/update",
+            "/regex/find/by/{firstName}"
     };
 
     public static final String [] ENDPOINTS_ADMIN = {
             "/users/test/administrator",
-            "/regex/delete"
+            "/regex/delete/{id}"
     };
 
     @Bean

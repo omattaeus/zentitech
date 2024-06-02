@@ -18,7 +18,7 @@ public class Users extends RepresentationModel<Users> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long key;
+    private Long id;
 
     @NotNull(message = "Username cannot be null!")
     @Column(name = "username", unique = true)
@@ -42,20 +42,20 @@ public class Users extends RepresentationModel<Users> {
 
     public Users() {}
 
-    public Users(Long key, String username, String fullName, String email, String cellphone) {
-        this.key = key;
+    public Users(Long id, String username, String fullName, String email, String cellphone) {
+        this.id = id;
         this.username = username;
         this.fullName = fullName;
         this.email = email;
         this.cellphone = cellphone;
     }
 
-    public Long getKey() {
-        return key;
+    public Long getId() {
+        return id;
     }
 
-    public void setKey(Long key) {
-        this.key = key;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -96,11 +96,11 @@ public class Users extends RepresentationModel<Users> {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Users users = (Users) o;
-        return Objects.equals(key, users.key) && Objects.equals(username, users.username) && Objects.equals(fullName, users.fullName) && Objects.equals(email, users.email) && Objects.equals(cellphone, users.cellphone);
+        return Objects.equals(id, users.id) && Objects.equals(username, users.username) && Objects.equals(fullName, users.fullName) && Objects.equals(email, users.email) && Objects.equals(cellphone, users.cellphone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), key, username, fullName, email, cellphone);
+        return Objects.hash(super.hashCode(), id, username, fullName, email, cellphone);
     }
 }

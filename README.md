@@ -116,7 +116,13 @@ Todos os Endpoints foi testado pela ferramenda do POSTMAN.
   
     localhost:8080/regex/id/{id}
 
-Deve retornar este JSON:
+Podemos estar passando na URL qual ID a genter quer pesquisar, por exemplo:
+
+    localhost:8080/regex/id/2
+
+Onde está {id} a gente pode estar trocado pelo ID que a gente deseja buscar.
+
+É Deve retornar este JSON:
 
     {
       "id": 2,
@@ -126,6 +132,8 @@ Deve retornar este JSON:
       "cellphone": "(12) 91334-1234"
     }
 
+É deverá retornar: 200 OK
+
 #### GET (todos os usuários)
 
 
@@ -133,6 +141,8 @@ Deve retornar este JSON:
     localhost:8080/regex/all
 
 Deve retornar todos os usuários em formato JSON (uma lista com todos os usuários)
+
+É deverá retornar: 200 OK
 
 #### GET (com busca paginada)
 
@@ -184,11 +194,14 @@ Deve ser passado como JSON a alteração que desejar e também o ID no JSON (o i
       "cellphone": "(12) 91334-1234"
     }
 
+É deverá retornar: 200 OK
+
 #### DELETE (excluir dados)
 
     localhost:8080/regex/delete/{id}
 
 Neste Endpoints passado pelo ID qual usuário será deletado do banco de dados.
+
 Deverá retornar: 204 NO CONTENT.
 
 --------

@@ -143,6 +143,7 @@ public class UsersController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
+    @ResponseStatus(HttpStatus.CREATED)
     public Users create(@Valid @RequestBody Users user) {
         return usersServices.create(user);
     }

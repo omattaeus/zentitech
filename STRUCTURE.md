@@ -4,7 +4,8 @@
 
 ### Setup de ambiente:
 
-- [Spring Boot](https://spring.io/projects/spring-boot)
+- [Java 21](https://www.java.com/pt-BR/)
+- [Spring Boot 3.3.0](https://spring.io/projects/spring-boot)
   - Usando [`JVM`](https://github.com/nvm-sh/nvm)
     - `winget search Oracle.JDK`
    
@@ -31,8 +32,8 @@
 
 ### Estrutura do projeto
 
-- `./resources*`: Aqui estará toda a configuração de acesso, como a parte de conexão com o banco de dados e outras configurações.
-- `./pom.xml*`: Aqui está todas as dependências necessária para que o projeto funcione.
+- `./resources`: Aqui estará toda a configuração de acesso, como a parte de conexão com o banco de dados e outras configurações.
+- `./pom.xml`: Aqui está todas as dependências necessária para que o projeto funcione.
 
 # ENDPOINTS
 ### ENDPOINTS PARA LOGIN

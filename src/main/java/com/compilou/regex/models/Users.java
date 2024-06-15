@@ -6,13 +6,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.web.bind.annotation.Mapping;
 
 import java.util.Objects;
 
+
 @Entity
 @Table(name = "users")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 @JsonPropertyOrder({ "id", "username", "fullname",  "email", "cellphone" })
 public class Users extends RepresentationModel<Users> {
 
@@ -39,68 +48,4 @@ public class Users extends RepresentationModel<Users> {
     @Column(name = "cellphone")
     @CellPhoneValidator
     private String cellphone;
-
-    public Users() {}
-
-    public Users(Long id, String username, String fullName, String email, String cellphone) {
-        this.id = id;
-        this.username = username;
-        this.fullName = fullName;
-        this.email = email;
-        this.cellphone = cellphone;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getCellphone() {
-        return cellphone;
-    }
-
-    public void setCellphone(String cellphone) {
-        this.cellphone = cellphone;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Users users = (Users) o;
-        return Objects.equals(id, users.id) && Objects.equals(username, users.username) && Objects.equals(fullName, users.fullName) && Objects.equals(email, users.email) && Objects.equals(cellphone, users.cellphone);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), id, username, fullName, email, cellphone);
-    }
 }

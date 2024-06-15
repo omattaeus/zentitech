@@ -10,7 +10,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import org.apache.coyote.Response;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -20,6 +19,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @Tag(name = "Users", description = "Endpoints for Managing Users")
@@ -97,8 +98,6 @@ public class UsersController {
 
         return ResponseEntity.ok(usersServices.findUsersByUsernames(firstName, pageable));
     }
-
-
 
     @GetMapping(value = "/id/{id}",
             consumes = { MediaType.APPLICATION_JSON,

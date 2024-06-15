@@ -2,7 +2,7 @@ package com.compilou.regex.models.records;
 
 import com.compilou.regex.models.enums.RoleName;
 
-public record CreateUserDto(
+public record CreateUserRequestDto(
 
         String email,
         String password,

@@ -4,8 +4,8 @@ import com.compilou.regex.configuration.SecurityConfiguration;
 import com.compilou.regex.models.Role;
 import com.compilou.regex.models.User;
 import com.compilou.regex.models.UserDetailsImpl;
-import com.compilou.regex.models.records.CreateUserDto;
-import com.compilou.regex.models.records.LoginUserDto;
+import com.compilou.regex.models.records.CreateUserRequestDto;
+import com.compilou.regex.models.records.LoginUserRequestDto;
 import com.compilou.regex.models.records.RecoveryJwtTokenDto;
 import com.compilou.regex.repositories.RoleRepository;
 import com.compilou.regex.repositories.UserRepository;
@@ -37,27 +37,27 @@ public class UserService {
     }
 
 
-    public RecoveryJwtTokenDto authenticateUser(LoginUserDto loginUserDto) {
+    public RecoveryJwtTokenDto authenticateUser(LoginUserRequestDto loginUserRequestDto) {
 
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
-                new UsernamePasswordAuthenticationToken(loginUserDto.email(), loginUserDto.password());
+                new UsernamePasswordAuthenticationToken(loginUserRequestDto.email(), loginUserRequestDto.password());
         Authentication authentication = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
 
         return new RecoveryJwtTokenDto(jwtTokenService.generateToken(userDetails));
     }
 
-    public void createUser(CreateUserDto createUserDto) {
-        Role role = roleRepository.findByName(createUserDto.role());
+    public void createUser(CreateUserRequestDto createUserRequestDto) {
+        Role role = roleRepository.findByName(createUserRequestDto.role());
         if (role == null) {
             role = new Role();
-            role.setName(createUserDto.role());
+            role.setName(createUserRequestDto.role());
             roleRepository.save(role);
         }
 
         User newUser = new User();
-        newUser.setEmail(createUserDto.email());
-        newUser.setPassword(securityConfiguration.passwordEncoder().encode(createUserDto.password()));
+        newUser.setEmail(createUserRequestDto.email());
+        newUser.setPassword(securityConfiguration.passwordEncoder().encode(createUserRequestDto.password()));
         newUser.setRoles(List.of(role));
 
         try {

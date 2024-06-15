@@ -1,6 +1,6 @@
 package com.compilou.regex.models.records;
 
-public record LoginUserDto(
+public record LoginUserRequestDto(
 
         String email,
         String password

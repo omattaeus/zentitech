@@ -1,8 +1,8 @@
 package com.compilou.regex.controllers;
 
 import com.compilou.regex.models.User;
-import com.compilou.regex.models.records.CreateUserDto;
-import com.compilou.regex.models.records.LoginUserDto;
+import com.compilou.regex.models.records.CreateUserRequestDto;
+import com.compilou.regex.models.records.LoginUserRequestDto;
 import com.compilou.regex.models.records.RecoveryJwtTokenDto;
 import com.compilou.regex.services.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -39,8 +39,8 @@ public class UserController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
-    public ResponseEntity<RecoveryJwtTokenDto> authenticateUser(@RequestBody LoginUserDto loginUserDto) {
-        RecoveryJwtTokenDto token = userService.authenticateUser(loginUserDto);
+    public ResponseEntity<RecoveryJwtTokenDto> authenticateUser(@RequestBody LoginUserRequestDto loginUserRequestDto) {
+        RecoveryJwtTokenDto token = userService.authenticateUser(loginUserRequestDto);
         return new ResponseEntity<>(token, HttpStatus.OK);
     }
 
@@ -57,8 +57,8 @@ public class UserController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
-    public ResponseEntity<Void> createUser(@RequestBody CreateUserDto createUserDto) {
-        userService.createUser(createUserDto);
+    public ResponseEntity<Void> createUser(@RequestBody CreateUserRequestDto createUserRequestDto) {
+        userService.createUser(createUserRequestDto);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 

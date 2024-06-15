@@ -7,6 +7,7 @@ import com.compilou.regex.mapper.DozerMapper;
 import com.compilou.regex.models.Users;
 import com.compilou.regex.repositories.UsersRepository;
 import org.springframework.dao.DataIntegrityViolationException;
+
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
@@ -17,6 +18,7 @@ import org.springframework.hateoas.Link;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -29,7 +31,6 @@ public class UsersServices {
         this.usersRepository = usersRepository;
         this.assembler = assembler;
     }
-
 
     public PagedModel<EntityModel<Users>> findAllUsers(Pageable pageable) {
 

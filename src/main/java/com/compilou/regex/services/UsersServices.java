@@ -33,7 +33,7 @@ public class UsersServices {
 
     public PagedModel<EntityModel<Users>> findAllUsers(Pageable pageable) {
 
-        var usersPage = usersRepository.findAll(pageable);
+        var usersPage = usersRepository.findAllUsers(pageable);
         var usersPageVo = usersPage.map(p -> DozerMapper.parseObject(p, Users.class));
 
         usersPageVo.map(

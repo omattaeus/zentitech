@@ -9,9 +9,5 @@ spring:
       ddl-auto: none
 spring-doc:
   pathsToMatch: /regex/**/**
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
-    show-sql: false
   swagger-ui:
     use-root-path: true

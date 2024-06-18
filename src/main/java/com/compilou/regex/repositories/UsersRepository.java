@@ -16,6 +16,8 @@ public interface UsersRepository extends JpaRepository<Users, Long> {
 
     Optional<Users> findByUsername(String username);
     Optional<Users> findByEmail(String email);
+    @Query("SELECT u FROM Users u ORDER BY u.id ASC")
+    Page<Users> findAllUsers(Pageable page);
     @Query("SELECT p FROM Users p WHERE LOWER(p.fullName) LIKE LOWER(CONCAT('%', :firstName, '%')) ORDER BY p.id ASC")
     Page<Users> findUsersByUsernames(@Param("firstName") String firstName, Pageable pageable);
 }

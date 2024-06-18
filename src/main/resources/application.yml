@@ -7,11 +7,11 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
+spring-doc:
+  pathsToMatch: /regex/**/**
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
     show-sql: false
-spring-doc:
-  pathsToMatch: /regex/**/**
   swagger-ui:
     use-root-path: true

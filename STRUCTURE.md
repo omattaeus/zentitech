@@ -20,6 +20,8 @@
 ### Documentação
     
      🕗 EM DESENVOLVIMENTO
+
+- [Documentação](https://github.com/omattaeus/api-users/tree/master/documenta%C3%A7%C3%A3o)
     
 - `./documentação`: É onde você pode encontrar os arquivos de documentação, como planilha de teste, digramas e entre outros.
 - `./documentação/planilha-de-teste`: É onde você pode encontrar os arquivos de planilha de teste com cobertura de teste prevista de 90% e também fazendo utilização do Pitest para Teste de Mutação para fazer verificação e análises dos testes implementados.
@@ -27,6 +29,8 @@
 Com os Diagramas podemos ter uma visão mais ampla e geral do sistema ao todo.
 
 ### Estrutura do projeto
+
+- [src](https://github.com/omattaeus/api-users/tree/master/src)
 
 - `./src`: É onde você pode encontrar todas as pastas e classes do projeto.
 - `./configuration`: É onde estará a configuração de segurança, como quais endpoints serão liberado para acesso e quais serão bloqueados para acesso apenas sendo permito atráves de autenticação.
@@ -42,8 +46,12 @@ Com os Diagramas podemos ter uma visão mais ampla e geral do sistema ao todo.
 
 ### Estrutura do projeto
 
+- [Resources](https://github.com/omattaeus/api-users/tree/master/src/main/resources)
+- [Pom.xml](https://github.com/omattaeus/api-users/blob/master/pom.xml)
+
 - `./resources`: Aqui estará toda a configuração de acesso, como a parte de conexão com o banco de dados e outras configurações.
 - `./pom.xml`: Aqui está todas as dependências necessária para que o projeto funcione.
+
 
 # ENDPOINTS
 ### ENDPOINTS PARA LOGIN

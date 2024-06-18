@@ -17,6 +17,15 @@
 - Rode `javac RegexApplication.java`
 - Pronto 🎉
 
+### Documentação
+    
+     🕗 EM DESENVOLVIMENTO
+    
+- `./documentação`: É onde você pode encontrar os arquivos de documentação, como planilha de teste, digramas e entre outros.
+- `./documentação/planilha-de-teste`: É onde você pode encontrar os arquivos de planilha de teste com cobertura de teste prevista de 90% e também fazendo utilização do Pitest para Teste de Mutação para fazer verificação e análises dos testes implementados.
+- `./documentação/diagramas`: É onde você pode encontrar os arquivos de diagramas, entre eles: Diagramas De Classe, Diagramas de Casos de Uso e Diagrama De Implantação.
+Com os Diagramas podemos ter uma visão mais ampla e geral do sistema ao todo.
+
 ### Estrutura do projeto
 
 - `./src`: É onde você pode encontrar todas as pastas e classes do projeto.

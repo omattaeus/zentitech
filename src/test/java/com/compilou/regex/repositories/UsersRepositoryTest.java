@@ -38,13 +38,13 @@ class UsersRepositoryTest {
         Assertions.assertNotNull(savedAnimais);
     }
 
-    @DisplayName("Given Animais List When Find All Then Return Animals List")
+    @DisplayName("Given Users List When Find All Then Return Users List")
     @Test
     void testGivenUsersList_WhenFindAll_ThenReturnUsersList(){
 
         Users users2 = new Users(
                 2L,
-                "testnado12",
+                "testando148",
                 "Teste2",
                 "teste2@testando.com",
                 "(12) 95782-1234");

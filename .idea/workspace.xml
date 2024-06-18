@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d353d5b3-a44a-41b7-9a44-f85753503180" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/4/f494705f4f58de94e4f9d90ef54e6ffbe6f50f57" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/4/f494705f4f58de94e4f9d90ef54e6ffbe6f50f57" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/b/2bcd4c5e11bb6d35d514579f99600dffc8b50480" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/b/2bcd4c5e11bb6d35d514579f99600dffc8b50480" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/e/9ebac6d2911fcf2b042148c6efa1127833aa2e79" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/e/9ebac6d2911fcf2b042148c6efa1127833aa2e79" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/c/ac364f686de5e8342983bab7146616c8acb97255" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/c/ac364f686de5e8342983bab7146616c8acb97255" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/a/baa1bb38657ae80e394b86b7e460f6a181380657" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/a/baa1bb38657ae80e394b86b7e460f6a181380657" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentação/planilha-de-teste/planilha-de-teste.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/documentação/planilha-de-teste/planilha-de-teste.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/repositories/UsersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/repositories/UsersRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/UsersServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/UsersServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +60,7 @@
     "Maven.Pitest.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feat-planilhateste",
+    "git-widget-placeholder": "feat-planilhadeteste2",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/User/Documents/teste-tinnova",
     "onboarding.tips.debug.path": "C:/Users/User/Documents/regex/src/Main.java",
@@ -75,7 +79,7 @@
       <recent name="C:\Users\User\Documents\regex\src\test\java\com\compilou\regex" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UsersRepositoryTest.testGivenUsersList_WhenFindAll_ThenReturnUsersList">
+  <component name="RunManager">
     <configuration name="RegexApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.compilou.regex.RegexApplication" />
       <module name="regex" />

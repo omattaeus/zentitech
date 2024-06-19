@@ -1,6 +1,7 @@
 package com.compilou.regex.services;
 
 import com.compilou.regex.models.Users;
+import com.compilou.regex.util.MailUtil;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
@@ -19,11 +20,6 @@ import java.io.UnsupportedEncodingException;
 @Service("emailService")
 public class EmailService {
 
-    private static final String TEMPLATE_NAME = "registration";
-    private static final String WELCOME_IMAGE = "templates/images/welcome.png";
-    private static final String PNG_MIME = "image/png";
-    private static final String MAIL_SUBJECT = "Seja bem-vindo(a)!";
-
     private final Environment environment;
     private final JavaMailSender mailSender;
     private final TemplateEngine htmlTemplateEngine;
@@ -36,7 +32,7 @@ public class EmailService {
         this.htmlTemplateEngine = htmlTemplateEngine;
     }
 
-    public void sendMailWithInline(Users users) throws MessagingException, UnsupportedEncodingException{
+    public void sendMailCreate(Users users) throws MessagingException, UnsupportedEncodingException{
         String confirmationUrl = "generated_confirmation_url";
         String mailFrom = environment.getProperty("spring.mail.properties.mail.smtp.from");
         String mailFromName = "no-reply";
@@ -50,21 +46,54 @@ public class EmailService {
         email = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 
         email.setTo(users.getEmail());
-        email.setSubject(MAIL_SUBJECT);
+        email.setSubject(MailUtil.MAIL_SUBJECT);
         email.setFrom(new InternetAddress(mailFrom, mailFromName));
 
         final Context ctx = new Context(LocaleContextHolder.getLocale());
         ctx.setVariable("email", users.getEmail());
         ctx.setVariable("name", users.getFullName());
-        ctx.setVariable("welcome", WELCOME_IMAGE);
+        ctx.setVariable("welcome", MailUtil.WELCOME_IMAGE);
         ctx.setVariable("url", confirmationUrl);
 
-        final String htmlContent = this.htmlTemplateEngine.process(TEMPLATE_NAME, ctx);
+        final String htmlContent = this.htmlTemplateEngine.process(MailUtil.TEMPLATE_NAME_CREATE, ctx);
 
         email.setText(htmlContent, true);
 
-        ClassPathResource clr = new ClassPathResource(WELCOME_IMAGE);
-        email.addInline("welcomeImage", clr, PNG_MIME);
+        ClassPathResource clr = new ClassPathResource(MailUtil.WELCOME_IMAGE);
+        email.addInline("welcomeImage", clr, MailUtil.PNG_MIME);
+
+        mailSender.send(mimeMessage);
+    }
+
+    public void sendMailUpdate(Users users) throws MessagingException, UnsupportedEncodingException{
+        String confirmationUrl = "generated_confirmation_url";
+        String mailFrom = environment.getProperty("spring.mail.properties.mail.smtp.from");
+        String mailFromName = "no-reply";
+
+        if (mailFrom == null || mailFrom.isEmpty()) {
+            throw new MessagingException("O e-mail do endereço não está configurado corretamente.");
+        }
+
+        final MimeMessage mimeMessage = this.mailSender.createMimeMessage();
+        final MimeMessageHelper email;
+        email = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+
+        email.setTo(users.getEmail());
+        email.setSubject(MailUtil.MAIL_SUBJECT_UPDATE);
+        email.setFrom(new InternetAddress(mailFrom, mailFromName));
+
+        final Context ctx = new Context(LocaleContextHolder.getLocale());
+        ctx.setVariable("email", users.getEmail());
+        ctx.setVariable("name", users.getFullName());
+        ctx.setVariable("update", MailUtil.UPDATE_IMAGE);
+        ctx.setVariable("url", confirmationUrl);
+
+        final String htmlContent = this.htmlTemplateEngine.process(MailUtil.TEMPLATE_NAME_UPDATE, ctx);
+
+        email.setText(htmlContent, true);
+
+        ClassPathResource clr = new ClassPathResource(MailUtil.UPDATE_IMAGE);
+        email.addInline("updateImage", clr, MailUtil.PNG_MIME);
 
         mailSender.send(mimeMessage);
     }

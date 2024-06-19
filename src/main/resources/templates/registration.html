@@ -2,20 +2,75 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:vertical-align="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Confirmação de Envio</title>
+    <title>Seu cadastro foi um sucesso!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333333;
+            line-height: 1.6;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            background-color: #f9f9f9;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+        }
+        .divider {
+            margin: 20px 0;
+            border-top: 1px solid #dddddd;
+        }
+        .contact-info {
+            margin-top: 20px;
+        }
+        .contact-info p {
+            margin: 5px 0;
+        }
+    </style>
 </head>
 <body>
-    <section>
+<section>
+    <div class="container">
+
         <div style="text-align: center; vertical-align: middle">
             <img src="cid:welcomeImage" height="100">
         </div>
 
         <h2 style="text-align: center; vertical-align: middle">Olá, <b th:text="${name}">name</b>!</h2>
 
-        <div style="text-align: center; vertical-align: middle">
-            <p>Seja muito bem-vindo(a) a API Users.</p>
-            <p>Parabéns! Seu cadastro foi realizado com sucesso.</p>
+        <p>É com grande prazer que informamos que seu cadastro foi concluído com sucesso em nossa plataforma através da <strong>API Users</strong>. Seja muito bem-vindo!</p>
+
+        <div class="divider"></div>
+
+        <p>A partir de agora, você tem acesso a uma série de recursos e benefícios exclusivos que vão transformar sua experiência conosco. Estamos aqui para ajudar você a alcançar seus objetivos de forma eficiente e segura.</p>
+
+        <div class="divider"></div>
+
+        <p><strong>O que você pode esperar:</strong></p>
+        <ul style="text-align: left; margin: 0 auto; display: inline-block; text-align: left;">
+            <li><strong>Acesso imediato:</strong> Comece a explorar nossa plataforma e descubra como podemos facilitar suas operações diárias.</li> </br>
+            <li><strong>Suporte contínuo:</strong> Nossa equipe está à disposição para responder suas dúvidas e oferecer todo o suporte necessário para garantir uma integração perfeita.</li> </br>
+            <li><strong>Atualizações exclusivas:</strong> Fique por dentro das últimas novidades, recursos adicionais e melhorias através de nossos comunicados regulares.</li> </br>
+        </ul>
+
+        <div class="divider"></div>
+
+        <p>Agradecemos por escolher nossa plataforma para impulsionar seus projetos. Estamos empolgados para ver como podemos colaborar juntos!</p>
+
+        <p>Se surgir alguma pergunta ou precisar de assistência, não hesite em entrar em contato conosco através deste email.</p>
+
+        <div class="divider"></div>
+
+        <div class="contact-info">
+            <p>Atenciosamente,</p>
+            <p><strong>Mateus Gomes</strong></p>
+            <p>Equipe de Suporte ao Cliente</p>
+            <p><strong>API Users</strong></p>
         </div>
-    </section>
+    </div>
+</section>
 </body>
 </html>

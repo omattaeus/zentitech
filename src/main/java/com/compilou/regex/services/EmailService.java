@@ -20,7 +20,7 @@ import java.io.UnsupportedEncodingException;
 public class EmailService {
 
     private static final String TEMPLATE_NAME = "registration";
-    private static final String SPRING_LOGO_IMAGE = "templates/images/spring.png";
+    private static final String WELCOME_IMAGE = "templates/images/welcome.png";
     private static final String PNG_MIME = "image/png";
     private static final String MAIL_SUBJECT = "Seja bem-vindo(a)!";
 
@@ -39,7 +39,7 @@ public class EmailService {
     public void sendMailWithInline(Users users) throws MessagingException, UnsupportedEncodingException{
         String confirmationUrl = "generated_confirmation_url";
         String mailFrom = environment.getProperty("spring.mail.properties.mail.smtp.from");
-        String mailFromName = "Identity";
+        String mailFromName = "no-reply";
 
         if (mailFrom == null || mailFrom.isEmpty()) {
             throw new MessagingException("O e-mail do endereço não está configurado corretamente.");
@@ -56,16 +56,15 @@ public class EmailService {
         final Context ctx = new Context(LocaleContextHolder.getLocale());
         ctx.setVariable("email", users.getEmail());
         ctx.setVariable("name", users.getFullName());
-        ctx.setVariable("logo", SPRING_LOGO_IMAGE);
+        ctx.setVariable("welcome", WELCOME_IMAGE);
         ctx.setVariable("url", confirmationUrl);
 
         final String htmlContent = this.htmlTemplateEngine.process(TEMPLATE_NAME, ctx);
 
         email.setText(htmlContent, true);
 
-        ClassPathResource clr = new ClassPathResource(SPRING_LOGO_IMAGE);
-
-        email.addInline("logoimage", clr, PNG_MIME);
+        ClassPathResource clr = new ClassPathResource(WELCOME_IMAGE);
+        email.addInline("welcomeImage", clr, PNG_MIME);
 
         mailSender.send(mimeMessage);
     }

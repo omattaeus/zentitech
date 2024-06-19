@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:vertical-align="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Confirmação de Envio</title>
 </head>
 <body>
     <section>
-        <h2>Olá, <b th:text="${name}">name</b>!</h2>
-        
-        <p>Email Sucesso Teste!</p>
-        
-        <div>
-            <img src="images/spring.png" data-th-src="|cid:springlogo|" height="80"/>
+        <div style="text-align: center; vertical-align: middle">
+            <img src="cid:welcomeImage" height="100">
+        </div>
+
+        <h2 style="text-align: center; vertical-align: middle">Olá, <b th:text="${name}">name</b>!</h2>
+
+        <div style="text-align: center; vertical-align: middle">
+            <p>Seja muito bem-vindo(a) a API Users.</p>
+            <p>Parabéns! Seu cadastro foi realizado com sucesso.</p>
         </div>
     </section>
 </body>

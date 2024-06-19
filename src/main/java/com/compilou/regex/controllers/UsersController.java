@@ -1,6 +1,7 @@
 package com.compilou.regex.controllers;
 
 import com.compilou.regex.models.Users;
+import com.compilou.regex.services.EmailService;
 import com.compilou.regex.services.UsersServices;
 import com.compilou.regex.util.MediaType;
 import io.swagger.v3.oas.annotations.Operation;
@@ -9,7 +10,11 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -20,7 +25,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @Tag(name = "Users", description = "Endpoints for Managing Users")
@@ -28,10 +36,16 @@ import java.util.List;
 @Validated
 public class UsersController {
 
-    private final UsersServices usersServices;
+    @Autowired
+    private UsersServices usersServices;
+    @Autowired
+    private EmailService emailService;
 
-    public UsersController(UsersServices usersServices) {
+    public UsersController() {}
+
+    public UsersController(UsersServices usersServices, EmailService emailService) {
         this.usersServices = usersServices;
+        this.emailService = emailService;
     }
 
     @GetMapping(value = "/all",
@@ -143,8 +157,17 @@ public class UsersController {
             }
     )
     @ResponseStatus(HttpStatus.CREATED)
-    public Users create(@Valid @RequestBody Users user) {
-        return usersServices.create(user);
+    public Users create(@Valid @RequestBody Users user) throws MessagingException, UnsupportedEncodingException {
+
+        if(user != null){
+            emailService.sendMailWithInline(user);
+
+            Map<String, String> body = new HashMap<>();
+            body.put("message", "Usuário criado com sucesso!");
+
+            return usersServices.create(user);
+        }
+        return null;
     }
 
     @PutMapping(value = "/update",

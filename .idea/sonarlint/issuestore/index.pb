@@ -71,3 +71,5 @@ v
 Fsrc/test/java/com/compilou/regex/repositories/UsersRepositoryTest.java,2\2\225b47548518309fde709569ebaf195bcf69362d
 \
 ,src/test/java/resources/application-test.yml,8\5\857fa882f5ff6563dc7fb23b8a5403721785299e
+k
+;src/main/java/com/compilou/regex/services/EmailService.java,0\1\01b866878ae15e587e452ef243653954330b8ce4

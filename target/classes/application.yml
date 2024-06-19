@@ -1,12 +1,28 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/api-regex?useTimezone=true&serverTimezone=UTC
-    username: root
-    password: 12345678@Ta
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: none
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: contatomateusgd@gmail.com
+    password: ${MAIL_PASSWORD}
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            required: true
+            enable: true
+          from: contatomateusgd@gmail.com
+    default-encoding: UTF-8
+    test-connection: false
 spring-doc:
   pathsToMatch: /regex/**/**
   swagger-ui:

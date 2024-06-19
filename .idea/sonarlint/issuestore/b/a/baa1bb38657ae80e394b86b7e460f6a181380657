@@ -1,11 +1,13 @@
 
-…
-java:S6813'"BRemove this field injection and use constructor injection instead.(êæÄŞ8Ê¸ñ€ƒ2J$74c49149-8093-474a-b7bd-d534fb434f12
-…
-java:S6813)"BRemove this field injection and use constructor injection instead.(êæÄŞ8Í¸ñ€ƒ2J$d6fca1d9-f4d9-48d7-b45f-50ab1b4d828a
-™
-java:S1128"QRemove this unused import 'org.springframework.context.annotation.ComponentScan'.(æëòÒûÿÿÿÿ8ö¸ñ€ƒ2J$4698b784-65e5-4c62-b460-f7512bab3870
-™
-java:S1128"QRemove this unused import 'org.springframework.context.annotation.Configuration'.(¬²Úäşÿÿÿÿ8÷¸ñ€ƒ2J$c2a1b07f-f72b-4e2c-bb68-de3901c28102
+java:S6813'"BRemove this field injection and use constructor injection instead.(ï¿½ï¿½ï¿½ï¿½8Ê¸ï¿½2J$74c49149-8093-474a-b7bd-d534fb434f12
+java:S6813)"BRemove this field injection and use constructor injection instead.(ï¿½ï¿½ï¿½ï¿½8Í¸ï¿½2J$d6fca1d9-f4d9-48d7-b45f-50ab1b4d828a
+java:S1128"QRemove this unused import 'org.springframework.context.annotation.ComponentScan'.(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½ï¿½2J$4698b784-65e5-4c62-b460-f7512bab3870
+java:S1128"QRemove this unused import 'org.springframework.context.annotation.Configuration'.(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½ï¿½2J$c2a1b07f-f72b-4e2c-bb68-de3901c28102
 s
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ø¸ñ€ƒ2J$4cac05fb-a884-4708-a337-cc037976ae18
+java:S1128"+Remove this unused import 'java.util.List'.(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½ï¿½2J$4cac05fb-a884-4708-a337-cc037976ae18
+java:S6813'"BRemove this field injection and use constructor injection instead.(ÃªÃ¦Ã„Ã8ÃŠÂ¸Ã±â‚¬Æ’2J$74c49149-8093-474a-b7bd-d534fb434f12
+java:S6813)"BRemove this field injection and use constructor injection instead.(ÃªÃ¦Ã„Ã8ÃÂ¸Ã±â‚¬Æ’2J$d6fca1d9-f4d9-48d7-b45f-50ab1b4d828a
+â„¢java:S1128"QRemove this unused import 'org.springframework.context.annotation.ComponentScan'.(Ã¦Ã«Ã²Ã’Ã»Ã¿Ã¿Ã¿Ã¿8Ã¶Â¸Ã±â‚¬Æ’2J$4698b784-65e5-4c62-b460-f7512bab3870
+java:S1128"QRemove this unused import 'org.springframework.context.annotation.Configuration'.(Â¬Â²ÃšÃ¤Ã¾Ã¿Ã¿Ã¿Ã¿8Ã·Â¸Ã±â‚¬Æ’2J$c2a1b07f-f72b-4e2c-bb68-de3901c28102
+java:S1128"+Remove this unused import 'java.util.List'.(Ã•Ã«Â±Ã„Ã¸Ã¿Ã¿Ã¿Ã¿8Ã¸Â¸Ã±â‚¬Æ’2J$4cac05fb-a884-4708-a337-cc037976ae18
+java:S1128"+Remove this unused import 'java.util.List'.(Ã•Ã«Â±Ã„Ã¸Ã¿Ã¿Ã¿Ã¿8Ã¿Â²Ã¿Ã¢Â2J$1693510f-279d-46da-addc-055039282c54

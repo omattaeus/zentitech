@@ -21,6 +21,7 @@ public class EmailService {
 
     private static final String TEMPLATE_NAME = "registration";
     private static final String WELCOME_IMAGE = "templates/images/welcome.png";
+    private static final String SPRING_LOGO_IMAGE = "templates/images/spring.png";
     private static final String PNG_MIME = "image/png";
     private static final String MAIL_SUBJECT = "Seja bem-vindo(a)!";
 
@@ -40,6 +41,7 @@ public class EmailService {
         String confirmationUrl = "generated_confirmation_url";
         String mailFrom = environment.getProperty("spring.mail.properties.mail.smtp.from");
         String mailFromName = "no-reply";
+        String mailFromName = "Identity";
 
         if (mailFrom == null || mailFrom.isEmpty()) {
             throw new MessagingException("O e-mail do endereço não está configurado corretamente.");
@@ -57,6 +59,7 @@ public class EmailService {
         ctx.setVariable("email", users.getEmail());
         ctx.setVariable("name", users.getFullName());
         ctx.setVariable("welcome", WELCOME_IMAGE);
+        ctx.setVariable("logo", SPRING_LOGO_IMAGE);
         ctx.setVariable("url", confirmationUrl);
 
         final String htmlContent = this.htmlTemplateEngine.process(TEMPLATE_NAME, ctx);
@@ -65,6 +68,13 @@ public class EmailService {
 
         ClassPathResource clr = new ClassPathResource(WELCOME_IMAGE);
         email.addInline("welcomeImage", clr, PNG_MIME);
+
+        mailSender.send(mimeMessage);
+    }
+}
+        ClassPathResource clr = new ClassPathResource(SPRING_LOGO_IMAGE);
+
+        email.addInline("logoimage", clr, PNG_MIME);
 
         mailSender.send(mimeMessage);
     }

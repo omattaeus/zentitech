@@ -1,7 +1,10 @@
 package com.compilou.regex.services;
 
 import com.compilou.regex.models.Users;
+<<<<<<< HEAD
 import com.compilou.regex.util.MailUtil;
+=======
+>>>>>>> 10b6eadb0d731479cd1105946be935e9bae6dae0
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
@@ -20,6 +23,15 @@ import java.io.UnsupportedEncodingException;
 @Service("emailService")
 public class EmailService {
 
+<<<<<<< HEAD
+=======
+    private static final String TEMPLATE_NAME = "registration";
+    private static final String WELCOME_IMAGE = "templates/images/welcome.png";
+    private static final String SPRING_LOGO_IMAGE = "templates/images/spring.png";
+    private static final String PNG_MIME = "image/png";
+    private static final String MAIL_SUBJECT = "Seja bem-vindo(a)!";
+
+>>>>>>> 10b6eadb0d731479cd1105946be935e9bae6dae0
     private final Environment environment;
     private final JavaMailSender mailSender;
     private final TemplateEngine htmlTemplateEngine;
@@ -32,10 +44,18 @@ public class EmailService {
         this.htmlTemplateEngine = htmlTemplateEngine;
     }
 
+<<<<<<< HEAD
     public void sendMailCreate(Users users) throws MessagingException, UnsupportedEncodingException{
         String confirmationUrl = "generated_confirmation_url";
         String mailFrom = environment.getProperty("spring.mail.properties.mail.smtp.from");
         String mailFromName = "no-reply";
+=======
+    public void sendMailWithInline(Users users) throws MessagingException, UnsupportedEncodingException{
+        String confirmationUrl = "generated_confirmation_url";
+        String mailFrom = environment.getProperty("spring.mail.properties.mail.smtp.from");
+        String mailFromName = "no-reply";
+        String mailFromName = "Identity";
+>>>>>>> 10b6eadb0d731479cd1105946be935e9bae6dae0
 
         if (mailFrom == null || mailFrom.isEmpty()) {
             throw new MessagingException("O e-mail do endereço não está configurado corretamente.");
@@ -46,12 +66,17 @@ public class EmailService {
         email = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 
         email.setTo(users.getEmail());
+<<<<<<< HEAD
         email.setSubject(MailUtil.MAIL_SUBJECT);
+=======
+        email.setSubject(MAIL_SUBJECT);
+>>>>>>> 10b6eadb0d731479cd1105946be935e9bae6dae0
         email.setFrom(new InternetAddress(mailFrom, mailFromName));
 
         final Context ctx = new Context(LocaleContextHolder.getLocale());
         ctx.setVariable("email", users.getEmail());
         ctx.setVariable("name", users.getFullName());
+<<<<<<< HEAD
         ctx.setVariable("welcome", MailUtil.WELCOME_IMAGE);
         ctx.setVariable("url", confirmationUrl);
 
@@ -94,6 +119,25 @@ public class EmailService {
 
         ClassPathResource clr = new ClassPathResource(MailUtil.UPDATE_IMAGE);
         email.addInline("updateImage", clr, MailUtil.PNG_MIME);
+=======
+        ctx.setVariable("welcome", WELCOME_IMAGE);
+        ctx.setVariable("logo", SPRING_LOGO_IMAGE);
+        ctx.setVariable("url", confirmationUrl);
+
+        final String htmlContent = this.htmlTemplateEngine.process(TEMPLATE_NAME, ctx);
+
+        email.setText(htmlContent, true);
+
+        ClassPathResource clr = new ClassPathResource(WELCOME_IMAGE);
+        email.addInline("welcomeImage", clr, PNG_MIME);
+
+        mailSender.send(mimeMessage);
+    }
+}
+        ClassPathResource clr = new ClassPathResource(SPRING_LOGO_IMAGE);
+
+        email.addInline("logoimage", clr, PNG_MIME);
+>>>>>>> 10b6eadb0d731479cd1105946be935e9bae6dae0
 
         mailSender.send(mimeMessage);
     }

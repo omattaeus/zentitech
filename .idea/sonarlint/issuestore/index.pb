@@ -72,6 +72,10 @@ Fsrc/test/java/com/compilou/regex/repositories/UsersRepositoryTest.java,2\2\225
 \
 ,src/test/java/resources/application-test.yml,8\5\857fa882f5ff6563dc7fb23b8a5403721785299e
 k
+<<<<<<< HEAD
 ;src/main/java/com/compilou/regex/services/EmailService.java,0\1\01b866878ae15e587e452ef243653954330b8ce4
 c
 3src/main/java/com/compilou/regex/util/MailUtil.java,d\e\de461edf51e221afbd9e44da15aa80c9fb6ba1fb
+=======
+;src/main/java/com/compilou/regex/services/EmailService.java,0\1\01b866878ae15e587e452ef243653954330b8ce4
+>>>>>>> 10b6eadb0d731479cd1105946be935e9bae6dae0

@@ -13,6 +13,11 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
+=======
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+>>>>>>> 10b6eadb0d731479cd1105946be935e9bae6dae0
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -25,9 +30,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
+<<<<<<< HEAD
 import java.util.Map;
 
 import static org.springframework.http.HttpStatus.*;
+=======
+import java.util.List;
+import java.util.Map;
+>>>>>>> 10b6eadb0d731479cd1105946be935e9bae6dae0
 
 @RestController
 @Tag(name = "Users", description = "Endpoints for Managing Users")
@@ -155,6 +165,7 @@ public class UsersController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
+<<<<<<< HEAD
     @ResponseStatus(CREATED)
     public Map<String, String> create(@Valid @RequestBody Users user) throws MessagingException, UnsupportedEncodingException {
 
@@ -174,6 +185,20 @@ public class UsersController {
             throw new MessagingException("Não foi possível enviar o email!", e);
         }
         return response;
+=======
+    @ResponseStatus(HttpStatus.CREATED)
+    public Users create(@Valid @RequestBody Users user) throws MessagingException, UnsupportedEncodingException {
+
+        if(user != null){
+            emailService.sendMailWithInline(user);
+
+            Map<String, String> body = new HashMap<>();
+            body.put("message", "Usuário criado com sucesso!");
+
+            return usersServices.create(user);
+        }
+        return null;
+>>>>>>> 10b6eadb0d731479cd1105946be935e9bae6dae0
     }
 
     @PutMapping(value = "/update",

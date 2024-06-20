@@ -1,3 +1,7 @@
+twilio:
+  account_sid: ${TWILIO_SID}
+  auth_token: ${TWILIO_TOKEN}
+  trial_number: +13475376942
 spring:
   jackson:
     serialization:

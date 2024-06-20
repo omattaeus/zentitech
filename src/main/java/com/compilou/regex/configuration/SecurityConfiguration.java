@@ -38,7 +38,8 @@ public class SecurityConfiguration {
             "/regex/all",
             "/regex/id/{id}",
             "/regex/update",
-            "/regex/find/by/{firstName}"
+            "/regex/find/by/{firstName}",
+            "/api/sms/send"
     };
 
     public static final String [] ENDPOINTS_ADMIN = {

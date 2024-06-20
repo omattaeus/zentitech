@@ -31,8 +31,6 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import static org.springframework.http.HttpStatus.*;
 
 @RestController
@@ -166,7 +164,6 @@ public class UsersController {
             Users user = UsersMapper.toUsers(request);
             Users createUser = usersServices.create(user);
             UsersResponse response = UsersMapper.toUsersResponse(createUser);
-            createUser.add(linkTo(methodOn(UsersController.class).findUsersById(response.getId())).withSelfRel());
 
             if (response != null) {
                 emailService.sendMailCreate(createUser);
@@ -201,13 +198,15 @@ public class UsersController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
-    public ResponseEntity<Users> update(@Valid @RequestBody Users request) throws MessagingException, UnsupportedEncodingException {
+    public ResponseEntity<UsersResponse> update(@Valid @RequestBody UsersRequest request) throws MessagingException, UnsupportedEncodingException {
         try {
-            Users updatedUser = usersServices.updateUser(request);
+            Users user = UsersMapper.toUsers(request);
+            Users updateUser = usersServices.updateUser(user);
+            UsersResponse response = UsersMapper.toUsersResponse(updateUser);
 
-            if (updatedUser != null) {
-                emailService.sendMailUpdate(updatedUser);
-                return ResponseEntity.ok(updatedUser);
+            if (updateUser != null) {
+                emailService.sendMailUpdate(updateUser);
+                return ResponseEntity.ok(response);
             } else {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
             }

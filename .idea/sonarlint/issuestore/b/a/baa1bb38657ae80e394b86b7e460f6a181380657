@@ -1,9 +1,7 @@
 
-‘
-java:S1192¨"HDefine a constant instead of duplicating this literal "message" 6 times.(ìº¼åÿÿÿÿÿ8ü‡İ‹ƒ2J$72da8f71-2730-48ba-93aa-0ffa356e4dc4
+Œ
+java:S2583«"CChange this condition so that it does not always evaluate to "true"(©õéáÿÿÿÿÿ8ôŠ¡°ƒ2J$db1c49a9-5802-4016-ba2c-d0fc83872a84
 …
-java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ8°êÛ‹ƒ2J$dbfa7810-d110-40a4-923a-670d6e6933da
+java:S6813,"BRemove this field injection and use constructor injection instead.(êæÄŞ8ãÊ™°ƒ2J$f4afdee2-25ea-4871-9a4a-ebd4aa8d1746
 …
-java:S6813("BRemove this field injection and use constructor injection instead.(êæÄŞ8±êÛ‹ƒ2J$c7a6dbff-73f8-4893-adea-89d2ba448b77
-b
-java:S1128"@Remove this unused import 'org.springframework.http.HttpStatus'.(íŸ¤Šúÿÿÿÿ8Øšâ‹ƒ2
+java:S6813."BRemove this field injection and use constructor injection instead.(êæÄŞ8äÊ™°ƒ2J$588b09a3-fef5-407c-b583-5188036a7823

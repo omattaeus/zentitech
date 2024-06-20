@@ -1,4 +1,4 @@
-package com.compilou.regex.services;
+package com.compilou.regex.services.auth;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;

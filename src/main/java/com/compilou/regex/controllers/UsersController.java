@@ -1,5 +1,9 @@
 package com.compilou.regex.controllers;
 
+import com.compilou.regex.exceptions.GenericException;
+import com.compilou.regex.mapper.UsersMapper;
+import com.compilou.regex.mapper.request.UsersRequest;
+import com.compilou.regex.mapper.response.UsersResponse;
 import com.compilou.regex.models.Users;
 import com.compilou.regex.services.EmailService;
 import com.compilou.regex.services.UsersServices;
@@ -27,6 +31,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import static org.springframework.http.HttpStatus.*;
 
 @RestController
@@ -114,7 +120,7 @@ public class UsersController {
 
     @GetMapping(value = "/id/{id}",
             consumes = { MediaType.APPLICATION_JSON,
-            MediaType.APPLICATION_XML, MediaType.APPLICATION_YML },
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML },
             produces = { MediaType.APPLICATION_JSON,
                     MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
     @Operation(summary = "Finds Users By Id", description = "Finds Users By Id",
@@ -155,25 +161,26 @@ public class UsersController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
-    @ResponseStatus(CREATED)
-    public Map<String, String> create(@Valid @RequestBody Users user) throws MessagingException, UnsupportedEncodingException {
-
-        Map<String, String> response = new HashMap<>();
-
+    public ResponseEntity<UsersResponse> create(@Valid @RequestBody UsersRequest request) throws MessagingException, UnsupportedEncodingException {
         try {
+            Users user = UsersMapper.toUsers(request);
             Users createUser = usersServices.create(user);
+            UsersResponse response = UsersMapper.toUsersResponse(createUser);
+            createUser.add(linkTo(methodOn(UsersController.class).findUsersById(response.getId())).withSelfRel());
 
-            if (createUser != null) {
+            if (response != null) {
                 emailService.sendMailCreate(createUser);
-                response.put("message", "Usuário criado com sucesso!");
+                return ResponseEntity.status(HttpStatus.CREATED).body(response);
             } else {
-                response.put("message", "Falha ao criar usuário.");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
             }
+        } catch (MessagingException | UnsupportedEncodingException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         } catch (Exception e) {
-            response.put("message", "Erro ao criar usuário: " + e.getMessage());
-            throw new MessagingException("Não foi possível enviar o email!", e);
+            Map<String, String> error = new HashMap<>();
+            error.put("message", "Erro ao criar usuário: " + e.getMessage());
+            throw new GenericException("Erro ao criar usuário", error);
         }
-        return response;
     }
 
     @PutMapping(value = "/update",
@@ -194,24 +201,23 @@ public class UsersController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
-    public Map<String, String> update(@Valid @RequestBody Users user) throws MessagingException, UnsupportedEncodingException {
-
-        Map<String, String> response = new HashMap<>();
-
+    public ResponseEntity<Users> update(@Valid @RequestBody Users request) throws MessagingException, UnsupportedEncodingException {
         try {
-            Users updatedUser = usersServices.updateUser(user);
+            Users updatedUser = usersServices.updateUser(request);
 
             if (updatedUser != null) {
                 emailService.sendMailUpdate(updatedUser);
-                response.put("message", "Usuário atualizado com sucesso!");
+                return ResponseEntity.ok(updatedUser);
             } else {
-                response.put("message", "Falha ao atualizar o usuário.");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
             }
+        } catch (MessagingException | UnsupportedEncodingException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         } catch (Exception e) {
-            response.put("message", "Erro ao atualizar o usuário: " + e.getMessage());
-            throw new MessagingException("Não foi possível enviar o email!", e);
+            Map<String, String> error = new HashMap<>();
+            error.put("message", "Erro ao atualizar usuário: " + e.getMessage());
+            throw new GenericException("Erro ao atualizar usuário", error);
         }
-        return response;
     }
 
     @DeleteMapping(value = "/delete/{id}",

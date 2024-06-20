@@ -1,4 +1,4 @@
-package com.compilou.regex.services;
+package com.compilou.regex.services.auth;
 
 import com.compilou.regex.configuration.SecurityConfiguration;
 import com.compilou.regex.models.Role;
@@ -9,6 +9,7 @@ import com.compilou.regex.models.records.LoginUserRequestDto;
 import com.compilou.regex.models.records.RecoveryJwtTokenDto;
 import com.compilou.regex.repositories.RoleRepository;
 import com.compilou.regex.repositories.UserRepository;
+import com.compilou.regex.services.auth.JwtTokenService;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

@@ -4,7 +4,6 @@ import com.compilou.regex.configuration.SecurityConfiguration;
 import com.compilou.regex.models.User;
 import com.compilou.regex.models.UserDetailsImpl;
 import com.compilou.regex.repositories.UserRepository;
-import com.compilou.regex.services.JwtTokenService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

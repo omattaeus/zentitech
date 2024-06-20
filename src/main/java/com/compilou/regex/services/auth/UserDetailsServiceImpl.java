@@ -1,4 +1,4 @@
-package com.compilou.regex.services;
+package com.compilou.regex.services.auth;
 
 import com.compilou.regex.models.User;
 import com.compilou.regex.models.UserDetailsImpl;

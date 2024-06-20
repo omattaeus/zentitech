@@ -1,7 +1,9 @@
 package com.compilou.regex.models;
 
 import com.compilou.regex.interfaces.CellPhoneValidator;
+import com.compilou.regex.interfaces.CpfCnpjValidator;
 import com.compilou.regex.interfaces.EmailValidator;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
@@ -11,10 +13,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.hateoas.RepresentationModel;
-import org.springframework.web.bind.annotation.Mapping;
 
-import java.util.Objects;
-
+import java.util.Date;
 
 @Entity
 @Table(name = "users")
@@ -22,7 +22,8 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@JsonPropertyOrder({ "id", "username", "fullname",  "email", "cellphone" })
+@JsonPropertyOrder({ "id", "username", "fullname",  "email", "cpfcnpj",
+                            "birthday", "cellphone", "comunication"})
 public class Users extends RepresentationModel<Users> {
 
     @Id
@@ -44,8 +45,23 @@ public class Users extends RepresentationModel<Users> {
     @EmailValidator
     private String email;
 
+    @Column(name = "cpfcnpj", unique = true)
+    @NotNull(message = "CPF/CNPJ cannot be null!")
+    @JsonProperty("cpfcnpj")
+    @CpfCnpjValidator
+    private String cpfCnpj;
+
+    @Column(name = "birthday")
+    @NotNull(message = "Birthday cannot be null!")
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private Date birthday;
+
     @NotNull(message = "Cellphone cannot be null!")
     @Column(name = "cellphone")
     @CellPhoneValidator
     private String cellphone;
+
+    @Column(name = "comunication")
+    @NotNull(message = "Comunication cannot be null!")
+    private String comunication;
 }

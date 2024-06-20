@@ -1,9 +1,8 @@
 
+œ	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Æ Àª8åêØ«ƒ2J$e79d4119-56cd-48ea-ada1-ff3a8fab3acc
 
-java:S6353"<Use concise character class syntax '\\d' instead of '[0-9]'.(ºùñš8Ã¼Çý1J$ff34fc97-adc9-4e45-afb7-6aba7fe192f2
+java:S6353"<Use concise character class syntax '\\d' instead of '[0-9]'.(Æ Àª8ôêØ«ƒ2J$18e0ae90-72a9-403d-aa99-1f9d0bb7b909
 
-java:S6353"<Use concise character class syntax '\\d' instead of '[0-9]'.(ºùñš8Ã¼Çý1J$707ac9b4-bb5c-4176-a506-aa475e0675d9
+java:S6353"<Use concise character class syntax '\\d' instead of '[0-9]'.(Æ Àª8õêØ«ƒ2J$d8b19545-9d77-4c6d-8c06-ea865c2fe695
 
-java:S6353"<Use concise character class syntax '\\d' instead of '[0-9]'.(ºùñš8Ä¼Çý1J$e094fd2d-64b6-410c-b4de-aa421b28ab6e
-„
-java:S1126"AReplace this if-then-else statement by a single return statement.(ñ„ôÑ8™ŸÌý1J$28b71e78-1da2-47ed-8b68-70a61b5a663e
+java:S6353"<Use concise character class syntax '\\d' instead of '[0-9]'.(Æ Àª8÷êØ«ƒ2J$85dfcfab-3d55-4a22-8235-b553a4b34f96

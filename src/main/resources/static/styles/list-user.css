@@ -1,9 +1,9 @@
 body {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Alinhar conteúdo no topo */
+    justify-content: flex-start;
     align-items: center;
-    min-height: 100vh; /* 100% da altura da viewport */
+    min-height: 100vh;
     margin: 0;
     background-color: #f8f9fa;
 }
@@ -33,8 +33,8 @@ body {
 
 .container {
     width: 100%;
-    max-width: 100%;/* Ajuste conforme necessário */
-    margin-top: 10px; /* Espaçamento do topo do navbar */
+    max-width: 100%;
+    margin-top: 10px;
     padding: 20px;
     background-color: #fff;
     border: 1px solid #ddd;

@@ -39,7 +39,7 @@ body {
 
 form {
     max-width: 500px;
-    margin: 0 auto; /* Centraliza o formulário */
+    margin: 0 auto;
     padding: 20px;
     border: 1px solid #ddd;
     background-color: #ffffff;
@@ -48,7 +48,7 @@ form {
 }
 
 .form-label {
-    margin-bottom: 5px; /* Ajuste de margem inferior para etiquetas */
+    margin-bottom: 5px;
 }
 
 .form-text {

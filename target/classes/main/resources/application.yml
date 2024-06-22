@@ -34,7 +34,3 @@ spring:
           from: contatomateusgd@gmail.com
     default-encoding: UTF-8
     test-connection: false
-spring-doc:
-  pathsToMatch: /regex/**/**
-  swagger-ui:
-    use-root-path: true

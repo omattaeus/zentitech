@@ -5,69 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d353d5b3-a44a-41b7-9a44-f85753503180" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/auth/JwtAuthenticationEntryPoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/util/AuthUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/image/logo-users-api.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/auth.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/list-user.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/list.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/update.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/create.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/success.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/update.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/users_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/a/5af32e9ead89851907a8af2b3f536a92499a5cb3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/3/635a4258d2dc4883b6dfe4d5e67d14ff4ec01f01" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/3/635a4258d2dc4883b6dfe4d5e67d14ff4ec01f01" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/e/9ebac6d2911fcf2b042148c6efa1127833aa2e79" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/e/9ebac6d2911fcf2b042148c6efa1127833aa2e79" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/b/abdd4e9a8af7d7d01fadda54e48df4c1f4d7d665" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/b/abdd4e9a8af7d7d01fadda54e48df4c1f4d7d665" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/configuration/OpenApiConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/c/ac364f686de5e8342983bab7146616c8acb97255" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/c/ac364f686de5e8342983bab7146616c8acb97255" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/1/b19bfd69741b2d44e55f5be4a28e8aadb3aa97b7" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/1/b19bfd69741b2d44e55f5be4a28e8aadb3aa97b7" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/a/baa1bb38657ae80e394b86b7e460f6a181380657" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/a/baa1bb38657ae80e394b86b7e460f6a181380657" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/0/d0109f42c9158f4ed1d594f57e57263572b5570a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/0/d0109f42c9158f4ed1d594f57e57263572b5570a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/a/5af32e9ead89851907a8af2b3f536a92499a5cb3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/RegexApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/Startup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/configuration/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/configuration/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/configuration/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/TwilioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/TwilioController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UsersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/mapper/request/UsersRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/mapper/request/UsersRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/mapper/response/UsersResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/mapper/response/UsersResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/UserDetailsImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/UserDetailsImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/Users.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/enums/RoleName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/enums/RoleName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/CreateUserRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/CreateUserRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/LoginUserRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/LoginUserRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/RecoveryJwtTokenDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/RecoveryJwtTokenDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/RecoveryUserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/RecoveryUserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/repositories/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/repositories/UsersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/repositories/UsersRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/UsersServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/UsersServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/auth/JwtTokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/auth/JwtTokenService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/auth/UserAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/auth/UserAuthenticationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/auth/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/auth/UserDetailsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/util/MailUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/util/MailUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/update-user.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/image/update-user.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/welcome.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/image/welcome.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/RegexApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/configuration/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/configuration/SecurityConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/configuration/WebConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/configuration/WebConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/controllers/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/controllers/UsersController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/controllers/UsersController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/models/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/models/Users.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/models/Users.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/repositories/UsersRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/repositories/UsersRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/services/UsersServices.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/services/UsersServices.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/services/auth/UserAuthenticationFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/services/auth/UserAuthenticationFilter.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,8 +30,8 @@
         <option value="Record" />
         <option value="AnnotationType" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>

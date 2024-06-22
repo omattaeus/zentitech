@@ -107,3 +107,5 @@ o
 -src/main/java/com/compilou/regex/Startup.java,f\1\f174bbb2e1a3b76256bfe2242fd55051e3fa7fc6
 
 Osrc/main/java/com/compilou/regex/services/auth/JwtAuthenticationEntryPoint.java,5\5\558f330f507850e3f30e87ff8190acc8d15f0b81
+q
+Asrc/main/java/com/compilou/regex/configuration/OpenApiConfig.java,7\7\77cdb42416ff144bf3536b3be69ea0e3dfc15da4

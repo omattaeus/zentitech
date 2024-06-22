@@ -33,7 +33,7 @@ public class UserController {
     @PostMapping("/login-user-jwt")
     @Operation(summary = "Authenticates a User",
             description = "Authenticates a User by passing in a JSON, representation of the user!",
-            tags = {"User"},
+            tags = {"Auth"},
             responses = {
                     @ApiResponse(description = "Success", responseCode = "200",
                             content = @Content(schema = @Schema(implementation = User.class))
@@ -51,7 +51,7 @@ public class UserController {
     @PostMapping("create-jwt")
     @Operation(summary = "Create a new User",
             description = "Create a new User by passing in a JSON, representation of the user!",
-            tags = {"User"},
+            tags = {"Auth"},
             responses = {
                     @ApiResponse(description = "Success", responseCode = "200",
                             content = @Content(schema = @Schema(implementation = User.class))
@@ -68,7 +68,7 @@ public class UserController {
 
     @GetMapping("/test")
     @Operation(summary = "Authenticated User, ADMIN e CUSTOMER", description = "Authenticated Users, ADMIN e CUSTOMER",
-            tags = {"User"},
+            tags = {"Auth"},
             responses = {
                     @ApiResponse(description = "Success", responseCode = "200",
                             content = {
@@ -90,7 +90,7 @@ public class UserController {
 
     @GetMapping("/test/customer")
     @Operation(summary = "Authenticated User, CUSTOMER", description = "Authenticated User, CUSTOMER",
-            tags = {"User"},
+            tags = {"Auth"},
             responses = {
                     @ApiResponse(description = "Success", responseCode = "200",
                             content = {
@@ -113,7 +113,7 @@ public class UserController {
 
     @GetMapping("/test/administrator")
     @Operation(summary = "Authenticated User, ADMINISTRATOR", description = "Authenticated User, ADMINISTRATOR",
-            tags = {"User"},
+            tags = {"Auth"},
             responses = {
                     @ApiResponse(description = "Success", responseCode = "200",
                             content = {
@@ -135,6 +135,23 @@ public class UserController {
     }
 
     @GetMapping("/login-user")
+    @Operation(summary = "Login - Page", description = "Login - Page",
+            tags = {"Auth"},
+            responses = {
+                    @ApiResponse(description = "Success", responseCode = "200",
+                            content = {
+                                    @Content(
+                                            mediaType = "application/json",
+                                            array = @ArraySchema(schema = @Schema(implementation = User.class))
+                                    )
+                            }),
+                    @ApiResponse(description = "No Content", responseCode = "204", content = @Content),
+                    @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+                    @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
+                    @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+                    @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
+            }
+    )
     public String loginPage(Model model, String error) {
         if (error != null) {
             model.addAttribute("error", "Invalid email or password");
@@ -143,11 +160,45 @@ public class UserController {
     }
 
     @GetMapping("/register")
+    @Operation(summary = "Register a User - Page", description = "Register a User - Page",
+            tags = {"Auth"},
+            responses = {
+                    @ApiResponse(description = "Success", responseCode = "200",
+                            content = {
+                                    @Content(
+                                            mediaType = "application/json",
+                                            array = @ArraySchema(schema = @Schema(implementation = User.class))
+                                    )
+                            }),
+                    @ApiResponse(description = "No Content", responseCode = "204", content = @Content),
+                    @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+                    @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
+                    @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+                    @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
+            }
+    )
     public String registerPage() {
         return "register";
     }
 
     @PostMapping("/register-user")
+    @Operation(summary = "Register a User", description = "Register a User",
+            tags = {"Auth"},
+            responses = {
+                    @ApiResponse(description = "Success", responseCode = "200",
+                            content = {
+                                    @Content(
+                                            mediaType = "application/json",
+                                            array = @ArraySchema(schema = @Schema(implementation = User.class))
+                                    )
+                            }),
+                    @ApiResponse(description = "No Content", responseCode = "204", content = @Content),
+                    @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+                    @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
+                    @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+                    @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
+            }
+    )
     public String createUserHtml(CreateUserRequestDto createUserRequestDto, Model model) {
         userService.createUser(createUserRequestDto);
         model.addAttribute("message", "User registered successfully");
@@ -155,6 +206,23 @@ public class UserController {
     }
 
     @PostMapping("/login")
+    @Operation(summary = "Authenticated User", description = "Authenticated User",
+            tags = {"Auth"},
+            responses = {
+                    @ApiResponse(description = "Success", responseCode = "200",
+                            content = {
+                                    @Content(
+                                            mediaType = "application/json",
+                                            array = @ArraySchema(schema = @Schema(implementation = User.class))
+                                    )
+                            }),
+                    @ApiResponse(description = "No Content", responseCode = "204", content = @Content),
+                    @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+                    @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
+                    @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+                    @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
+            }
+    )
     public String authenticateUserHtml(LoginUserRequestDto loginUserRequestDto,
                                        Model model, HttpServletResponse response) {
         try {

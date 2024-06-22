@@ -55,13 +55,9 @@ public class UsersController {
         this.emailService = emailService;
     }
 
-    @GetMapping(value = "/all-users",
-            consumes = {MediaType.APPLICATION_JSON,
-                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML},
-            produces = {MediaType.APPLICATION_JSON,
-                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
+    @GetMapping(value = "/all-users")
     @Operation(summary = "Finds all Users", description = "Finds all Users",
-            tags = {"User"},
+            tags = {"Users"},
             responses = {
                     @ApiResponse(description = "Success", responseCode = "200",
                             content = {
@@ -87,13 +83,9 @@ public class UsersController {
         return ResponseEntity.ok(usersServices.findAllUsers(pageable));
     }
 
-    @GetMapping(value = "/find/by/{firstName}",
-            consumes = {MediaType.APPLICATION_JSON,
-                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML},
-            produces = {MediaType.APPLICATION_JSON,
-                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
+    @GetMapping(value = "/find/by/{firstName}")
     @Operation(summary = "Finds Users By Usernames", description = "Finds Users By Usernames",
-            tags = {"User"},
+            tags = {"Users"},
             responses = {
                     @ApiResponse(description = "Success", responseCode = "200",
                             content = {
@@ -120,13 +112,9 @@ public class UsersController {
         return ResponseEntity.ok(usersServices.findUsersByUsernames(firstName, pageable));
     }
 
-    @GetMapping(value = "/id/{id}",
-            consumes = {MediaType.APPLICATION_JSON,
-                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML},
-            produces = {MediaType.APPLICATION_JSON,
-                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
+    @GetMapping(value = "/id/{id}")
     @Operation(summary = "Finds Users By Id", description = "Finds Users By Id",
-            tags = {"User"},
+            tags = {"Users"},
             responses = {
                     @ApiResponse(description = "Success", responseCode = "200",
                             content = {
@@ -148,12 +136,13 @@ public class UsersController {
 
     @PostMapping(value = "/create-user",
             consumes = {MediaType.APPLICATION_JSON,
-                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML},
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML,
+                    org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED_VALUE},
             produces = {MediaType.APPLICATION_JSON,
                     MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
-    @Operation(summary = "Adds a new User",
-            description = "Adds a new User by passing in a JSON, representation of the user!",
-            tags = {"User"},
+    @Operation(summary = "Create a Users",
+            description = "Create a Users",
+            tags = {"Users"},
             responses = {
                     @ApiResponse(description = "Success", responseCode = "200",
                             content = @Content(schema = @Schema(implementation = Users.class))
@@ -192,7 +181,7 @@ public class UsersController {
                     MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
     @Operation(summary = "Updates a User",
             description = "Updates a User by passing in a JSON, representation of the user!",
-            tags = {"User"},
+            tags = {"Users"},
             responses = {
                     @ApiResponse(description = "Updated", responseCode = "200",
                             content = @Content(schema = @Schema(implementation = Users.class))
@@ -224,12 +213,13 @@ public class UsersController {
 
     @DeleteMapping(value = "/delete/{id}",
             consumes = {MediaType.APPLICATION_JSON,
-                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML},
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML,
+                    org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED_VALUE},
             produces = {MediaType.APPLICATION_JSON,
                     MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
     @Operation(summary = "Deletes a User",
             description = "Deletes a User by passing in a JSON, representation of the user!",
-            tags = {"User"},
+            tags = {"Users"},
             responses = {
                     @ApiResponse(description = "No Content", responseCode = "204", content = @Content),
                     @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
@@ -243,19 +233,67 @@ public class UsersController {
         usersServices.deleteUser(id);
     }
 
-    @GetMapping("/create-html")
+    @GetMapping(value = "/create-html")
+    @Operation(summary = "Show Create Form", description = "Show Create Form",
+            tags = {"Users"},
+            responses = {
+                    @ApiResponse(description = "Success", responseCode = "200",
+                            content = {
+                                    @Content(
+                                            mediaType = "application/json",
+                                            array = @ArraySchema(schema = @Schema(implementation = Users.class))
+                                    )
+                            }),
+                    @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+                    @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
+                    @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+                    @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
+            }
+    )
     public String showCreateForm(Model model) {
         model.addAttribute("users", new Users());
         return "create" ;
     }
 
-    @GetMapping("/update-html")
+    @GetMapping(value = "/update-html")
+    @Operation(summary = "Show Update Form", description = "Show Update Form",
+            tags = {"Users"},
+            responses = {
+                    @ApiResponse(description = "Success", responseCode = "200",
+                            content = {
+                                    @Content(
+                                            mediaType = "application/json",
+                                            array = @ArraySchema(schema = @Schema(implementation = Users.class))
+                                    )
+                            }),
+                    @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+                    @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
+                    @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+                    @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
+            }
+    )
     public String showUpdateForm(Model model) {
         model.addAttribute("user", new Users());
         return "update";
     }
 
-    @GetMapping("/search")
+    @GetMapping(value = "/search")
+    @Operation(summary = "Search Users", description = "Search Users",
+            tags = {"Users"},
+            responses = {
+                    @ApiResponse(description = "Success", responseCode = "200",
+                            content = {
+                                    @Content(
+                                            mediaType = "application/json",
+                                            array = @ArraySchema(schema = @Schema(implementation = Users.class))
+                                    )
+                            }),
+                    @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+                    @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
+                    @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+                    @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
+            }
+    )
     public String searchUsers(@RequestParam(value = "firstName", required = false) String firstName,
                               @RequestParam(value = "page", defaultValue = "0") Integer page,
                               @RequestParam(value = "size", defaultValue = "12") Integer size,
@@ -277,7 +315,28 @@ public class UsersController {
         return "users_list";
     }
 
-    @PostMapping("/create")
+    @PostMapping(value = "/create",
+            consumes = {MediaType.APPLICATION_JSON,
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML,
+                    org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED_VALUE},
+            produces = {MediaType.APPLICATION_JSON,
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
+    @Operation(summary = "Create a Users", description = "Create a Users",
+            tags = {"Users"},
+            responses = {
+                    @ApiResponse(description = "Success", responseCode = "200",
+                            content = {
+                                    @Content(
+                                            mediaType = "application/json",
+                                            array = @ArraySchema(schema = @Schema(implementation = Users.class))
+                                    )
+                            }),
+                    @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+                    @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
+                    @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+                    @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
+            }
+    )
     public String createUser(@ModelAttribute Users user) {
         try {
             Users createUser = usersServices.createHtml(user);
@@ -297,12 +356,44 @@ public class UsersController {
         }
     }
 
-    @GetMapping("/success")
+    @GetMapping(value = "/success")
+    @Operation(summary = "Show Success Page", description = "Show Success Page",
+            tags = {"Users"},
+            responses = {
+                    @ApiResponse(description = "Success", responseCode = "200",
+                            content = {
+                                    @Content(
+                                            mediaType = "application/json",
+                                            array = @ArraySchema(schema = @Schema(implementation = Users.class))
+                                    )
+                            }),
+                    @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+                    @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
+                    @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+                    @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
+            }
+    )
     public String showSuccessPage() {
         return "success";
     }
 
-    @GetMapping("/all")
+    @GetMapping(value = "/all")
+    @Operation(summary = "Finds All Users", description = "Finds All Users",
+            tags = {"Users"},
+            responses = {
+                    @ApiResponse(description = "Success", responseCode = "200",
+                            content = {
+                                    @Content(
+                                            mediaType = "application/json",
+                                            array = @ArraySchema(schema = @Schema(implementation = Users.class))
+                                    )
+                            }),
+                    @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+                    @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
+                    @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+                    @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
+            }
+    )
     public String findAllUsers(
             @RequestParam(value = "page", defaultValue = "0") Integer page,
             @RequestParam(value = "size", defaultValue = "12") Integer size,

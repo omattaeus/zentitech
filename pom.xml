@@ -150,7 +150,6 @@
             <artifactId>tomcat-embed-core</artifactId>
             <version>10.1.20</version>
         </dependency>
-
     </dependencies>
 
     <build>

@@ -1,0 +1,89 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1000px;
+    background-color: #f8f9fa;
+}
+
+.navbar {
+    z-index: 7000;
+}
+
+.navbar-logo {
+    height: 60px;
+}
+
+.d-flex {
+    padding: 10px;
+}
+
+.container {
+    text-align: center;
+    position: absolute;
+    max-width: 100%;
+    margin-top: 80px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+#user-register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto; /* Centraliza o formulário */
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-label {
+    margin-bottom: 5px; /* Ajuste de margem inferior para etiquetas */
+}
+
+.form-text {
+    display: flex;
+    width: 100%;
+}
+
+.mb-3 {
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.form-check-input {
+    margin-top: 5px;
+}
+
+.form-check-label {
+   display: flex;
+   width: 100%;
+}
+
+.form-label{
+    display: flex;
+    width: 100%;
+}
+
+#user {
+   padding-top: 10px
+}
+
+.nav-item {
+    cursor: pointer
+}

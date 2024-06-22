@@ -3,6 +3,10 @@ twilio:
   auth_token: ${TWILIO_TOKEN}
   trial_number: +13475376942
 spring:
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
   jackson:
     serialization:
       FAIL_ON_EMPTY_BEANS: false

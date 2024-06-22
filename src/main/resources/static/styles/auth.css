@@ -1,0 +1,43 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+.navbar-brand {
+    height: 100px;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center
+}
+
+.container {
+    max-width: 400px;
+    margin-top: 50px;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.form-control {
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.alert-danger {
+    margin-bottom: 20px;
+}

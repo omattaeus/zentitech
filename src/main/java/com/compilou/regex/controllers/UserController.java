@@ -11,12 +11,16 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("/users")
+@Controller
+@RequestMapping("/auth")
 @Tag(name = "Users", description = "Endpoints for Managing Users")
 public class UserController {
 
@@ -26,7 +30,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/login")
+    @PostMapping("/login-user-jwt")
     @Operation(summary = "Authenticates a User",
             description = "Authenticates a User by passing in a JSON, representation of the user!",
             tags = {"User"},
@@ -44,7 +48,7 @@ public class UserController {
         return new ResponseEntity<>(token, HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping("create-jwt")
     @Operation(summary = "Create a new User",
             description = "Create a new User by passing in a JSON, representation of the user!",
             tags = {"User"},
@@ -128,5 +132,41 @@ public class UserController {
     public ResponseEntity<String> getAdminAuthenticationTest() {
         return new ResponseEntity<>(
                 "Administrator successfully authenticated!", HttpStatus.OK);
+    }
+
+    @GetMapping("/login-user")
+    public String loginPage(Model model, String error) {
+        if (error != null) {
+            model.addAttribute("error", "Invalid email or password");
+        }
+        return "login";
+    }
+
+    @GetMapping("/register")
+    public String registerPage() {
+        return "register";
+    }
+
+    @PostMapping("/register-user")
+    public String createUserHtml(CreateUserRequestDto createUserRequestDto, Model model) {
+        userService.createUser(createUserRequestDto);
+        model.addAttribute("message", "User registered successfully");
+        return "redirect:/auth/login-user";
+    }
+
+    @PostMapping("/login")
+    public String authenticateUserHtml(LoginUserRequestDto loginUserRequestDto,
+                                       Model model, HttpServletResponse response) {
+        try {
+            RecoveryJwtTokenDto token = userService.authenticateUser(loginUserRequestDto);
+            Cookie cookie = new Cookie("token", token.token());
+            cookie.setHttpOnly(true);
+            cookie.setPath("/");
+            response.addCookie(cookie);
+            return "redirect:/users/create-html";
+        } catch (Exception e) {
+            model.addAttribute("error", "Invalid email or password");
+            return "Bad Request!";
+        }
     }
 }

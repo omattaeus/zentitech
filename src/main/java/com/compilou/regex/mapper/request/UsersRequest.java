@@ -35,7 +35,7 @@ public class UsersRequest {
         private String cpfCnpj;
 
         @NotNull(message = "Birthday cannot be null")
-        private Date birthday;
+        private String birthday;
 
         @NotNull(message = "Cellphone cannot be null")
         private String cellphone;

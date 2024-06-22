@@ -1,4 +1,2 @@
 
-r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³ô±ÿÿÿÿÿ8Ş¶¥©ƒ2
-s
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8Æ’¥©ƒ2J$94111c4c-dacc-4f80-9ac4-d4e6468227b9
+˜	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³ô±ÿÿÿÿÿ8ñ£¨êƒ2J$e7f31b50-92e7-488a-9ac5-2c73deb25690

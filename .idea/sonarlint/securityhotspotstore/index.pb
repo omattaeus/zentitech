@@ -1,8 +1,6 @@
 
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-f
-6src/main/java/com/compilou/regex/RegexApplication.java,5\a\5af32e9ead89851907a8af2b3f536a92499a5cb3
 a
 1src/main/java/com/compilou/regex/models/User.java,a\b\abdd4e9a8af7d7d01fadda54e48df4c1f4d7d665
 q
@@ -85,8 +83,6 @@ q
 Asrc/main/java/com/compilou/regex/exceptions/GenericException.java,4\7\4749620d5ee3c3d0368e47f3549d152d4163420a
 w
 Gsrc/main/java/com/compilou/regex/configuration/TwilioConfiguration.java,8\0\80e5179878bb655f3e03ee61383c82a0e463f3a8
-g
-7src/main/java/com/compilou/regex/TwilioInitializer.java,9\0\90ba6f72c59b30134b4f3ec39fee458a871c0995
 u
 Esrc/main/java/com/compilou/regex/configuration/TwilioInitializer.java,5\1\51d321acfd9b7b1b02fb904d2f47d524fd5a642e
 l
@@ -99,3 +95,17 @@ l
 <src/main/java/com/compilou/regex/services/TwilioService.java,c\3\c34c7905d7fdab93aa487b0fb22d9ae742c0e4f1
 r
 Bsrc/main/java/com/compilou/regex/controllers/TwilioController.java,a\8\a890ee8425231a84ce36c0a2bc8d2144b971f1ef
+c
+3src/main/java/com/compilou/regex/util/AuthUtil.java,2\3\23a12fa35b24fdc18b5046fe04c9ecdc902eada3
+s
+Csrc/main/java/com/compilou/regex/services/auth/JwtTokenService.java,4\9\498543f8d51e845d7093bc006249003add14fc8a
+z
+Jsrc/main/java/com/compilou/regex/services/auth/UserDetailsServiceImpl.java,8\0\802b3f44a7f2de8bb69e4c5d6d6f0e94fa7672fc
+o
+?src/main/java/com/compilou/regex/services/auth/UserService.java,d\d\dd9ee57c0fa3e1379998b05fc16dd492cf0e2016
+]
+-src/main/java/com/compilou/regex/Startup.java,f\1\f174bbb2e1a3b76256bfe2242fd55051e3fa7fc6
+
+Osrc/main/java/com/compilou/regex/services/auth/JwtAuthenticationEntryPoint.java,5\5\558f330f507850e3f30e87ff8190acc8d15f0b81
+w
+Gsrc/main/java/com/compilou/regex/mapper/request/UsersRequestUpdate.java,0\e\0e6fe8a31040d79e686ab1ed84306e027498e704

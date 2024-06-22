@@ -5,36 +5,69 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d353d5b3-a44a-41b7-9a44-f85753503180" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/configuration/TwilioConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/configuration/TwilioInitializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/TwilioController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/SmsRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/repositories/SmsSender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/TwilioService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/TwilioSmsSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/4/143f51e78d297abbfa63f9ba335b2f7130bf7083" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/b/2bcd4c5e11bb6d35d514579f99600dffc8b50480" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/3/43fcad1751623d98c196bed30af94c64d99c5b23" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/3/43fcad1751623d98c196bed30af94c64d99c5b23" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/b/9b70ba1bd145add20aa8bf8e889b873b32676612" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/auth/JwtAuthenticationEntryPoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/util/AuthUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/image/logo-users-api.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/auth.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/list-user.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/list.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/update.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/create.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/success.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/update.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/users_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/a/5af32e9ead89851907a8af2b3f536a92499a5cb3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/3/635a4258d2dc4883b6dfe4d5e67d14ff4ec01f01" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/3/635a4258d2dc4883b6dfe4d5e67d14ff4ec01f01" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/e/9ebac6d2911fcf2b042148c6efa1127833aa2e79" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/e/9ebac6d2911fcf2b042148c6efa1127833aa2e79" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/b/abdd4e9a8af7d7d01fadda54e48df4c1f4d7d665" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/b/abdd4e9a8af7d7d01fadda54e48df4c1f4d7d665" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/c/ac364f686de5e8342983bab7146616c8acb97255" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/c/ac364f686de5e8342983bab7146616c8acb97255" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/1/b19bfd69741b2d44e55f5be4a28e8aadb3aa97b7" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/1/b19bfd69741b2d44e55f5be4a28e8aadb3aa97b7" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/a/baa1bb38657ae80e394b86b7e460f6a181380657" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/a/baa1bb38657ae80e394b86b7e460f6a181380657" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/d/cde173a4246e87f0143f5ee93a44b5e91ac899fd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/d/cde173a4246e87f0143f5ee93a44b5e91ac899fd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/0/d0109f42c9158f4ed1d594f57e57263572b5570a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/0/d0109f42c9158f4ed1d594f57e57263572b5570a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/4/143f51e78d297abbfa63f9ba335b2f7130bf7083" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/b/2bcd4c5e11bb6d35d514579f99600dffc8b50480" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/b/9b70ba1bd145add20aa8bf8e889b873b32676612" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/a/5af32e9ead89851907a8af2b3f536a92499a5cb3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/RegexApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/Startup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/configuration/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/configuration/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/configuration/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UsersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/interfaces/CpfCnpjTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/interfaces/CpfCnpjTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/mapper/request/UsersRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/mapper/request/UsersRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/mapper/response/UsersResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/mapper/response/UsersResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/UserDetailsImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/UserDetailsImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/Users.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/enums/RoleName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/enums/RoleName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/CreateUserRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/CreateUserRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/LoginUserRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/LoginUserRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/RecoveryJwtTokenDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/RecoveryJwtTokenDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/RecoveryUserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/RecoveryUserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/repositories/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/repositories/UsersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/repositories/UsersRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/UsersServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/UsersServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/auth/JwtTokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/auth/JwtTokenService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/auth/UserAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/auth/UserAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/auth/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/auth/UserDetailsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/util/MailUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/util/MailUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/compilou/regex/RegexApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/compilou/regex/RegexApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/compilou/regex/repositories/UsersRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/compilou/regex/repositories/UsersRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/update-user.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/image/update-user.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/welcome.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/image/welcome.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/RegexApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/configuration/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/configuration/SecurityConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/configuration/WebConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/configuration/WebConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/controllers/UserController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/controllers/UsersController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/controllers/UsersController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/models/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/models/Users.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/models/Users.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/repositories/UsersRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/repositories/UsersRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/services/UsersServices.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/services/UsersServices.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/services/auth/UserAuthenticationFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/services/auth/UserAuthenticationFilter.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +82,7 @@
         <option value="AnnotationType" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -73,41 +107,50 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.RegexApplication.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UsersRepositoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UsersRepositoryTest.testGivenUsersList_WhenFindAll_ThenReturnUsersList.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Pitest.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Documents/regex/src/main/resources/templates/images&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/User/Documents/regex/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.RegexApplication.executor": "Run",
+    "Application.Startup.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JUnit.UsersRepositoryTest.executor": "Run",
+    "JUnit.UsersRepositoryTest.testGivenUsersList_WhenFindAll_ThenReturnUsersList.executor": "Run",
+    "Maven.Pitest.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/User/Documents/regex/src/main/resources/static/css",
+    "onboarding.tips.debug.path": "C:/Users/User/Documents/regex/src/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.compilou.regex.interfaces" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Documents\regex\src\main\resources\static\css" />
+      <recent name="C:\Users\User\Documents\regex\src\main\resources\static" />
+      <recent name="C:\Users\User\Documents\regex\src\main" />
       <recent name="C:\Users\User\Documents\regex\src\main\resources\templates\images" />
       <recent name="C:\Users\User\Documents\regex\src\main\resources\templates" />
-      <recent name="C:\Users\User\Documents\regex\src\test\java" />
-      <recent name="C:\Users\User\Documents\regex\src\test\java\com\compilou\regex" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Documents\regex\src\main\resources\static\image" />
+      <recent name="C:\Users\User\Documents\regex\src\main\resources\static" />
+      <recent name="C:\Users\User\Documents\regex\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.compilou.regex.mapper.request" />
       <recent name="com.compilou.regex.mapper.response" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.RegexApplication">
-    <configuration name="RegexApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Startup">
+    <configuration name="Startup" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <envs>
         <env name="DB_PASSWORD" value="12345678@Ta" />
         <env name="DB_URL" value="jdbc:mysql://localhost:3306/api-regex?useTimezone=true&amp;serverTimezone=UTC" />
@@ -116,7 +159,7 @@
         <env name="TWILIO_SID" value="AC2c10bc413b6d914a9e283d8942647a43" />
         <env name="TWILIO_TOKEN" value="b5cc83c9a676c1e43333dc91b47857a4" />
       </envs>
-      <option name="MAIN_CLASS_NAME" value="com.compilou.regex.RegexApplication" />
+      <option name="MAIN_CLASS_NAME" value="com.compilou.regex.Startup" />
       <module name="regex" />
       <extension name="coverage">
         <pattern>
@@ -192,14 +235,14 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.RegexApplication" />
+      <item itemvalue="Application.Startup" />
       <item itemvalue="JUnit.UsersRepositoryTest" />
       <item itemvalue="JUnit.UsersRepositoryTest.testGivenUsersList_WhenFindAll_ThenReturnUsersList" />
       <item itemvalue="Maven.Pitest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.RegexApplication" />
+        <item itemvalue="Application.Startup" />
         <item itemvalue="JUnit.UsersRepositoryTest.testGivenUsersList_WhenFindAll_ThenReturnUsersList" />
         <item itemvalue="JUnit.UsersRepositoryTest" />
       </list>

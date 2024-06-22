@@ -53,8 +53,7 @@ public class Users extends RepresentationModel<Users> {
 
     @Column(name = "birthday")
     @NotNull(message = "Birthday cannot be null!")
-    @JsonFormat(pattern="yyyy-MM-dd")
-    private Date birthday;
+    private String birthday;
 
     @NotNull(message = "Cellphone cannot be null!")
     @Column(name = "cellphone")

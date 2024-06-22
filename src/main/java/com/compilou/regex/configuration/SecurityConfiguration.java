@@ -1,6 +1,7 @@
 package com.compilou.regex.configuration;
 
 import com.compilou.regex.services.auth.UserAuthenticationFilter;
+import com.compilou.regex.util.AuthUtil;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,29 +24,6 @@ public class SecurityConfiguration {
         this.userAuthenticationFilter = userAuthenticationFilter;
     }
 
-    public static final String [] ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED = {
-            "/users/login",
-            "/users"
-    };
-
-    public static final String [] ENDPOINTS_WITH_AUTHENTICATION_REQUIRED = {
-            "/users/test"
-    };
-
-    public static final String [] ENDPOINTS_CUSTOMER = {
-            "/users/test/customer",
-            "/regex/create",
-            "/regex/all",
-            "/regex/id/{id}",
-            "/regex/update",
-            "/regex/find/by/{firstName}",
-            "/api/sms/send"
-    };
-
-    public static final String [] ENDPOINTS_ADMIN = {
-            "/users/test/administrator",
-            "/regex/delete/{id}"
-    };
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
@@ -53,10 +31,11 @@ public class SecurityConfiguration {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED).permitAll()
-                        .requestMatchers(ENDPOINTS_WITH_AUTHENTICATION_REQUIRED).authenticated()
-                        .requestMatchers(ENDPOINTS_ADMIN).hasRole("ADMINISTRATOR")
-                        .requestMatchers(ENDPOINTS_CUSTOMER).hasRole("CUSTOMER")
+                        .requestMatchers("/resources/**", "/static/**",  "/images/**").permitAll()
+                        .requestMatchers(AuthUtil.ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED).permitAll()
+                        .requestMatchers(AuthUtil.ENDPOINTS_WITH_AUTHENTICATION_REQUIRED).authenticated()
+                        .requestMatchers(AuthUtil.ENDPOINTS_ADMIN).hasRole("ADMINISTRATOR")
+                        .requestMatchers(AuthUtil.ENDPOINTS_CUSTOMER).hasRole("CUSTOMER")
                         .anyRequest().denyAll()
                 )
                 .addFilterBefore(userAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

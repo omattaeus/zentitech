@@ -18,7 +18,7 @@ public class UsersResponse {
     private String fullName;
     private String email;
     private String cpfCnpj;
-    private Date birthday;
+    private String birthday;
     private String cellphone;
-    private  String comunication;
+    private String comunication;
 }

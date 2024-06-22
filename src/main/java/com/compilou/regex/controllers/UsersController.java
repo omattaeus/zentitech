@@ -17,6 +17,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -24,6 +25,8 @@ import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,9 +36,9 @@ import java.util.Map;
 
 import static org.springframework.http.HttpStatus.*;
 
-@RestController
+@Controller
 @Tag(name = "Users", description = "Endpoints for Managing Users")
-@RequestMapping("/regex")
+@RequestMapping("/users")
 @Validated
 public class UsersController {
 
@@ -44,18 +47,19 @@ public class UsersController {
     @Autowired
     private EmailService emailService;
 
-    public UsersController() {}
+    public UsersController() {
+    }
 
     public UsersController(UsersServices usersServices, EmailService emailService) {
         this.usersServices = usersServices;
         this.emailService = emailService;
     }
 
-    @GetMapping(value = "/all",
-            consumes = { MediaType.APPLICATION_JSON,
-                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML },
-            produces = { MediaType.APPLICATION_JSON,
-                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
+    @GetMapping(value = "/all-users",
+            consumes = {MediaType.APPLICATION_JSON,
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML},
+            produces = {MediaType.APPLICATION_JSON,
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
     @Operation(summary = "Finds all Users", description = "Finds all Users",
             tags = {"User"},
             responses = {
@@ -84,10 +88,10 @@ public class UsersController {
     }
 
     @GetMapping(value = "/find/by/{firstName}",
-            consumes = { MediaType.APPLICATION_JSON,
-                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML },
-            produces = { MediaType.APPLICATION_JSON,
-                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
+            consumes = {MediaType.APPLICATION_JSON,
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML},
+            produces = {MediaType.APPLICATION_JSON,
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
     @Operation(summary = "Finds Users By Usernames", description = "Finds Users By Usernames",
             tags = {"User"},
             responses = {
@@ -104,7 +108,7 @@ public class UsersController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
-    public ResponseEntity<PagedModel<EntityModel<Users>>> findUsersByUsernames(
+    public ResponseEntity<Page<Users>> findUsersByUsernames(
             @PathVariable(value = "firstName") String firstName,
             @RequestParam(value = "page", defaultValue = "0") Integer page,
             @RequestParam(value = "size", defaultValue = "12") Integer size,
@@ -117,10 +121,10 @@ public class UsersController {
     }
 
     @GetMapping(value = "/id/{id}",
-            consumes = { MediaType.APPLICATION_JSON,
-                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML },
-            produces = { MediaType.APPLICATION_JSON,
-                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
+            consumes = {MediaType.APPLICATION_JSON,
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML},
+            produces = {MediaType.APPLICATION_JSON,
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
     @Operation(summary = "Finds Users By Id", description = "Finds Users By Id",
             tags = {"User"},
             responses = {
@@ -142,11 +146,11 @@ public class UsersController {
         return usersServices.findUserById(id);
     }
 
-    @PostMapping(value = "/create",
-            consumes = { MediaType.APPLICATION_JSON,
-                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML },
-            produces = { MediaType.APPLICATION_JSON,
-                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
+    @PostMapping(value = "/create-user",
+            consumes = {MediaType.APPLICATION_JSON,
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML},
+            produces = {MediaType.APPLICATION_JSON,
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
     @Operation(summary = "Adds a new User",
             description = "Adds a new User by passing in a JSON, representation of the user!",
             tags = {"User"},
@@ -159,7 +163,7 @@ public class UsersController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
-    public ResponseEntity<UsersResponse> create(@Valid @RequestBody UsersRequest request) throws MessagingException, UnsupportedEncodingException {
+    public ResponseEntity<UsersResponse> createHtml(@Valid @RequestBody UsersRequest request) throws MessagingException, UnsupportedEncodingException {
         try {
             Users user = UsersMapper.toUsers(request);
             Users createUser = usersServices.create(user);
@@ -181,10 +185,11 @@ public class UsersController {
     }
 
     @PutMapping(value = "/update",
-            consumes = { MediaType.APPLICATION_JSON,
-                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML },
-            produces = { MediaType.APPLICATION_JSON,
-                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
+            consumes = {MediaType.APPLICATION_JSON,
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML,
+                    org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED_VALUE },
+            produces = {MediaType.APPLICATION_JSON,
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
     @Operation(summary = "Updates a User",
             description = "Updates a User by passing in a JSON, representation of the user!",
             tags = {"User"},
@@ -198,32 +203,30 @@ public class UsersController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
-    public ResponseEntity<UsersResponse> update(@Valid @RequestBody UsersRequest request) throws MessagingException, UnsupportedEncodingException {
+    public String update(@Valid @ModelAttribute Users user, Model model) throws MessagingException, UnsupportedEncodingException {
         try {
-            Users user = UsersMapper.toUsers(request);
-            Users updateUser = usersServices.updateUser(user);
-            UsersResponse response = UsersMapper.toUsersResponse(updateUser);
-
-            if (updateUser != null) {
-                emailService.sendMailUpdate(updateUser);
-                return ResponseEntity.ok(response);
+            Users updatedUser = usersServices.updateUser(user);
+            if (updatedUser != null) {
+                emailService.sendMailUpdate(updatedUser);
+                return "redirect:/users/create-html";
             } else {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+                model.addAttribute("error", "Bad Request!");
+                return "update";
             }
         } catch (MessagingException | UnsupportedEncodingException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            model.addAttribute("error", "Bad Request MessagingException | UnsupportedEncodingException");
+            return "update";
         } catch (Exception e) {
-            Map<String, String> error = new HashMap<>();
-            error.put("message", "Erro ao atualizar usuário: " + e.getMessage());
-            throw new GenericException("Erro ao atualizar usuário", error);
+            model.addAttribute("error", "Erro ao atualizar usuário: " + e.getMessage());
+            return "update";
         }
     }
 
     @DeleteMapping(value = "/delete/{id}",
-            consumes = { MediaType.APPLICATION_JSON,
-                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML },
-            produces = { MediaType.APPLICATION_JSON,
-                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
+            consumes = {MediaType.APPLICATION_JSON,
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML},
+            produces = {MediaType.APPLICATION_JSON,
+                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
     @Operation(summary = "Deletes a User",
             description = "Deletes a User by passing in a JSON, representation of the user!",
             tags = {"User"},
@@ -238,5 +241,92 @@ public class UsersController {
     @ResponseStatus(value = NO_CONTENT)
     public void delete(@PathVariable(value = "id") Long id) {
         usersServices.deleteUser(id);
+    }
+
+    @GetMapping("/create-html")
+    public String showCreateForm(Model model) {
+        model.addAttribute("users", new Users());
+        return "create" ;
+    }
+
+    @GetMapping("/update-html")
+    public String showUpdateForm(Model model) {
+        model.addAttribute("user", new Users());
+        return "update";
+    }
+
+    @GetMapping("/search")
+    public String searchUsers(@RequestParam(value = "firstName", required = false) String firstName,
+                              @RequestParam(value = "page", defaultValue = "0") Integer page,
+                              @RequestParam(value = "size", defaultValue = "12") Integer size,
+                              @RequestParam(value = "direction", defaultValue = "asc") String direction,
+                              Model model) {
+
+        var sortDirection = "desc".equalsIgnoreCase(direction) ? Sort.Direction.DESC : Sort.Direction.ASC;
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortDirection, "username"));
+
+        Page<Users> usersPage = usersServices.findUsersByUsernames(firstName, pageable);
+
+        model.addAttribute("users", usersPage.getContent());
+        model.addAttribute("totalPages", usersPage.getTotalPages());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("size", size);
+        model.addAttribute("direction", direction);
+        model.addAttribute("firstName", firstName);
+
+        return "users_list";
+    }
+
+    @PostMapping("/create")
+    public String createUser(@ModelAttribute Users user) {
+        try {
+            Users createUser = usersServices.createHtml(user);
+
+            if (createUser != null) {
+                emailService.sendMailCreate(createUser);
+                return "redirect:/users/success";
+            } else {
+                return "Bad Request!";
+            }
+        } catch (MessagingException | UnsupportedEncodingException e) {
+            return "Bad Request MessagingException | UnsupportedEncodingException";
+        } catch (Exception e) {
+            Map<String, String> error = new HashMap<>();
+            error.put("message", "Erro ao criar usuário: " + e.getMessage());
+            throw new GenericException("Erro ao criar usuário", error);
+        }
+    }
+
+    @GetMapping("/success")
+    public String showSuccessPage() {
+        return "success";
+    }
+
+    @GetMapping("/all")
+    public String findAllUsers(
+            @RequestParam(value = "page", defaultValue = "0") Integer page,
+            @RequestParam(value = "size", defaultValue = "12") Integer size,
+            @RequestParam(value = "direction", defaultValue = "asc") String direction,
+            Model model) {
+
+        if (size == null || size <= 0) {
+            size = 12;
+        }
+        if (direction == null || (!direction.equalsIgnoreCase("asc") && !direction.equalsIgnoreCase("desc"))) {
+            direction = "asc";
+        }
+
+        var sortDirection = "desc".equalsIgnoreCase(direction) ? Sort.Direction.DESC : Sort.Direction.ASC;
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortDirection, "username"));
+        Page<Users> users = usersServices.findAll(pageable);
+
+        model.addAttribute("users", users.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", users.getTotalPages());
+        model.addAttribute("totalItems", users.getTotalElements());
+        model.addAttribute("size", size);
+        model.addAttribute("direction", direction);
+
+        return "list";
     }
 }

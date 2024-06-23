@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Criar Usuário</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" media="all" href="/static/styles/style.css" th:href="@{/static/styles/style.css}">
+    <link rel="stylesheet" type="text/css" media="all" href="/static/styles/sidebar.css" th:href="@{/static/styles/sidebar.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+<!-- navbar -->
+<nav class="navbar">
+    <div class="logo_item">
+        <i class="bx bx-menu" id="sidebarOpen"></i>
+        <img src="/static/image/logo-users-api.png" alt=""></i>API Users
+    </div>
+    <div class="search_bar">
+        <input type="text" placeholder="Search" />
+    </div>
+    <div class="navbar_content">
+        <i class="bi bi-grid"></i>
+        <i class='bx bx-sun' id="darkLight"></i>
+        <i class='bx bx-bell' ></i>
+        <img src="/static/image/user.png" alt="" class="profile" />
+    </div>
+</nav>
+<!-- sidebar -->
+<nav class="sidebar">
+    <div class="menu_content">
+        <ul class="menu_items">
+            <div class="menu_title menu_dahsboard"></div>
+            <!-- duplicate or remove this li tag if you want to add or remove navlink with submenu -->
+            <!-- start -->
+            <li class="item">
+                <div href="#" class="nav_link submenu_item">
+              <span class="navlink_icon">
+                <i class="bx bx-home-alt"></i>
+              </span>
+                    <span class="navlink">Home</span>
+                    <i class="bx bx-chevron-right arrow-left"></i>
+                </div>
+                <ul class="menu_items submenu">
+                    <a href="#" class="nav_link sublink">Nav Sub Link</a>
+                    <a href="#" class="nav_link sublink">Nav Sub Link</a>
+                    <a href="#" class="nav_link sublink">Nav Sub Link</a>
+                    <a href="#" class="nav_link sublink">Nav Sub Link</a>
+                </ul>
+            </li>
+            <!-- end -->
+            <!-- duplicate this li tag if you want to add or remove  navlink with submenu -->
+            <!-- start -->
+            <li class="item">
+                <div href="#" class="nav_link submenu_item">
+              <span class="navlink_icon">
+                <i class="bx bx-grid-alt"></i>
+              </span>
+                    <span class="navlink">Overview</span>
+                    <i class="bx bx-chevron-right arrow-left"></i>
+                </div>
+                <ul class="menu_items submenu">
+                    <a href="#" class="nav_link sublink">Nav Sub Link</a>
+                    <a href="#" class="nav_link sublink">Nav Sub Link</a>
+                    <a href="#" class="nav_link sublink">Nav Sub Link</a>
+                    <a href="#" class="nav_link sublink">Nav Sub Link</a>
+                </ul>
+            </li>
+            <!-- end -->
+        </ul>
+        <ul class="menu_items">
+            <div class="menu_title menu_editor"></div>
+            <!-- duplicate these li tag if you want to add or remove navlink only -->
+            <!-- Start -->
+            <li class="item">
+                <a th:href="@{/users/all}" class="nav_link">
+              <span class="navlink_icon">
+                <i class="bx bxs-magic-wand"></i>
+              </span>
+                    <span class="navlink">Listar</span>
+                </a>
+            </li>
+            <!-- End -->
+            <li class="item">
+                <a th:href="@{/users/search}" class="nav_link">
+              <span class="navlink_icon">
+                <i class="bx bx-loader-circle"></i>
+              </span>
+                    <span class="navlink" >Pesquiser</span>
+                </a>
+            </li>
+            <li class="item">
+                <a th:href="@{/users/update-html}" class="nav_link">
+              <span class="navlink_icon">
+                <i class="bx bx-filter"></i>
+              </span>
+                    <span class="navlink" >Atualizar</span>
+                </a>
+            </li>
+            <li class="item">
+                <a href="#" class="nav_link">
+              <span class="navlink_icon">
+                <i class="bx bx-cloud-upload"></i>
+              </span>
+                    <span class="navlink">Upload new</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="menu_items">
+            <div class="menu_title menu_setting"></div>
+            <li class="item">
+                <a href="#" class="nav_link">
+              <span class="navlink_icon">
+                <i class="bx bx-flag"></i>
+              </span>
+                    <span class="navlink">Notice board</span>
+                </a>
+            </li>
+            <li class="item">
+                <a href="#" class="nav_link">
+              <span class="navlink_icon">
+                <i class="bx bx-medal"></i>
+              </span>
+                    <span class="navlink">Award</span>
+                </a>
+            </li>
+            <li class="item">
+                <a href="#" class="nav_link">
+              <span class="navlink_icon">
+                <i class="bx bx-cog"></i>
+              </span>
+                    <span class="navlink">Setting</span>
+                </a>
+            </li>
+            <li class="item">
+                <a href="#" class="nav_link">
+              <span class="navlink_icon">
+                <i class="bx bx-layer"></i>
+              </span>
+                    <span class="navlink">Features</span>
+                </a>
+            </li>
+        </ul>
+        <!-- Sidebar Open / Close -->
+        <div class="bottom_content">
+            <div class="bottom expand_sidebar">
+                <span> Expand</span>
+                <i class='bx bx-log-in' ></i>
+            </div>
+            <div class="bottom collapse_sidebar">
+                <span> Collapse</span>
+                <i class='bx bx-log-out'></i>
+            </div>
+        </div>
+    </div>
+</nav>
+<form class="row g-8" th:action="@{/users/create}" th:object="${users}" method="post">
+        <h3 id="user-register">Cadastro de Usuário</h3>
+        <div class="col-md-5">
+            <label for="username" class="form-label">Usuário</label>
+            <input type="text" class="form-control" th:field="*{username}" id="username" placeholder="username" required>
+            <div id="usernameHelp" class="form-text">
+                O nome de usuário deve ter de 6 a 12 caracteres.
+            </div>
+        </div>
+        <div class="col-md-5">
+            <label for="fullName" class="form-label">Nome Completo</label>
+            <input type="text" class="form-control" th:field="*{fullName}" id="fullName" placeholder="Mark Otto" required>
+        </div>
+        <div class="row"/>
+        <div class="col-md-5">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" th:field="*{email}" id="email" placeholder="example@example.com" required>
+            <div id="emailHelp" class="form-text">Nunca compartilharemos seu e-mail com ninguém.</div>
+        </div>
+        <div class="row"/>
+        <div class="col-md-3">
+            <label for="cpfCnpj" class="form-label">CPF/CNPJ</label>
+            <input type="text" class="form-control" th:field="*{cpfCnpj}" id="cpfCnpj" required>
+        </div>
+        <div class="col-md-3">
+            <label for="birthday" class="form-label">Data de Nascimento</label>
+            <input type="date" class="form-control" th:field="*{birthday}" id="birthday" required>
+        </div>
+        <div class="row"/>
+        <div class="col-md-3">
+            <label for="cellphone" class="form-label" id="cellphone-id">Celular</label>
+            <input type="text" class="form-control" th:field="*{cellphone}" id="cellphone" placeholder="(11) 91234-1234" required>
+        </div>
+        <div class="col-md-3">
+            <label for="comunication" class="form-label" id="comunication-id">Comunicação</label>
+            <input type="text" class="form-control" th:field="*{comunication}" id="comunication" placeholder="E-mail" required>
+        </div>
+        <div class="col-12">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                <label class="form-check-label" id="check" for="termsCheck">
+                    Concordo com os termos e condições
+                </label>
+            </div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Enviar</button>
+        </div>
+</form>
+</body>
+<script src="/templates/js/script.js"></script>
+</html>

@@ -2,12 +2,34 @@ package com.compilou.regex.util;
 
 public class AuthUtil {
 
+    public static final String [] ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED_SITE = {
+            "/resources/**",
+            "/static/**",
+            "/static/styles/**",
+            "/static/image/**",
+            "/styles/**",
+            "/image/**",
+            "/templates/**",
+            "/templates/auth/**",
+            "/templates/email/**",
+            "/templates/js/**",
+            "/templates/principal/**"
+    };
+
     public static final String [] ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED = {
             "/auth",
             "/auth/login",
             "/auth/login-user",
             "/auth/register",
-            "/auth/register-user"
+            "/auth/register-user",
+            "/auth/verify-account",
+            "/auth/regenerate-otp",
+            "/auth/reset-password",
+            "/swagger-ui/**",
+            "/auth/send-reset-email",
+            "/auth/send-reset-email**",
+            "/auth/verify-account",
+            "/auth/verify-account**"
     };
 
     public static final String [] ENDPOINTS_WITH_AUTHENTICATION_REQUIRED = {

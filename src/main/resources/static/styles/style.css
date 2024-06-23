@@ -1,53 +1,28 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 1000px;
     background-color: #f8f9fa;
-}
-
-.navbar {
-    z-index: 7000;
-}
-
-.navbar-logo {
-    height: 60px;
-}
-
-.d-flex {
-    padding: 10px;
-}
-
-.container {
-    text-align: center;
-    position: absolute;
-    max-width: 100%;
-    margin-top: 80px;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 #user-register {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px
+    text-align: flex-start;
+    margin-top: 0; /* Ajuste a margem conforme necessário */
 }
 
-
 form {
-    display: inline-block;
-    position: relative;
-    width: 100%;
-    max-width: 500px;
-    padding: 20px;
-    border: 1px solid #ddd;
+    display: flex;
+    position: fixed;
+    max-width: 100%;
+    padding-top: 30px;
+    padding-left: 50px;
     background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    left: 20%;
+}
+
+.form-label {
+    display: flex;
+    width: 100%;
 }
 
 .form-label {
@@ -58,14 +33,37 @@ form {
 .form-text {
     display: flex;
     width: 100%;
+    margin-bottom: 10px;
 }
+
+#cellphone {
+    margin-bottom: 10px;
+    width: 220px;
+}
+
+#cellphone-id {
+    margin-top: 10px;
+}
+
+#comunication-id {
+    margin-top: 10px;
+    transform: translate(3%, 0%);
+}
+
+#comunication{
+    width: 220px;
+    transform: translate(3%, 0%);
+}
+
 
 .mb-3 {
     margin-bottom: 15px;
 }
 
 .btn-primary {
-    width: 100%;
+    margin-top: 10px;
+    width: 120px;
+    max-width: 100%;
     font-size: 16px;
     padding: 10px;
 }
@@ -77,8 +75,4 @@ form {
 .form-check-label {
    display: flex;
    width: 100%;
-}
-
-.nav-item {
-    cursor: pointer
 }

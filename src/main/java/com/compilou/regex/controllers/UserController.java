@@ -4,6 +4,7 @@ import com.compilou.regex.models.User;
 import com.compilou.regex.models.records.CreateUserRequestDto;
 import com.compilou.regex.models.records.LoginUserRequestDto;
 import com.compilou.regex.models.records.RecoveryJwtTokenDto;
+import com.compilou.regex.repositories.UserRepository;
 import com.compilou.regex.services.auth.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -19,15 +20,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+
 @Controller
 @RequestMapping("/auth")
-@Tag(name = "Users", description = "Endpoints for Managing Users")
+@Tag(name = "Auth", description = "Endpoints for registering user by JWT")
 public class UserController {
 
     private final UserService userService;
+    private final UserRepository userRepository;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, UserRepository userRepository) {
         this.userService = userService;
+        this.userRepository = userRepository;
     }
 
     @PostMapping("/login-user-jwt")
@@ -156,7 +162,7 @@ public class UserController {
         if (error != null) {
             model.addAttribute("error", "Invalid email or password");
         }
-        return "login";
+        return "/auth/login";
     }
 
     @GetMapping("/register")
@@ -178,7 +184,7 @@ public class UserController {
             }
     )
     public String registerPage() {
-        return "register";
+        return "/auth/register";
     }
 
     @PostMapping("/register-user")
@@ -236,5 +242,70 @@ public class UserController {
             model.addAttribute("error", "Invalid email or password");
             return "Bad Request!";
         }
+    }
+
+    @GetMapping("/verify-account")
+    public String verifyAccount(@RequestParam String email, @RequestParam String otp, Model model) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found with this email: " + email));
+
+        if (!otp.equals(user.getOtp())) {
+            model.addAttribute("error", "Código OTP inválido.");
+            return "redirect:/auth/login";
+        }
+
+        if (Duration.between(user.getOtpGeneratedTime(), LocalDateTime.now()).getSeconds() >= 60) {
+            model.addAttribute("error", "O código OTP expirou. Por favor, gere um novo código.");
+            return "redirect:/auth/login";
+        }
+
+        user.setActive(true);
+        user.setOtp(null);
+        user.setOtpGeneratedTime(null);
+        userRepository.save(user);
+
+        return "redirect:/auth/login";
+    }
+
+    @PutMapping("/regenerate-otp")
+    public ResponseEntity<String> regenerateOtp(@RequestParam String email) {
+        return new ResponseEntity<>(userService.regenerateOtp(email), HttpStatus.OK);
+    }
+
+    @PostMapping("/reset-password")
+    public String resetPassword(@RequestParam String otp,
+                                @RequestParam String newPassword,
+                                @RequestParam String confirmPassword,
+                                Model model) {
+        if (!newPassword.equals(confirmPassword)) {
+            model.addAttribute("error", "As senhas não coincidem!");
+            return "/auth/reset";
+        }
+        String result = userService.resetPassword(otp, newPassword);
+        if (!"Success".equals(result)) {
+            model.addAttribute("error", result);
+            return "reset";
+        }
+        return "redirect:/auth/login";
+    }
+
+    @PostMapping("/regenerate-otp")
+    public String regenerateOtp(@RequestParam String email, Model model) {
+        String result = userService.regenerateOtp(email);
+        if (!"Success".equals(result)) {
+            model.addAttribute("error", result);
+        }
+        return "/auth/reset";
+    }
+
+    @GetMapping("/send-reset-email")
+    public String sendResetEmail(@RequestParam String email, Model model) {
+        String result = userService.sendResetEmail(email);
+        if (!"Success".equals(result)) {
+            model.addAttribute("error", result);
+            return "/auth/login";
+        }
+        model.addAttribute("message", "Email de reset de senha enviado com sucesso!");
+        return "/auth/login";
     }
 }

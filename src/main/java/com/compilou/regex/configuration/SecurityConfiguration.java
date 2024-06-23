@@ -32,8 +32,7 @@ public class SecurityConfiguration {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/swagger-ui/**").permitAll()
-                        .requestMatchers("/resources/**", "/static/**",  "/images/**").permitAll()
+                        .requestMatchers(AuthUtil.ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED_SITE).permitAll()
                         .requestMatchers(AuthUtil.ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED).permitAll()
                         .requestMatchers(AuthUtil.ENDPOINTS_WITH_AUTHENTICATION_REQUIRED).authenticated()
                         .requestMatchers(AuthUtil.ENDPOINTS_ADMIN).hasRole("ADMINISTRATOR")
@@ -57,6 +56,8 @@ public class SecurityConfiguration {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers("/swagger-ui/**", "/v3/api-docs/**");
+        return (web) -> web.ignoring().requestMatchers(
+                "/swagger-ui/**",
+                "/v3/api-docs/**");
     }
 }

@@ -21,7 +21,7 @@ import java.io.UnsupportedEncodingException;
 public class EmailService {
 
     private final Environment environment;
-    private final JavaMailSender mailSender;
+    private static JavaMailSender mailSender;
     private final TemplateEngine htmlTemplateEngine;
 
     @Autowired
@@ -95,6 +95,43 @@ public class EmailService {
         ClassPathResource clr = new ClassPathResource(MailUtil.UPDATE_IMAGE);
         email.addInline("updateImage", clr, MailUtil.PNG_MIME);
 
+        mailSender.send(mimeMessage);
+    }
+
+    public static void sendOtpEmail(String email, String otp) throws MessagingException {
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
+        mimeMessageHelper.setTo(email);
+        mimeMessageHelper.setSubject("Verify Account");
+        mimeMessageHelper.setText(String.format("""
+        <div>
+            <p>Click the link below to verify your account:</p>
+            <p><a href="http://localhost:8080/verify-account?email=%s&otp=%s" target="_blank">Verify Account</a></p>
+        </div>
+        """, email, otp), true);
+        mailSender.send(mimeMessage);
+    }
+
+    public static void sendResetEmail(String email, String otp) throws MessagingException {
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
+        mimeMessageHelper.setTo(email);
+        mimeMessageHelper.setSubject("Reset Password OTP Verification");
+
+        String resetLink = "http://localhost:8080/reset-password?email=%s&otp=%s";
+        String emailBody = String.format("""
+        <html>
+        <body>
+            <p>Dear User,</p>
+            <p>You have requested to reset your password. Please click on the link below to proceed:</p>
+            <p><a href="%s" target="_blank">Reset Password</a></p>
+            <p>If you did not request this, please ignore this email.</p>
+            <p>Regards,<br/>Your Application Team</p>
+        </body>
+        </html>
+        """, String.format(resetLink, email, otp));
+
+        mimeMessageHelper.setText(emailBody, true);
         mailSender.send(mimeMessage);
     }
 }

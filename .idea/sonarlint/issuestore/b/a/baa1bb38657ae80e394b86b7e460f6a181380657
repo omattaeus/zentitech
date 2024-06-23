@@ -1,15 +1,15 @@
 
-
-java:S1192Ë"GDefine a constant instead of duplicating this literal "update" 4 times.(šÚí€úÿÿÿÿ8çµÊ‹„2J$bea03985-5986-494c-bfb5-8bdc3dac2923
 
-java:S1192Ê"FDefine a constant instead of duplicating this literal "error" 3 times.(Çè Íûÿÿÿÿ8èµÊ‹„2J$018c86ff-5c29-4912-a161-32979226a9d8
+java:S1192Ê"FDefine a constant instead of duplicating this literal "error" 3 times.(Çè Íûÿÿÿÿ8èµÊ‹„2J$e1e7531b-ac28-4925-bf98-8696fa04890c
 
-java:S1192ş"FDefine a constant instead of duplicating this literal "users" 3 times.(ÿŞ¼¿ıÿÿÿÿ8éµÊ‹„2J$6d74711e-bae9-46ac-b856-0047dfb0772e
+java:S1192ş"FDefine a constant instead of duplicating this literal "users" 3 times.(ÿŞ¼¿ıÿÿÿÿ8éµÊ‹„2J$652aa9bd-b106-4946-aa26-af88f5d5d6cb
+–
+java:S1192Ï"RDefine a constant instead of duplicating this literal "/principal/update" 3 times.(‚Äİ8¤ğ©¶„2J$2e827500-d3ae-4625-a9b0-8e06d5a9f024
 ‹
-java:S1192Q"IDefine a constant instead of duplicating this literal "username" 4 times.(±Ê¦Q8êµÊ‹„2J$f70ad46c-7f86-4615-8b3c-1ad549150d42
+java:S1192Q"IDefine a constant instead of duplicating this literal "username" 4 times.(±Ê¦Q8êµÊ‹„2J$ed7e335f-5b89-4f5d-abd8-3ac357fbf769
 r
-java:S6829+"*Add @Autowired to one of the constructors.(»öÏöıÿÿÿÿ8Ú·Ê‹„2J$d402a716-3316-4d48-943a-0a9d441c04bc
+java:S6829+"*Add @Autowired to one of the constructors.(»öÏöıÿÿÿÿ8Ú·Ê‹„2J$ce523241-aafb-48cf-af42-c9bcb9523785
 …
-java:S6813-"BRemove this field injection and use constructor injection instead.(êæÄŞ8İ·Ê‹„2J$b8270f3a-e84c-4669-b42a-08e119048c53
+java:S6813-"BRemove this field injection and use constructor injection instead.(êæÄŞ8İ·Ê‹„2J$dcee8ea4-f924-4880-8e29-f8f9e91af7f4
 …
-java:S6813/"BRemove this field injection and use constructor injection instead.(êæÄŞ8İ·Ê‹„2J$2de147ac-0451-4069-8481-6d0e1788dc19
+java:S6813/"BRemove this field injection and use constructor injection instead.(êæÄŞ8İ·Ê‹„2J$74696b54-5171-439e-a921-c15245c38f79

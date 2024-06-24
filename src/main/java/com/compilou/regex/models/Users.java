@@ -53,6 +53,7 @@ public class Users extends RepresentationModel<Users> {
 
     @Column(name = "birthday")
     @NotNull(message = "Birthday cannot be null!")
+    @PastOrPresent
     private String birthday;
 
     @NotNull(message = "Cellphone cannot be null!")

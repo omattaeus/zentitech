@@ -3,6 +3,7 @@ package com.compilou.regex.mapper.request;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,6 +36,7 @@ public class UsersRequest {
         private String cpfCnpj;
 
         @NotNull(message = "Birthday cannot be null")
+        @PastOrPresent
         private String birthday;
 
         @NotNull(message = "Cellphone cannot be null")

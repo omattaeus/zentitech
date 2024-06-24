@@ -12,7 +12,7 @@ spring:
       FAIL_ON_EMPTY_BEANS: false
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://roundhouse.proxy.rlwy.net:40855/railway
+    url: ${MYSQLURL}
     username: ${MYSQLUSER}
     password: ${MYSQLPASSWORD}
   jpa:

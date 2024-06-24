@@ -18,19 +18,19 @@ public class AuthUtil {
 
     public static final String [] ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED = {
             "/auth",
-            "/auth/login",
-            "/auth/login-user",
-            "/auth/register",
-            "/auth/register-user",
-            "/auth/verify-account",
-            "/auth/regenerate-otp",
-            "/auth/reset-password",
-            "/auth/reset-password**",
+            "/",
+            "/login-user",
+            "/register",
+            "/register-user",
+            "/verify-account",
+            "/regenerate-otp",
+            "/reset-password",
+            "/reset-password**",
             "/swagger-ui/**",
-            "/auth/send-reset-email",
-            "/auth/send-reset-email**",
-            "/auth/verify-account",
-            "/auth/verify-account**"
+            "/send-reset-email",
+            "/send-reset-email**",
+            "/verify-account",
+            "/verify-account**"
     };
 
     public static final String [] ENDPOINTS_WITH_AUTHENTICATION_REQUIRED = {

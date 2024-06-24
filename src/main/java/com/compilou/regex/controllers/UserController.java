@@ -25,7 +25,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 @Controller
-@RequestMapping("/auth")
+@RequestMapping("/")
 @Tag(name = "Auth", description = "Endpoints for registering user by JWT")
 public class UserController {
 
@@ -141,7 +141,7 @@ public class UserController {
                 "Administrator successfully authenticated!", HttpStatus.OK);
     }
 
-    @GetMapping("/login-user")
+    @GetMapping
     @Operation(summary = "Login - Page", description = "Login - Page",
             tags = {"Auth"},
             responses = {
@@ -209,7 +209,7 @@ public class UserController {
     public String createUserHtml(CreateUserRequestDto createUserRequestDto, Model model) {
         userService.createUser(createUserRequestDto);
         model.addAttribute("message", "User registered successfully");
-        return "redirect:/auth/login-user";
+        return "redirect:/";
     }
 
     @PostMapping("/login")
@@ -252,12 +252,12 @@ public class UserController {
 
         if (!otp.equals(user.getOtp())) {
             model.addAttribute("error", "Código OTP inválido.");
-            return "redirect:/auth/login";
+            return "redirect:/";
         }
 
         if (Duration.between(user.getOtpGeneratedTime(), LocalDateTime.now()).getSeconds() >= 60) {
             model.addAttribute("error", "O código OTP expirou. Por favor, gere um novo código.");
-            return "redirect:/auth/login";
+            return "redirect:/";
         }
 
         user.setActive(true);
@@ -265,7 +265,7 @@ public class UserController {
         user.setOtpGeneratedTime(null);
         userRepository.save(user);
 
-        return "redirect:/auth/login";
+        return "redirect:/";
     }
 
     @PutMapping("/regenerate-otp")
@@ -317,7 +317,7 @@ public class UserController {
             return "/auth/reset";
         }
 
-        return "redirect:/auth/login";
+        return "redirect:/";
     }
 
     @PostMapping("/regenerate-otp")

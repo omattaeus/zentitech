@@ -1,3 +1,6 @@
+server:
+  port: 8080
+  address: 0.0.0.0
 twilio:
   account_sid: ${TWILIO_SID}
   auth_token: ${TWILIO_TOKEN}

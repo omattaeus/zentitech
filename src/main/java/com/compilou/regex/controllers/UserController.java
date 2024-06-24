@@ -163,7 +163,7 @@ public class UserController {
         if (error != null) {
             model.addAttribute("error", "Invalid email or password");
         }
-        return "/auth/login";
+        return "auth/login";
     }
 
     @GetMapping("/register")
@@ -185,7 +185,7 @@ public class UserController {
             }
     )
     public String registerPage() {
-        return "/auth/register";
+        return "auth/register";
     }
 
     @PostMapping("/register-user")
@@ -275,7 +275,7 @@ public class UserController {
 
     @GetMapping("/send-reset-email")
     public String showSendResetEmailForm() {
-        return "/auth/reset";
+        return "auth/reset";
     }
 
     @PostMapping("/send-reset-email")
@@ -283,17 +283,17 @@ public class UserController {
         String result = userService.sendResetEmail(email);
         if (!"Password reset email sent, please check your inbox".equals(result)) {
             model.addAttribute("error", result);
-            return "/auth/reset";
+            return "auth/reset";
         }
         model.addAttribute("message", "Email de reset de senha enviado com sucesso!");
-        return "/auth/login";
+        return "auth/login";
     }
 
     @GetMapping("/reset-password")
     public String showResetPasswordForm(@RequestParam String email, @RequestParam String otp, Model model) {
         model.addAttribute("email", email);
         model.addAttribute("otp", otp);
-        return "/auth/reset";
+        return "auth/reset";
     }
 
     @PostMapping("/reset-password")
@@ -306,7 +306,7 @@ public class UserController {
             model.addAttribute("error", "As senhas não coincidem!");
             model.addAttribute("email", email);
             model.addAttribute("otp", otp);
-            return "/auth/reset";
+            return "auth/reset";
         }
 
         String result = userService.resetPassword(email, otp, newPassword);
@@ -314,7 +314,7 @@ public class UserController {
             model.addAttribute("error", result);
             model.addAttribute("email", email);
             model.addAttribute("otp", otp);
-            return "/auth/reset";
+            return "auth/reset";
         }
 
         return "redirect:/";
@@ -326,6 +326,6 @@ public class UserController {
         if (!"Success".equals(result)) {
             model.addAttribute("error", result);
         }
-        return "/auth/reset";
+        return "auth/reset";
     }
 }

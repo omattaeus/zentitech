@@ -12,9 +12,9 @@ spring:
       FAIL_ON_EMPTY_BEANS: false
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ${DB_URL}
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
+    url: ${DB_URL_DEPLOY}
+    username: ${DB_USER_DEPLOY}
+    password: ${DB_PASSWORD_DEPLOY}
   jpa:
     hibernate:
       ddl-auto: none

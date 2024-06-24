@@ -13,7 +13,7 @@
         <img src="/static/image/logo-users-api.png" th:src="@{/static/image/logo-users-api.png}" class="navbar-logo" alt="Logo">
     </a>
     <h2>Register</h2>
-    <form th:action="@{/auth/register-user}" method="post">
+    <form th:action="@{/register-user}" method="post">
         <div th:if="${message}" class="alert alert-success" role="alert">
             <p th:text="${message}"></p>
         </div>

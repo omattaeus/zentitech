@@ -6,6 +6,10 @@ twilio:
   auth_token: ${TWILIO_TOKEN}
   trial_number: +13475376942
 spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
   mvc:
     hiddenmethod:
       filter:

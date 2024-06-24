@@ -13,15 +13,15 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://roundhouse.proxy.rlwy.net:40855/railway
-    username: ${DB_USER_DEPLOY}
-    password: ${DB_PASSWORD_DEPLOY}
+    username: ${MYSQLUSER}
+    password: ${MYSQLPASSWORD}
   jpa:
     hibernate:
       ddl-auto: none
   mail:
     host: smtp.gmail.com
     port: 587
-    username: contatomateusgd@gmail.com
+    username: ${MAIL_USERNAME}
     password: ${MAIL_PASSWORD}
     protocol: smtp
     properties:
@@ -31,6 +31,6 @@ spring:
           starttls:
             required: true
             enable: true
-          from: contatomateusgd@gmail.com
+          from: ${MAIL_USERNAME}
     default-encoding: UTF-8
     test-connection: false

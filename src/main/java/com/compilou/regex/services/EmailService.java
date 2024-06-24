@@ -98,6 +98,17 @@ public class EmailService {
         mailSender.send(mimeMessage);
     }
 
+    public void sendOtpEmail(String to, String otp, String resetLink) throws MessagingException {
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+
+        helper.setTo(to);
+        helper.setSubject("Password Reset Request");
+        helper.setText(String.format("Your OTP is: %s. Click the following link to reset your password: %s", otp, resetLink), true);
+
+        mailSender.send(message);
+    }
+
     public static void sendOtpEmail(String email, String otp) throws MessagingException {
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);

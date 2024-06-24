@@ -25,7 +25,7 @@ class UsersRepositoryTest {
                 1L,
                 "teste1234",
                 "Teste",
-                "teste@testando.com",
+                "teste.html@testando.com",
                 "(12) 91334-1234"
         );
     }

@@ -25,7 +25,6 @@ public class SecurityConfiguration {
         this.userAuthenticationFilter = userAuthenticationFilter;
     }
 
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
@@ -58,6 +57,8 @@ public class SecurityConfiguration {
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring().requestMatchers(
                 "/swagger-ui/**",
-                "/v3/api-docs/**");
+                "/v3/api-docs/**",
+                "/auth/verify-account",
+                "/auth/verify-account**");
     }
 }

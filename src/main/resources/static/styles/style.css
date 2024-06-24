@@ -1,22 +1,22 @@
 body {
-    background-color: #f8f9fa;
-    font-family: Arial, sans-serif;
     overflow-x: hidden;
     overflow-y: hidden;
 }
 
 #user-register {
     text-align: flex-start;
-    margin-top: 0; /* Ajuste a margem conforme necessário */
+    margin-top: 0;
 }
 
 form {
     display: flex;
     position: fixed;
+    height: 540px;
+    max-height: 100%;
     max-width: 100%;
     padding-top: 30px;
     padding-left: 50px;
-    background-color: #fff;
+    padding-bottom: 30px;
     left: 20%;
 }
 
@@ -54,7 +54,6 @@ form {
     width: 220px;
     transform: translate(3%, 0%);
 }
-
 
 .mb-3 {
     margin-bottom: 15px;

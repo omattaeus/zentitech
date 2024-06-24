@@ -1,19 +1,23 @@
-const body = document.querySelector("body");
-const darkLight = document.querySelector("#darkLight");
-const sidebar = document.querySelector(".sidebar");
-const submenuItems = document.querySelectorAll(".submenu_item");
-const sidebarOpen = document.querySelector("#sidebarOpen");
-const sidebarClose = document.querySelector(".collapse_sidebar");
-const sidebarExpand = document.querySelector(".expand_sidebar");
-sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
-sidebarClose.addEventListener("click", () => {
-  sidebar.classList.add("close", "hoverable");
-});
-sidebarExpand.addEventListener("click", () => {
-  sidebar.classList.remove("close", "hoverable");
-});
-sidebar.addEventListener("mouseenter", () => {
-  if (sidebar.classList.contains("hoverable")) {
-    sidebar.classList.remove("close");
-  }
+$(document).ready(function() {
+    // Sidebar toggle functionality
+    const body = $('body');
+    const sidebar = $('.sidebar');
+    const sidebarOpen = $('#sidebarOpen');
+    const themeToggle = $('#themeToggle');
+
+    // Abrir e fechar a sidebar
+    sidebarOpen.on('click', function() {
+        sidebar.toggleClass('close');
+    });
+
+    // Alternar o tema claro e escuro
+    themeToggle.on('click', function() {
+        body.toggleClass('dark');
+        $(this).toggleClass('bx-sun bx-moon');
+    });
+
+    // Função para lidar com submenus
+    $('.submenu_item').on('click', function() {
+        $(this).toggleClass('show_submenu');
+    });
 });

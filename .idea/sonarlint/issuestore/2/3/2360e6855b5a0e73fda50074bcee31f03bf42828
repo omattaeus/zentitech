@@ -1,9 +1,11 @@
 
+•
+java:S1192–"LDefine a constant instead of duplicating this literal "/auth/reset" 6 times.(şß¹øşÿÿÿÿ8‘Ğù·„2J$6c23a844-dbf2-4e80-9025-af4fa189812b
 Š
-java:S1192£"FDefine a constant instead of duplicating this literal "error" 8 times.(É•§8Íããš„2J$0e2aad3d-c376-4adf-9caa-b1d39b4537ff
-Œ
-java:S1192"HDefine a constant instead of duplicating this literal "Success" 3 times.(ÃÉÜÛ8Íããš„2J$4f0d8528-8b35-4779-bd21-4052ba45fa28
+java:S1192¤"FDefine a constant instead of duplicating this literal "error" 8 times.(É•§8“Ğù·„2J$a0c18e6a-6a1e-4b44-b46d-a9461b14c52d
 ™
-java:S1192ş"UDefine a constant instead of duplicating this literal "redirect:/auth/login" 4 times.(•·»ò8óœ²¶„2J$ac804e7e-6322-413b-82f5-5af973aac267
-
-java:S1192¥"LDefine a constant instead of duplicating this literal "/auth/login" 3 times.(çŒàV8Ñú¬¶„2J$6dcca67f-5b1d-40d5-a72e-7c2352fb66ab
+java:S1192ÿ"UDefine a constant instead of duplicating this literal "redirect:/auth/login" 4 times.(•·»ò8•Ğù·„2J$892dd64e-504f-4efc-bf0d-7d677afdee53
+Š
+java:S1192¦"FDefine a constant instead of duplicating this literal "email" 3 times.(ùŠšŠ8À–»¸„2J$133d7d37-f7b5-4103-9f33-867e4bf6a110
+v
+java:S1128"4Remove this unused import 'java.security.Principal'.(’ÛŞ[8–‹í¸„2J$299b05bf-aa05-4358-8043-7bcab4e22da5

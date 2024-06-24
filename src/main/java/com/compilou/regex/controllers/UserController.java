@@ -20,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
@@ -244,7 +245,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/verify-account")
+    @PostMapping("/verify-account")
     public String verifyAccount(@RequestParam String email, @RequestParam String otp, Model model) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found with this email: " + email));
@@ -272,20 +273,50 @@ public class UserController {
         return new ResponseEntity<>(userService.regenerateOtp(email), HttpStatus.OK);
     }
 
+    @GetMapping("/send-reset-email")
+    public String showSendResetEmailForm() {
+        return "/auth/reset";
+    }
+
+    @PostMapping("/send-reset-email")
+    public String sendResetEmail2(@RequestParam String email, Model model) {
+        String result = userService.sendResetEmail(email);
+        if (!"Password reset email sent, please check your inbox".equals(result)) {
+            model.addAttribute("error", result);
+            return "/auth/reset";
+        }
+        model.addAttribute("message", "Email de reset de senha enviado com sucesso!");
+        return "/auth/login";
+    }
+
+    @GetMapping("/reset-password")
+    public String showResetPasswordForm(@RequestParam String email, @RequestParam String otp, Model model) {
+        model.addAttribute("email", email);
+        model.addAttribute("otp", otp);
+        return "/auth/reset";
+    }
+
     @PostMapping("/reset-password")
-    public String resetPassword(@RequestParam String otp,
+    public String resetPassword(@RequestParam String email,
+                                @RequestParam String otp,
                                 @RequestParam String newPassword,
                                 @RequestParam String confirmPassword,
                                 Model model) {
         if (!newPassword.equals(confirmPassword)) {
             model.addAttribute("error", "As senhas não coincidem!");
+            model.addAttribute("email", email);
+            model.addAttribute("otp", otp);
             return "/auth/reset";
         }
-        String result = userService.resetPassword(otp, newPassword);
+
+        String result = userService.resetPassword(email, otp, newPassword);
         if (!"Success".equals(result)) {
             model.addAttribute("error", result);
-            return "reset";
+            model.addAttribute("email", email);
+            model.addAttribute("otp", otp);
+            return "/auth/reset";
         }
+
         return "redirect:/auth/login";
     }
 
@@ -296,16 +327,5 @@ public class UserController {
             model.addAttribute("error", result);
         }
         return "/auth/reset";
-    }
-
-    @GetMapping("/send-reset-email")
-    public String sendResetEmail(@RequestParam String email, Model model) {
-        String result = userService.sendResetEmail(email);
-        if (!"Success".equals(result)) {
-            model.addAttribute("error", result);
-            return "/auth/login";
-        }
-        model.addAttribute("message", "Email de reset de senha enviado com sucesso!");
-        return "/auth/login";
     }
 }

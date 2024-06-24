@@ -25,6 +25,7 @@ public class AuthUtil {
             "/auth/verify-account",
             "/auth/regenerate-otp",
             "/auth/reset-password",
+            "/auth/reset-password**",
             "/swagger-ui/**",
             "/auth/send-reset-email",
             "/auth/send-reset-email**",

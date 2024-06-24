@@ -18,7 +18,7 @@ public class AuthUtil {
 
     public static final String [] ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED = {
             "/auth",
-            "zentitech.up.railway.app/",
+            "/",
             "/login-user",
             "/register",
             "/register-user",

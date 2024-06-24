@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d353d5b3-a44a-41b7-9a44-f85753503180" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/mapper/request/UsersRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/mapper/request/UsersRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/Users.java" afterDir="false" />
-    </list>
+    <list default="true" id="d353d5b3-a44a-41b7-9a44-f85753503180" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

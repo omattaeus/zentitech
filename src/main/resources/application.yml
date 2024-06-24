@@ -11,7 +11,7 @@ spring:
     serialization:
       FAIL_ON_EMPTY_BEANS: false
   datasource:
-    driver-class-name: org.hibernate.dialect.MySQL5Dialect
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://roundhouse.proxy.rlwy.net:40855/railway
     username: ${DB_USER_DEPLOY}
     password: ${DB_PASSWORD_DEPLOY}

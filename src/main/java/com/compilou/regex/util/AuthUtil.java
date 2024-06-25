@@ -49,8 +49,10 @@ public class AuthUtil {
             "/users/all**",
             "/users/create",
             "/users/create-html",
+            "/users/create-user",
+            "/users/search",
             "/users/update-html",
-            "/users/search"
+            "/users/update"
     };
 
     public static final String [] ENDPOINTS_ADMIN = {

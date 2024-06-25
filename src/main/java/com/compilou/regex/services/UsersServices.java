@@ -33,6 +33,10 @@ public class UsersServices {
         this.assembler = assembler;
     }
 
+    public boolean existsByEmail(String email) {
+        return usersRepository.existsByEmail(email);
+    }
+
     public PagedModel<EntityModel<Users>> findAllUsers(Pageable pageable) {
 
         var usersPage = usersRepository.findAllUsers(pageable);

@@ -83,6 +83,9 @@ services:
       - path: "/users/create"
         auth_required: true
         role: ROLE_CUSTOMER
+      - path: "/users/create-user"
+        auth_required: true
+        role: ROLE_CUSTOMER
       - path: "/users/create-html"
         auth_required: true
         role: ROLE_CUSTOMER

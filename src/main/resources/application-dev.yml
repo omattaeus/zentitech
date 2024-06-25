@@ -41,3 +41,5 @@ spring:
           from: ${MAIL_USERNAME}
     default-encoding: UTF-8
     test-connection: false
+
+# teste22

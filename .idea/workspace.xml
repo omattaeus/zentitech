@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d353d5b3-a44a-41b7-9a44-f85753503180" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/principal/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/principal/create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +26,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -56,9 +62,9 @@
     &quot;Maven.Pitest.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Documents/regex/src/main/resources/static/image&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Documents/regex/src/main/resources&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/User/Documents/regex/src/Main.java&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
@@ -71,11 +77,11 @@
       <recent name="com.compilou.regex.interfaces" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Documents\regex\src\main\resources" />
       <recent name="C:\Users\User\Documents\regex\src\main\resources\static\image" />
       <recent name="C:\Users\User\Documents\regex\src\main\resources\templates" />
       <recent name="C:\Users\User\Documents\regex\src\main\resources\static\styles" />
       <recent name="C:\Users\User\Documents\regex\src\main\resources\static\css" />
-      <recent name="C:\Users\User\Documents\regex\src\main\resources\static" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\User\Documents\regex\src\main\resources\templates\principal" />
@@ -97,7 +103,9 @@
         <env name="DB_USER" value="root" />
         <env name="MAIL_PASSWORD" value="pdsi vkqt ddya jamy" />
         <env name="MAIL_USERNAME" value="contatomateusgd@gmail.com" />
+        <env name="MYSQL_URL" value="jdbc:mysql://roundhouse.proxy.rlwy.net:29583/railway" />
         <env name="MYSQLPASSWORD" value="UhGWNtGjbOXOTTmtahzogRClRsAOeWmN" />
+        <env name="MYSQL_ROOT_PASSWORD" value="kogmrvwAGjsBjDTwnWhNzuAWkcWqVsQF" />
         <env name="MYSQLURL" value="jdbc:mysql://roundhouse.proxy.rlwy.net:40855/railway" />
         <env name="MYSQLUSER" value="root" />
         <env name="TWILIO_SID" value="AC2c10bc413b6d914a9e283d8942647a43" />
@@ -105,6 +113,7 @@
       </envs>
       <option name="MAIN_CLASS_NAME" value="com.compilou.regex.Startup" />
       <module name="regex" />
+      <option name="PROGRAM_PARAMETERS" value="SPRING_PROFILES_ACTIVE=dev" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.compilou.regex.configuration.*" />

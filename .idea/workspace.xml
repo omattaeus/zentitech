@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d353d5b3-a44a-41b7-9a44-f85753503180" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/principal/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/principal/create.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-prod.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,37 +47,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.RegexApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Startup.executor&quot;: &quot;Run&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;JUnit.UsersRepositoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UsersRepositoryTest.testGivenUsersList_WhenFindAll_ThenReturnUsersList.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Pitest.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Documents/regex/src/main/resources/static/image&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/User/Documents/regex/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.RegexApplication.executor": "Run",
+    "Application.Startup.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JUnit.UsersRepositoryTest.executor": "Run",
+    "JUnit.UsersRepositoryTest.testGivenUsersList_WhenFindAll_ThenReturnUsersList.executor": "Run",
+    "Maven.Pitest.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "dev",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/User/Documents/regex/src/main/resources",
+    "onboarding.tips.debug.path": "C:/Users/User/Documents/regex/src/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.compilou.regex.interfaces" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Documents\regex\src\main\resources" />
       <recent name="C:\Users\User\Documents\regex\src\main\resources\static\image" />
       <recent name="C:\Users\User\Documents\regex\src\main\resources\templates" />
       <recent name="C:\Users\User\Documents\regex\src\main\resources\static\styles" />
       <recent name="C:\Users\User\Documents\regex\src\main\resources\static\css" />
-      <recent name="C:\Users\User\Documents\regex\src\main\resources\static" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\User\Documents\regex\src\main\resources\templates\principal" />
@@ -102,6 +104,9 @@
         <env name="MYSQLUSER" value="root" />
         <env name="TWILIO_SID" value="AC2c10bc413b6d914a9e283d8942647a43" />
         <env name="TWILIO_TOKEN" value="b5cc83c9a676c1e43333dc91b47857a4" />
+        <env name="MYSQLURLDEV" value="jdbc:mysql://roundhouse.proxy.rlwy.net:29583/railway" />
+        <env name="MYSQLUSERDEV" value="root" />
+        <env name="MYSQLPASSWORDDEV" value="kogmrvwAGjsBjDTwnWhNzuAWkcWqVsQF" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="com.compilou.regex.Startup" />
       <module name="regex" />

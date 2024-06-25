@@ -58,7 +58,7 @@ public class SecurityConfiguration {
         return (web) -> web.ignoring().requestMatchers(
                 "/swagger-ui/**",
                 "/v3/api-docs/**",
-                "/auth/verify-account",
-                "/auth/verify-account**");
+                "/verify-account",
+                "/verify-account**");
     }
 }

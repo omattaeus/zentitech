@@ -55,46 +55,46 @@ services:
         auth_required: true
       - path: "/users/test/customer"
         auth_required: true
-        role: customer
+        role: ROLE_CUSTOMER
       - path: "/users/id/{id}"
         auth_required: true
-        role: customer
+        role: ROLE_CUSTOMER
       - path: "/users/update"
         auth_required: true
-        role: customer
+        role: ROLE_CUSTOMER
       - path: "/users/find/by/{firstName}"
         auth_required: true
-        role: customer
+        role: ROLE_CUSTOMER
       - path: "/api/sms/send"
         auth_required: true
-        role: customer
+        role: ROLE_CUSTOMER
       - path: "/users/success"
         auth_required: true
-        role: customer
+        role: ROLE_CUSTOMER
       - path: "/users/all"
         auth_required: true
-        role: customer
+        role: ROLE_CUSTOMER
       - path: "/users/all-users"
         auth_required: true
-        role: customer
+        role: ROLE_CUSTOMER
       - path: "/users/all**"
         auth_required: true
-        role: customer
+        role: ROLE_CUSTOMER
       - path: "/users/create"
         auth_required: true
-        role: customer
+        role: ROLE_CUSTOMER
       - path: "/users/create-html"
         auth_required: true
-        role: customer
+        role: ROLE_CUSTOMER
       - path: "/users/update-html"
         auth_required: true
-        role: customer
+        role: ROLE_CUSTOMER
       - path: "/users/search"
         auth_required: true
-        role: customer
+        role: ROLE_CUSTOMER
       - path: "/users/test/administrator"
         auth_required: true
-        role: admin
+        role: ROLE_ADMINISTRATOR
       - path: "/users/delete/{id}"
         auth_required: true
-        role: admin
+        role: ROLE_ADMINISTRATOR

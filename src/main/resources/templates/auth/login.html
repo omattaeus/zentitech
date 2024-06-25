@@ -37,7 +37,7 @@
                 <h5 class="modal-title" id="forgotPasswordModalLabel">Resetar Senha</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form th:action="@{/auth/send-reset-email}" method="get">
+            <form th:action="@{/send-reset-email}" method="get">
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="resetEmail" class="form-label">Email</label>

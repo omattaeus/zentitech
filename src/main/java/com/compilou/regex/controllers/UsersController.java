@@ -200,14 +200,14 @@ public class UsersController {
                 return "redirect:/users/create-html";
             } else {
                 model.addAttribute("error", "Bad Request!");
-                return "update";
+                return "principal/update";
             }
         } catch (MessagingException | UnsupportedEncodingException e) {
             model.addAttribute("error", "Bad Request MessagingException | UnsupportedEncodingException");
-            return "/principal/update";
+            return "principal/update";
         } catch (Exception e) {
             model.addAttribute("error", "Erro ao atualizar usuário: " + e.getMessage());
-            return "/principal/update";
+            return "principal/update";
         }
     }
 
@@ -252,7 +252,7 @@ public class UsersController {
     )
     public String showCreateForm(Model model) {
         model.addAttribute("users", new Users());
-        return "/principal/create" ;
+        return "principal/create" ;
     }
 
     @GetMapping(value = "/update-html")
@@ -274,7 +274,7 @@ public class UsersController {
     )
     public String showUpdateForm(Model model) {
         model.addAttribute("user", new Users());
-        return "/principal/update";
+        return "principal/update";
     }
 
     @GetMapping(value = "/search")
@@ -312,7 +312,7 @@ public class UsersController {
         model.addAttribute("direction", direction);
         model.addAttribute("firstName", firstName);
 
-        return "/principal/users_list";
+        return "principal/users_list";
     }
 
     @PostMapping(value = "/create",
@@ -374,7 +374,7 @@ public class UsersController {
             }
     )
     public String showSuccessPage() {
-        return "/principal/success";
+        return "principal/success";
     }
 
     @GetMapping(value = "/all")
@@ -418,6 +418,6 @@ public class UsersController {
         model.addAttribute("size", size);
         model.addAttribute("direction", direction);
 
-        return "/principal/list";
+        return "principal/list";
     }
 }

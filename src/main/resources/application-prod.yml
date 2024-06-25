@@ -1,0 +1,43 @@
+server:
+  port: 8080
+  address: 0.0.0.0
+twilio:
+  account_sid: ${TWILIO_SID}
+  auth_token: ${TWILIO_TOKEN}
+  trial_number: +13475376942
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${MYSQLURL}
+    username: ${MYSQLUSER}
+    password: ${MYSQLPASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: none
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            required: true
+            enable: true
+          from: ${MAIL_USERNAME}
+    default-encoding: UTF-8
+    test-connection: false

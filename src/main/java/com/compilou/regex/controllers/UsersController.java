@@ -1,9 +1,6 @@
 package com.compilou.regex.controllers;
 
 import com.compilou.regex.exceptions.GenericException;
-import com.compilou.regex.mapper.UsersMapper;
-import com.compilou.regex.mapper.request.UsersRequest;
-import com.compilou.regex.mapper.response.UsersResponse;
 import com.compilou.regex.models.Users;
 import com.compilou.regex.services.EmailService;
 import com.compilou.regex.services.UsersServices;
@@ -17,16 +14,17 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.PagedModel;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -135,11 +133,8 @@ public class UsersController {
     }
 
     @PostMapping(value = "/create-user",
-            consumes = {MediaType.APPLICATION_JSON,
-                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML,
-                    org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED_VALUE},
-            produces = {MediaType.APPLICATION_JSON,
-                    MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
+            consumes = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED_VALUE},
+            produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Operation(summary = "Create a Users",
             description = "Create a Users",
             tags = {"Users"},
@@ -152,24 +147,35 @@ public class UsersController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
-    public ResponseEntity<UsersResponse> createHtml(@Valid @RequestBody UsersRequest request) throws MessagingException, UnsupportedEncodingException {
-        try {
-            Users user = UsersMapper.toUsers(request);
-            Users createUser = usersServices.create(user);
-            UsersResponse response = UsersMapper.toUsersResponse(createUser);
+    public String createHtml(@Valid @ModelAttribute Users request, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("errors", result.getAllErrors());
+            return "principal/create";
+        }
 
-            if (response != null) {
+        try {
+            if (usersServices.existsByEmail(request.getEmail())) {
+                model.addAttribute("error", "Email já cadastrado");
+                return "principal/create";
+            }
+            Users createUser = usersServices.create(request);
+
+            if (createUser != null) {
                 emailService.sendMailCreate(createUser);
-                return ResponseEntity.status(HttpStatus.CREATED).body(response);
+                return "redirect:/users/success";
             } else {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+                model.addAttribute("error", "Não foi possível enviar o e-mail de confirmação!");
+                return "principal/create";
             }
         } catch (MessagingException | UnsupportedEncodingException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            model.addAttribute("error", "Erro ao enviar o e-mail de confirmação!");
+            return "principal/create";
+        } catch (DataIntegrityViolationException e) {
+            model.addAttribute("error", "Email já cadastrado");
+            return "principal/create";
         } catch (Exception e) {
-            Map<String, String> error = new HashMap<>();
-            error.put("message", "Erro ao criar usuário: " + e.getMessage());
-            throw new GenericException("Erro ao criar usuário", error);
+            model.addAttribute("error", e.getMessage());
+            return "principal/create";
         }
     }
 

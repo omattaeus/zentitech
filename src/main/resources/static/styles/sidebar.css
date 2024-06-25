@@ -23,12 +23,12 @@
   --input-focus-dark-color: #808080;
 }
 
-html {
+html, body {
   background-color: #F5FAFF;
   transition: all 0.5s ease;
 }
 
-body.dark {
+html.body, body.dark {
   background-color: var(--dark-bg-color);
   --white-color: var(--dark-white-color);
   --blue-color: var(--dark-blue-color);
@@ -390,7 +390,7 @@ body.dark .sidebar.close .bottom_content {
 
 form {
   background-color: #F5FAFF;
-  padding-top: 30px;
+  padding-top: 25px;
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
@@ -443,6 +443,29 @@ form button {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.errors {
+    background-color: #F5FAFF;
+    height: 200px;
+    max-width: 15% !important;
+    transform: translate(350%, -170%);
+    color: #4070f4;
+    transition: none !important;
+}
+
+body.dark .errors {
+    background-color: #333 !important;
+    color: #4070f4 !important;
+    transition: none !important;
+}
+
+li {
+  list-style-type: none;
+}
+
+#user-id {
+    padding-top: 0px;
 }
 
 body.dark form button {

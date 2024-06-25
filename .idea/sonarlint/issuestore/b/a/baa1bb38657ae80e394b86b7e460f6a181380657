@@ -1,15 +1,17 @@
 
+Š
+java:S1192"FDefine a constant instead of duplicating this literal "error" 8 times.(öÔØÌ8ƒ…Š‡…2J$cfd67d23-c2f4-43b4-919b-729e06ace69a
 
-java:S1192Ê"FDefine a constant instead of duplicating this literal "error" 3 times.(Çè Íûÿÿÿÿ8èµÊ‹„2J$7a976d67-4b82-4a46-9163-5d8503ebaf76
-
-java:S1192ş"FDefine a constant instead of duplicating this literal "users" 3 times.(ÿŞ¼¿ıÿÿÿÿ8éµÊ‹„2J$08d96f9b-3f22-436f-b0ed-96b75714fa05
+java:S1192„"FDefine a constant instead of duplicating this literal "users" 3 times.(ÿŞ¼¿ıÿÿÿÿ8„…Š‡…2J$36341f45-1c58-4868-af44-c47d5556be60
 š
-java:S1192Ë"QDefine a constant instead of duplicating this literal "principal/update" 4 times.(–®¯üşÿÿÿÿ8Š—“æ„2J$253f5ef0-5cb9-4c3f-83d8-53adfa091815
+java:S1192Ñ"QDefine a constant instead of duplicating this literal "principal/update" 4 times.(–®¯üşÿÿÿÿ8„…Š‡…2J$13d1e6b9-6e6d-4856-beea-aa4a50fa3c1f
+•
+java:S1192™"QDefine a constant instead of duplicating this literal "principal/create" 7 times.(¡ï‚8ñî„‡…2J$26a42299-fcf2-401a-b7fb-3a534dcebbd2
 ‹
-java:S1192Q"IDefine a constant instead of duplicating this literal "username" 4 times.(±Ê¦Q8êµÊ‹„2J$2f33971c-82d5-4620-ac77-d0a97658dc6f
+java:S1192O"IDefine a constant instead of duplicating this literal "username" 4 times.(±Ê¦Q8……Š‡…2J$39d82606-ff77-4b59-9c19-ab7d2cf29459
 r
-java:S6829+"*Add @Autowired to one of the constructors.(»öÏöıÿÿÿÿ8Ú·Ê‹„2J$370f5228-737e-40df-85cc-feaabf6fe0f6
+java:S6829)"*Add @Autowired to one of the constructors.(»öÏöıÿÿÿÿ8Ã†Š‡…2J$95b5f074-7a89-40cc-a447-a55650abf511
 …
-java:S6813-"BRemove this field injection and use constructor injection instead.(êæÄŞ8İ·Ê‹„2J$78f61b01-01b9-42ca-a840-ae7964b8578d
+java:S6813+"BRemove this field injection and use constructor injection instead.(êæÄŞ8Å†Š‡…2J$a09ee5bb-9703-4d40-a8b4-ba564c128c15
 …
-java:S6813/"BRemove this field injection and use constructor injection instead.(êæÄŞ8İ·Ê‹„2J$d6ab2ee7-5f55-4992-8ca0-b39bbd66b131
+java:S6813-"BRemove this field injection and use constructor injection instead.(êæÄŞ8Æ†Š‡…2J$6c6cde4f-4190-47e4-aa81-9b3a3cbb4ab2

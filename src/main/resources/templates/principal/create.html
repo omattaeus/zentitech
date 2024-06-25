@@ -143,10 +143,11 @@
     </div>
 </nav>
 <main>
-    <form class="row g-8" th:action="@{/users/create}" th:object="${users}" method="post">
+    <form class="row g-8" th:action="@{/users/create-user}" th:object="${users}" method="post">
         <h3 id="user-register">Cadastro de Usuário</h3>
+        <div class="row"></div>
         <div class="col-md-5">
-            <label for="username" class="form-label">Usuário</label>
+            <label for="username" class="form-label" id="user-id">Usuário</label>
             <input type="text" class="form-control" th:field="*{username}" id="username" placeholder="username" required>
             <div id="usernameHelp" class="form-text">
                 O nome de usuário deve ter de 6 a 12 caracteres.
@@ -190,6 +191,14 @@
         </div>
         <div class="col-12">
             <button class="btn btn-primary" type="submit">Enviar</button>
+        </div>
+        <div th:if="${errors}" class="errors">
+            <ul>
+                <li th:each="error : ${errors}" th:text="${error.defaultMessage}"></li>
+            </ul>
+        </div>
+        <div th:if="${error}" class="errors">
+            <p th:text="${error}"></p>
         </div>
     </form>
 </main>

@@ -14,9 +14,7 @@
     </a>
     <h2>Register</h2>
     <form th:action="@{/register-user}" method="post">
-        <div th:if="${message}" class="alert alert-success" role="alert">
-            <p th:text="${message}"></p>
-        </div>
+        <span th:if="${message}" th:text="${message}"></span>
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control" id="email" name="email" required>
@@ -30,6 +28,7 @@
             <input type="text" class="form-control" id="role" name="role" required>
         </div>
         <button type="submit" class="btn btn-primary">Register</button>
+        <button type="button" onclick="window.location.href='/'" class="btn btn-primary">Voltar</button>
     </form>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybOQz1FGBnvQ4w34KLFpO6pHnE7FfsP8mL8fLI4jwJTW+XJTU" crossorigin="anonymous"></script>

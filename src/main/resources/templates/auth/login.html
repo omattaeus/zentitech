@@ -14,9 +14,7 @@
     </a>
     <h2>Login</h2>
     <form th:action="@{/login}" method="post">
-        <div th:if="${error}" class="alert alert-danger" role="alert">
-            <p th:text="${error}"></p>
-        </div>
+        <span th:if="${error}" th:text="${error}"></span>
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control" id="email" name="email" required>
@@ -27,6 +25,7 @@
         </div>
         <p><a class="link-opacity-75-hover" href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Esqueci a Senha</a></p>
         <button type="submit" class="btn btn-primary">Login</button>
+        <button type="button" onclick="window.location.href='/register'" class="btn btn-primary">Registrar</button>
     </form>
 </div>
 

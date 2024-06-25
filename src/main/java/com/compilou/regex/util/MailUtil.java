@@ -2,8 +2,8 @@ package com.compilou.regex.util;
 
 public class MailUtil {
 
-    public static final String TEMPLATE_NAME_CREATE = "registration";
-    public static final String TEMPLATE_NAME_UPDATE = "registration-update";
+    public static final String TEMPLATE_NAME_CREATE = "email/registration";
+    public static final String TEMPLATE_NAME_UPDATE = "email/registration-update";
     public static final String WELCOME_IMAGE = "static/image/welcome.png";
     public static final String UPDATE_IMAGE = "static/image/update-user.png";
     public static final String PNG_MIME = "image/png";

@@ -30,38 +30,37 @@ public class Users extends RepresentationModel<Users> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message = "Username cannot be null!")
+    @NotNull(message = "O nome de usuário não pode ser nulo!")
     @Column(name = "username", unique = true)
-    @Size(min = 6, max = 12, message = "The username must be 6 to 12 characters long")
+    @Size(min = 6, max = 12, message = "O nome de usuário deve ter de 6 a 12 caracteres")
     private String username;
 
-    @NotEmpty(message = "The Full Name cannot be null!")
+    @NotEmpty(message = "O Nome Completo não pode ser nulo!")
     @Column(name = "full_name")
     @JsonProperty("fullname")
     private String fullName;
 
-    @NotNull(message = "Email cannot be null!")
+    @NotNull(message = "O e-mail não pode ser nulo!")
     @Column(name = "email", unique = true)
     @EmailValidator
     private String email;
 
     @Column(name = "cpfcnpj", unique = true)
-    @NotNull(message = "CPF/CNPJ cannot be null!")
+    @NotNull(message = "CPF/CNPJ não pode ser nulo!")
     @JsonProperty("cpfcnpj")
-    @CpfCnpjValidator
+    @CpfCnpjValidator(message = "CPF/CNPJ está incorreto!")
     private String cpfCnpj;
 
     @Column(name = "birthday")
-    @NotNull(message = "Birthday cannot be null!")
-    @PastOrPresent
+    @NotNull(message = "A data de nascimento não pode ser nulo!")
     private String birthday;
 
-    @NotNull(message = "Cellphone cannot be null!")
+    @NotNull(message = "O celular não pode ser nulo!")
     @Column(name = "cellphone")
     @CellPhoneValidator
     private String cellphone;
 
     @Column(name = "comunication")
-    @NotNull(message = "Comunication cannot be null!")
+    @NotNull(message = "A comunicação não pode ser nula!")
     private String comunication;
 }

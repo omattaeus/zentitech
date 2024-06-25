@@ -17,6 +17,7 @@ public interface UsersRepository extends JpaRepository<Users, Long>, PagingAndSo
     Optional<Users> findByUsername(String username);
     Optional<Users> findByEmail(String email);
     Optional<Users> findByCpfCnpj(String CpfCnpj);
+    boolean existsByEmail(String email);
     @Query("SELECT u FROM Users u ORDER BY u.id ASC")
     Page<Users> findAllUsers(Pageable page);
     @Query("SELECT p FROM Users p WHERE LOWER(p.fullName) LIKE LOWER(CONCAT('%', :firstName, '%')) ORDER BY p.id ASC")

@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d353d5b3-a44a-41b7-9a44-f85753503180" name="Changes" comment="" />
+    <list default="true" id="d353d5b3-a44a-41b7-9a44-f85753503180" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/resources/railway.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/railway.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

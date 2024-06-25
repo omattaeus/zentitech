@@ -27,7 +27,7 @@ services:
         no_auth: true
       - path: "/"
         no_auth: true
-      - path: "/login-user"
+      - path: "/login"
         no_auth: true
       - path: "/register"
         no_auth: true

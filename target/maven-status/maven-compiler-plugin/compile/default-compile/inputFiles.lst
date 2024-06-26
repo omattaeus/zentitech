@@ -1,3 +1,4 @@
+C:\Users\User\Documents\regex\src\main\java\com\compilou\regex\configuration\AdminUserConfig.java
 C:\Users\User\Documents\regex\src\main\java\com\compilou\regex\configuration\OpenApiConfig.java
 C:\Users\User\Documents\regex\src\main\java\com\compilou\regex\configuration\SecurityConfiguration.java
 C:\Users\User\Documents\regex\src\main\java\com\compilou\regex\configuration\TwilioConfiguration.java
@@ -17,7 +18,9 @@ C:\Users\User\Documents\regex\src\main\java\com\compilou\regex\interfaces\CpfCnp
 C:\Users\User\Documents\regex\src\main\java\com\compilou\regex\interfaces\EmailTester.java
 C:\Users\User\Documents\regex\src\main\java\com\compilou\regex\interfaces\EmailValidator.java
 C:\Users\User\Documents\regex\src\main\java\com\compilou\regex\mapper\DozerMapper.java
+C:\Users\User\Documents\regex\src\main\java\com\compilou\regex\mapper\request\LoginRequest.java
 C:\Users\User\Documents\regex\src\main\java\com\compilou\regex\mapper\request\UsersRequest.java
+C:\Users\User\Documents\regex\src\main\java\com\compilou\regex\mapper\response\LoginResponse.java
 C:\Users\User\Documents\regex\src\main\java\com\compilou\regex\mapper\response\UsersResponse.java
 C:\Users\User\Documents\regex\src\main\java\com\compilou\regex\mapper\UsersMapper.java
 C:\Users\User\Documents\regex\src\main\java\com\compilou\regex\models\enums\RoleName.java
@@ -50,3 +53,4 @@ C:\Users\User\Documents\regex\src\main\java\com\compilou\regex\util\AuthUtil.jav
 C:\Users\User\Documents\regex\src\main\java\com\compilou\regex\util\MailUtil.java
 C:\Users\User\Documents\regex\src\main\java\com\compilou\regex\util\MediaType.java
 C:\Users\User\Documents\regex\src\main\java\com\compilou\regex\util\OtpUtil.java
+C:\Users\User\Documents\regex\src\main\java\com\compilou\regex\util\RoleUtils.java

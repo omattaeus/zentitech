@@ -17,9 +17,11 @@ com\compilou\regex\interfaces\CpfCnpjValidator.class
 com\compilou\regex\interfaces\CpfCnpjTester.class
 com\compilou\regex\services\auth\JwtAuthenticationEntryPoint.class
 com\compilou\regex\util\OtpUtil.class
+com\compilou\regex\configuration\AdminUserConfig.class
 com\compilou\regex\interfaces\EmailTester.class
 com\compilou\regex\models\SmsRequest.class
 com\compilou\regex\controllers\UsersController.class
+com\compilou\regex\mapper\response\LoginResponse.class
 com\compilou\regex\repositories\UsersRepository.class
 com\compilou\regex\models\Users.class
 com\compilou\regex\interfaces\CellPhoneValidator.class
@@ -28,6 +30,7 @@ com\compilou\regex\repositories\RoleRepository.class
 com\compilou\regex\mapper\DozerMapper.class
 com\compilou\regex\models\records\RecoveryUserDto.class
 com\compilou\regex\services\EmailService.class
+com\compilou\regex\mapper\request\LoginRequest.class
 com\compilou\regex\repositories\SmsSender.class
 com\compilou\regex\models\ResetPassowordUserDAO.class
 com\compilou\regex\models\records\LoginUserRequestDto.class

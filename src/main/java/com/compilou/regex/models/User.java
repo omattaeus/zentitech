@@ -1,17 +1,18 @@
 package com.compilou.regex.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Table(name = "user")
 @Entity
 @Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
@@ -30,5 +31,5 @@ public class User {
     @JoinTable(name="users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name="role_id"))
-    private List<Role> roles = new ArrayList<>();
+    private Set<Role> roles;
 }

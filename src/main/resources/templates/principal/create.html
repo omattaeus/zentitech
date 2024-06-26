@@ -136,8 +136,10 @@
                 <i class='bx bx-log-in' ></i>
             </div>
             <div class="bottom collapse_sidebar">
-                <span id="logout-pointer2">Logout</span>
-                <i class='bx bx-log-out' id="logout-pointer"></i>
+                <a id="logout-pointer2" th:href="@{/logout}">Logout</a>
+                <a th:href="@{/logout}" id="logout-pointer">
+                    <i class='bx bx-log-out'></i>
+                </a>
             </div>
         </div>
     </div>

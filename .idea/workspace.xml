@@ -5,7 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d353d5b3-a44a-41b7-9a44-f85753503180" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/railway.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/railway.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/configuration/AdminUserConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/mapper/request/LoginRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/mapper/response/LoginResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/util/RoleUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/3/13301bb31540d11b051ce5a564a5ca51c1464925" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/3/13301bb31540d11b051ce5a564a5ca51c1464925" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/3/2360e6855b5a0e73fda50074bcee31f03bf42828" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/3/2360e6855b5a0e73fda50074bcee31f03bf42828" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/3/43fcad1751623d98c196bed30af94c64d99c5b23" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/3/43fcad1751623d98c196bed30af94c64d99c5b23" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/e/9ebac6d2911fcf2b042148c6efa1127833aa2e79" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/e/9ebac6d2911fcf2b042148c6efa1127833aa2e79" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/b/abdd4e9a8af7d7d01fadda54e48df4c1f4d7d665" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/b/abdd4e9a8af7d7d01fadda54e48df4c1f4d7d665" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/c/ac364f686de5e8342983bab7146616c8acb97255" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/c/ac364f686de5e8342983bab7146616c8acb97255" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/a/baa1bb38657ae80e394b86b7e460f6a181380657" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/a/baa1bb38657ae80e394b86b7e460f6a181380657" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/configuration/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/TwilioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/TwilioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UsersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/CreateUserRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/CreateUserRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/LoginUserRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/LoginUserRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/repositories/RoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/repositories/RoleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/auth/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/auth/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/util/AuthUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/util/AuthUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/railway.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/styles/sidebar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/styles/sidebar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/auth/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/auth/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/auth/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/auth/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/principal/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/principal/create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/controllers/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/models/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/models/UserDetailsImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/models/UserDetailsImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/models/records/CreateUserRequestDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/models/records/CreateUserRequestDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/repositories/RoleRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/repositories/RoleRepository.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +54,8 @@
         <option value="Record" />
         <option value="AnnotationType" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -56,19 +91,23 @@
     &quot;Application.RegexApplication.executor&quot;: &quot;Run&quot;,
     &quot;Application.Startup.executor&quot;: &quot;Run&quot;,
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
     &quot;JUnit.UsersRepositoryTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.UsersRepositoryTest.testGivenUsersList_WhenFindAll_ThenReturnUsersList.executor&quot;: &quot;Run&quot;,
     &quot;Maven.Pitest.executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Documents/regex/src/main/resources&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/User/Documents/regex/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -97,22 +136,24 @@
   <component name="RunManager" selected="Application.Startup">
     <configuration name="Startup" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <envs>
+        <env name="admin" value="admin@zentitech.com" />
         <env name="DB_PASSWORD" value="12345678@Ta" />
         <env name="DB_URL" value="jdbc:mysql://localhost:3306/api-regex?useTimezone=true&amp;serverTimezone=UTC" />
         <env name="DB_USER" value="root" />
         <env name="MAIL_PASSWORD" value="pdsi vkqt ddya jamy" />
         <env name="MAIL_USERNAME" value="contatomateusgd@gmail.com" />
-        <env name="MYSQL_URL" value="jdbc:mysql://roundhouse.proxy.rlwy.net:29583/railway" />
-        <env name="MYSQLPASSWORD" value="UhGWNtGjbOXOTTmtahzogRClRsAOeWmN" />
         <env name="MYSQL_ROOT_PASSWORD" value="kogmrvwAGjsBjDTwnWhNzuAWkcWqVsQF" />
+        <env name="MYSQL_URL" value="jdbc:mysql://roundhouse.proxy.rlwy.net:29583/railway" />
+        <env name="MYSQL_USER" value="root" />
+        <env name="MYSQLPASSWORD" value="UhGWNtGjbOXOTTmtahzogRClRsAOeWmN" />
         <env name="MYSQLURL" value="jdbc:mysql://roundhouse.proxy.rlwy.net:40855/railway" />
         <env name="MYSQLUSER" value="root" />
+        <env name="admin_password" value="Pe84Pi96@Ta1658" />
         <env name="TWILIO_SID" value="AC2c10bc413b6d914a9e283d8942647a43" />
         <env name="TWILIO_TOKEN" value="b5cc83c9a676c1e43333dc91b47857a4" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="com.compilou.regex.Startup" />
       <module name="regex" />
-      <option name="PROGRAM_PARAMETERS" value="SPRING_PROFILES_ACTIVE=dev" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.compilou.regex.configuration.*" />
@@ -217,5 +258,16 @@
       <updated>1717114941202</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/compilou/regex/configuration/AdminUserConfig.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

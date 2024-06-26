@@ -1,11 +1,17 @@
 
+‘
+java:S1192Ş"HDefine a constant instead of duplicating this literal "message" 3 times.(ÁÆ×ûÿÿÿÿ8Ø­‰¯…2J$c7839413-7299-4238-9cbf-409ec06c1d87
 Š
-java:S1192¤"FDefine a constant instead of duplicating this literal "error" 8 times.(É•§8¸ŠÑâ„2J$9a421450-37d0-4095-80d0-bf1c10aaeebe
+java:S1192©"FDefine a constant instead of duplicating this literal "error" 8 times.(É•§8Ù­‰¯…2J$ebcfc0d1-ee09-4e6e-bcac-4bd588690e1f
 
-java:S1192Ô"KDefine a constant instead of duplicating this literal "redirect:/" 5 times.(äÔ¶½8¹œÕâ„2J$99da011f-1ed9-4fe0-848d-94d717d1edfe
-n
-java:S1192–"KDefine a constant instead of duplicating this literal "auth/reset" 6 times.(çµäşÿÿÿÿ8ï²ùä„2
+java:S1192ƒ"KDefine a constant instead of duplicating this literal "redirect:/" 6 times.(äÔ¶½8Ù­‰¯…2J$2163ec41-bacf-40f0-8719-1f6ba0e7157e
+—
+java:S1192Á"NDefine a constant instead of duplicating this literal "auth/register" 3 times.(–¡ˆÃşÿÿÿÿ8Ù­‰¯…2J$ce8fedf7-ce13-4131-b673-8202edb416a9
+”
+java:S1192¥"KDefine a constant instead of duplicating this literal "auth/reset" 6 times.(çµäşÿÿÿÿ8Ù­‰¯…2J$aff26732-eefc-4406-b383-515dfcd01a14
 Š
-java:S1192¦"FDefine a constant instead of duplicating this literal "email" 3 times.(ùŠšŠ8À–»¸„2J$d9259663-2ba3-4927-b2ba-7f5b6ce8a625
-v
-java:S1128"4Remove this unused import 'java.security.Principal'.(’ÛŞ[8–‹í¸„2J$ce5c71b3-317a-433e-b2ae-1294f3558559
+java:S1192µ"FDefine a constant instead of duplicating this literal "email" 3 times.(ùŠšŠ8Ú­‰¯…2J$a5ad1d30-960f-455b-80bd-3cd3e198e48c
+
+java:S1128"ERemove this unused import 'com.compilou.regex.models.enums.RoleName'.(ÁíüÇúÿÿÿÿ8¤¯‰¯…2J$315d07c3-f7eb-4288-a7e2-4f2ade3f7f20
+–
+java:S1128"TRemove this unused import 'org.springframework.dao.DataIntegrityViolationException'.(ÅÔº(8¤¯‰¯…2J$2746e380-aad4-41c6-a176-8bda923d2dde

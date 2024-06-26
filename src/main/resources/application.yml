@@ -1,7 +1,12 @@
+server:
+  port: 9090
+  address: 0.0.0.0
+
 twilio:
   account_sid: ${TWILIO_SID}
   auth_token: ${TWILIO_TOKEN}
   trial_number: +13475376942
+
 spring:
   thymeleaf:
     prefix: classpath:/templates/
@@ -15,10 +20,10 @@ spring:
     serialization:
       FAIL_ON_EMPTY_BEANS: false
   datasource:
-    url: ${DB_URL}
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${MYSQL_URL}
+    username: ${MYSQLUSER}
+    password: ${MYSQL_ROOT_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: none
@@ -40,6 +45,3 @@ spring:
           from: ${MAIL_USERNAME}
     default-encoding: UTF-8
     test-connection: false
-admin:
-  email: ${admin}
-  password: ${admin_password}

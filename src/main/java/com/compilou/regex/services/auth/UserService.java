@@ -1,10 +1,10 @@
 package com.compilou.regex.services.auth;
 
 import com.compilou.regex.configuration.SecurityConfiguration;
-import com.compilou.regex.models.ResetPassowordUserDAO;
 import com.compilou.regex.models.Role;
 import com.compilou.regex.models.User;
 import com.compilou.regex.models.UserDetailsImpl;
+import com.compilou.regex.models.enums.RoleName;
 import com.compilou.regex.models.records.CreateUserRequestDto;
 import com.compilou.regex.models.records.LoginUserRequestDto;
 import com.compilou.regex.models.records.RecoveryJwtTokenDto;
@@ -12,20 +12,16 @@ import com.compilou.regex.repositories.RoleRepository;
 import com.compilou.regex.repositories.UserRepository;
 import com.compilou.regex.services.EmailService;
 import jakarta.mail.MessagingException;
-import org.springframework.dao.DataIntegrityViolationException;
+import jakarta.transaction.Transactional;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.compilou.regex.util.OtpUtil;
-import org.springframework.ui.Model;
-import org.springframework.web.servlet.ModelAndView;
 
-import java.security.Principal;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserService {
@@ -60,30 +56,25 @@ public class UserService {
         return new RecoveryJwtTokenDto(jwtTokenService.generateToken(userDetails));
     }
 
+    @Transactional
     public void createUser(CreateUserRequestDto createUserRequestDto) {
-        Role role = roleRepository.findByName(createUserRequestDto.role());
-        if (role == null) {
-            role = new Role();
-            role.setName(createUserRequestDto.role());
-            roleRepository.save(role);
+
+        Role customerRole = roleRepository.findByName(RoleName.ROLE_CUSTOMER);
+        if (customerRole == null) {
+            throw new IllegalStateException("Role 'ROLE_CUSTOMER' não encontrada no sistema.");
         }
 
         User newUser = new User();
         newUser.setEmail(createUserRequestDto.email());
-        newUser.setPassword(securityConfiguration.passwordEncoder()
-                .encode(createUserRequestDto.password()));
-        newUser.setRoles(List.of(role));
+        newUser.setPassword(securityConfiguration.passwordEncoder().encode(createUserRequestDto.password()));
+        newUser.setRoles(Set.of(customerRole));
 
-        try {
-            userRepository.save(newUser);
-        } catch (DataIntegrityViolationException e) {
-            throw new DataIntegrityViolationException("Duplicated username or email!");
-        }
+        userRepository.save(newUser);
     }
 
     public String verifyAccount(String email, String otp) {
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("User not found with this email: " + email));
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado com este e-mail: " + email));
         if (user.getOtp().equals(otp) && Duration.between(user.getOtpGeneratedTime(),
                 LocalDateTime.now()).getSeconds() < (1 * 60)) {
             user.setActive(true);

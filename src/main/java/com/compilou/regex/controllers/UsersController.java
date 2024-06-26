@@ -36,22 +36,19 @@ import static org.springframework.http.HttpStatus.*;
 
 @Controller
 @Tag(name = "Users", description = "Endpoints for Managing Users")
-@RequestMapping("/users")
+@RequestMapping(value = {"/users", "/admin"})
 @Validated
 public class UsersController {
 
-    @Autowired
-    private UsersServices usersServices;
-    @Autowired
-    private EmailService emailService;
+    private final UsersServices usersServices;
+    private final EmailService emailService;
 
-    public UsersController() {
-    }
-
+    @Autowired
     public UsersController(UsersServices usersServices, EmailService emailService) {
         this.usersServices = usersServices;
         this.emailService = emailService;
     }
+
 
     @GetMapping(value = "/all-users")
     @Operation(summary = "Finds all Users", description = "Finds all Users",

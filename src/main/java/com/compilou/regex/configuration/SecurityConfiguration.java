@@ -2,6 +2,8 @@ package com.compilou.regex.configuration;
 
 import com.compilou.regex.services.auth.UserAuthenticationFilter;
 import com.compilou.regex.util.AuthUtil;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -9,11 +11,15 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.LogoutHandler;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -28,7 +34,7 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                .csrf(csrf -> csrf.disable())
+                .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(AuthUtil.ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED_SITE).permitAll()
@@ -38,8 +44,14 @@ public class SecurityConfiguration {
                         .requestMatchers(AuthUtil.ENDPOINTS_CUSTOMER).hasRole("CUSTOMER")
                         .anyRequest().denyAll()
                 )
-                .addFilterBefore(userAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-
+                .addFilterBefore(userAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .logout(logout -> logout
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                        .logoutSuccessUrl("/")
+                        .addLogoutHandler(logoutHandler())
+                        .invalidateHttpSession(true)
+                        .deleteCookies("JSESSIONID")
+                );
         return httpSecurity.build();
     }
 
@@ -59,6 +71,15 @@ public class SecurityConfiguration {
                 "/swagger-ui/**",
                 "/v3/api-docs/**",
                 "/verify-account",
-                "/verify-account**");
+                "/verify-account**"
+        );
+    }
+
+    @Bean
+    public LogoutHandler logoutHandler() {
+        return (HttpServletRequest request, HttpServletResponse response,
+                Authentication authentication) -> {
+            request.getSession().invalidate();
+        };
     }
 }

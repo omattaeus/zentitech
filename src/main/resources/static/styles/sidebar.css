@@ -312,8 +312,14 @@ body.dark .bottom_content {
   background-color: var(--dark-white-color);
 }
 
-#logout-pointer2,
 #logout-pointer{
+    color: var(--grey-color) !important;
+    cursor: pointer;
+}
+
+#logout-pointer2{
+    color: var(--grey-color) !important;
+    text-decoration: none !important;
     cursor: pointer;
 }
 

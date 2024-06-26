@@ -5,9 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d353d5b3-a44a-41b7-9a44-f85753503180" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/railway.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/railway.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/configuration/AdminUserConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/util/RoleUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UsersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/CreateUserRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/CreateUserRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/LoginUserRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/LoginUserRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/repositories/RoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/repositories/RoleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/auth/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/auth/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-prod.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/styles/sidebar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/styles/sidebar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/auth/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/auth/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/auth/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/auth/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/principal/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/principal/create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/controllers/UsersController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/controllers/UsersController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +37,8 @@
         <option value="Record" />
         <option value="AnnotationType" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -52,27 +68,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.RegexApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Startup.executor&quot;: &quot;Run&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;JUnit.UsersRepositoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UsersRepositoryTest.testGivenUsersList_WhenFindAll_ThenReturnUsersList.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Pitest.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Documents/regex/src/main/resources&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/User/Documents/regex/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.RegexApplication.executor": "Run",
+    "Application.Startup.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JUnit.UsersRepositoryTest.executor": "Run",
+    "JUnit.UsersRepositoryTest.testGivenUsersList_WhenFindAll_ThenReturnUsersList.executor": "Run",
+    "Maven.Pitest.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/User/Documents/regex/src/main/resources",
+    "onboarding.tips.debug.path": "C:/Users/User/Documents/regex/src/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.compilou.regex.interfaces" />
@@ -104,13 +120,15 @@
         <env name="DB_USER" value="root" />
         <env name="MAIL_PASSWORD" value="pdsi vkqt ddya jamy" />
         <env name="MAIL_USERNAME" value="contatomateusgd@gmail.com" />
+        <env name="MYSQL_ROOT_PASSWORD" value="kogmrvwAGjsBjDTwnWhNzuAWkcWqVsQF" />
         <env name="MYSQL_URL" value="jdbc:mysql://roundhouse.proxy.rlwy.net:29583/railway" />
         <env name="MYSQLPASSWORD" value="UhGWNtGjbOXOTTmtahzogRClRsAOeWmN" />
-        <env name="MYSQL_ROOT_PASSWORD" value="kogmrvwAGjsBjDTwnWhNzuAWkcWqVsQF" />
         <env name="MYSQLURL" value="jdbc:mysql://roundhouse.proxy.rlwy.net:40855/railway" />
         <env name="MYSQLUSER" value="root" />
         <env name="TWILIO_SID" value="AC2c10bc413b6d914a9e283d8942647a43" />
         <env name="TWILIO_TOKEN" value="b5cc83c9a676c1e43333dc91b47857a4" />
+        <env name="admin" value="admin@zentitech.com" />
+        <env name="admin_password" value="Pe84Pi96@Ta1658" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="com.compilou.regex.Startup" />
       <module name="regex" />
@@ -218,6 +236,19 @@
       <option name="presentableId" value="Default" />
       <updated>1717114941202</updated>
     </task>
+    <task id="LOCAL-00001" summary="fix: corrigindo commit8">
+      <option name="closed" value="true" />
+      <created>1719437686229</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1719437686230</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fix: corrigindo commit8" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: corrigindo commit8" />
   </component>
 </project>

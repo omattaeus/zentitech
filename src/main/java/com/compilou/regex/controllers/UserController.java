@@ -1,6 +1,8 @@
 package com.compilou.regex.controllers;
 
+import com.compilou.regex.exceptions.CustomDataIntegrityViolationException;
 import com.compilou.regex.models.User;
+import com.compilou.regex.models.enums.RoleName;
 import com.compilou.regex.models.records.CreateUserRequestDto;
 import com.compilou.regex.models.records.LoginUserRequestDto;
 import com.compilou.regex.models.records.RecoveryJwtTokenDto;
@@ -14,30 +16,33 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping(value = "/")
 @Tag(name = "Auth", description = "Endpoints for registering user by JWT")
 public class UserController {
 
     private final UserService userService;
     private final UserRepository userRepository;
 
+    @Autowired
     public UserController(UserService userService, UserRepository userRepository) {
         this.userService = userService;
         this.userRepository = userRepository;
     }
 
-    @PostMapping("/login-user-jwt")
+
+    @PostMapping(value = "/login-user-jwt")
     @Operation(summary = "Authenticates a User",
             description = "Authenticates a User by passing in a JSON, representation of the user!",
             tags = {"Auth"},
@@ -55,7 +60,7 @@ public class UserController {
         return new ResponseEntity<>(token, HttpStatus.OK);
     }
 
-    @PostMapping("create-jwt")
+    @PostMapping(value = "create-jwt")
     @Operation(summary = "Create a new User",
             description = "Create a new User by passing in a JSON, representation of the user!",
             tags = {"Auth"},
@@ -73,7 +78,7 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @GetMapping("/test")
+    @GetMapping(value = "/test")
     @Operation(summary = "Authenticated User, ADMIN e CUSTOMER", description = "Authenticated Users, ADMIN e CUSTOMER",
             tags = {"Auth"},
             responses = {
@@ -95,7 +100,7 @@ public class UserController {
         return new ResponseEntity<>("Authenticated successfully!", HttpStatus.OK);
     }
 
-    @GetMapping("/test/customer")
+    @GetMapping(value = "/test/customer")
     @Operation(summary = "Authenticated User, CUSTOMER", description = "Authenticated User, CUSTOMER",
             tags = {"Auth"},
             responses = {
@@ -118,7 +123,7 @@ public class UserController {
                 "Client authenticated successfully!", HttpStatus.OK);
     }
 
-    @GetMapping("/test/administrator")
+    @GetMapping(value = "/test/administrator")
     @Operation(summary = "Authenticated User, ADMINISTRATOR", description = "Authenticated User, ADMINISTRATOR",
             tags = {"Auth"},
             responses = {
@@ -166,7 +171,7 @@ public class UserController {
         return "auth/login";
     }
 
-    @GetMapping("/register")
+    @GetMapping(value = "/register")
     @Operation(summary = "Register a User - Page", description = "Register a User - Page",
             tags = {"Auth"},
             responses = {
@@ -188,7 +193,7 @@ public class UserController {
         return "auth/register";
     }
 
-    @PostMapping("/register-user")
+    @PostMapping(value = "/register-user")
     @Operation(summary = "Register a User", description = "Register a User",
             tags = {"Auth"},
             responses = {
@@ -207,12 +212,22 @@ public class UserController {
             }
     )
     public String createUserHtml(CreateUserRequestDto createUserRequestDto, Model model) {
-        userService.createUser(createUserRequestDto);
-        model.addAttribute("message", "User registered successfully");
-        return "redirect:/";
+        try {
+            var userFromDb = userRepository.findByEmail(createUserRequestDto.email());
+            if (userFromDb.isPresent()) {
+                throw new CustomDataIntegrityViolationException("E-mail já registrado.");
+            }
+
+            userService.createUser(createUserRequestDto);
+            model.addAttribute("message", "Usuário cadastrado com sucesso!");
+            return "auth/register";
+        } catch (CustomDataIntegrityViolationException e) {
+            model.addAttribute("message", e.getMessage());
+            return "auth/register";
+        }
     }
 
-    @PostMapping("/login")
+    @PostMapping(value = "/login")
     @Operation(summary = "Authenticated User", description = "Authenticated User",
             tags = {"Auth"},
             responses = {
@@ -230,8 +245,8 @@ public class UserController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
-    public String authenticateUserHtml(LoginUserRequestDto loginUserRequestDto,
-                                       Model model, HttpServletResponse response) {
+    public String authenticateUser(LoginUserRequestDto loginUserRequestDto,
+                                   Model model, HttpServletResponse response) {
         try {
             RecoveryJwtTokenDto token = userService.authenticateUser(loginUserRequestDto);
             Cookie cookie = new Cookie("token", token.token());
@@ -240,12 +255,12 @@ public class UserController {
             response.addCookie(cookie);
             return "redirect:/users/create-html";
         } catch (Exception e) {
-            model.addAttribute("error", "Invalid email or password");
-            return "Bad Request!";
+            model.addAttribute("error", "E-mail ou senha inválida!");
+            return "redirect:/";
         }
     }
 
-    @PostMapping("/verify-account")
+    @PostMapping(value = "/verify-account")
     public String verifyAccount(@RequestParam String email, @RequestParam String otp, Model model) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found with this email: " + email));
@@ -268,17 +283,17 @@ public class UserController {
         return "redirect:/";
     }
 
-    @PutMapping("/regenerate-otp")
+    @PutMapping(value = "/regenerate-otp")
     public ResponseEntity<String> regenerateOtp(@RequestParam String email) {
         return new ResponseEntity<>(userService.regenerateOtp(email), HttpStatus.OK);
     }
 
-    @GetMapping("/send-reset-email")
+    @GetMapping(value = "/send-reset-email")
     public String showSendResetEmailForm() {
         return "auth/reset";
     }
 
-    @PostMapping("/send-reset-email")
+    @PostMapping(value = "/send-reset-email")
     public String sendResetEmail2(@RequestParam String email, Model model) {
         String result = userService.sendResetEmail(email);
         if (!"Password reset email sent, please check your inbox".equals(result)) {
@@ -289,14 +304,14 @@ public class UserController {
         return "auth/login";
     }
 
-    @GetMapping("/reset-password")
+    @GetMapping(value = "/reset-password")
     public String showResetPasswordForm(@RequestParam String email, @RequestParam String otp, Model model) {
         model.addAttribute("email", email);
         model.addAttribute("otp", otp);
         return "auth/reset";
     }
 
-    @PostMapping("/reset-password")
+    @PostMapping(value = "/reset-password")
     public String resetPassword(@RequestParam String email,
                                 @RequestParam String otp,
                                 @RequestParam String newPassword,
@@ -320,12 +335,17 @@ public class UserController {
         return "redirect:/";
     }
 
-    @PostMapping("/regenerate-otp")
+    @PostMapping(value = "/regenerate-otp")
     public String regenerateOtp(@RequestParam String email, Model model) {
         String result = userService.regenerateOtp(email);
         if (!"Success".equals(result)) {
             model.addAttribute("error", result);
         }
         return "auth/reset";
+    }
+
+    @GetMapping("/logout")
+    public String logout() {
+        return "redirect:/";
     }
 }

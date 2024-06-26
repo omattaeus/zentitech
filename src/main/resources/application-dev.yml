@@ -45,3 +45,6 @@ spring:
           from: ${MAIL_USERNAME}
     default-encoding: UTF-8
     test-connection: false
+admin:
+  email: ${admin}
+  password: ${admin_password}

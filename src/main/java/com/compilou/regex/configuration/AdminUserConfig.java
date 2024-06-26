@@ -5,7 +5,6 @@ import com.compilou.regex.models.enums.RoleName;
 import com.compilou.regex.repositories.RoleRepository;
 import com.compilou.regex.repositories.UserRepository;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;

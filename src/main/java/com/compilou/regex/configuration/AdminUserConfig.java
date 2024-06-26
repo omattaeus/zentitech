@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Set;
 
@@ -20,9 +19,9 @@ public class AdminUserConfig implements CommandLineRunner {
     private String admin;
     @Value("${admin.password}")
     private String password;
-    private final RoleRepository roleRepository;
-    private final UserRepository userRepository;
-    private final SecurityConfiguration securityConfiguration;
+    private RoleRepository roleRepository;
+    private UserRepository userRepository;
+    private SecurityConfiguration securityConfiguration;
 
     public AdminUserConfig(RoleRepository roleRepository,
                            UserRepository userRepository,

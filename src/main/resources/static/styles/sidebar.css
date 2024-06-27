@@ -1,5 +1,16 @@
+/* Sidebar transition */
+.sidebar {
+  transition: all 0.5s ease;
+}
+
+.sidebar.close {
+  transition: all 0.5s ease;
+}
+
+/* Google Fonts import */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
+/* Global styles */
 * {
   margin: 0;
   padding: 0;
@@ -14,18 +25,19 @@
   --grey-color-light: #aaa;
   --dark-bg-color: #333;
   --dark-blue-hover-color: #828282;
-  --dark-white-color: #3A3B3C;
-  --dark-blue-color: #5B5B5B;
+  --dark-white-color: #3a3b3c;
+  --dark-blue-color: #5b5b5b;
   --dark-grey-color: #f2f2f2;
-  --dark-grey-color-placeholder: #8B8B8B;
+  --dark-grey-color-placeholder: #8b8b8b;
   --dark-grey-light-color: #aaa;
-  --input-focus-color: #FFD700;
+  --input-focus-color: #ffd700;
   --input-focus-dark-color: #808080;
 }
 
+/* Body and background */
 html,
 body {
-  background-color: #F5FAFF;
+  background-color: #f5faff;
   transition: all 0.5s ease;
 }
 
@@ -33,6 +45,7 @@ body.dark {
   background-color: var(--dark-bg-color);
 }
 
+/* Navbar */
 .navbar {
   position: fixed;
   top: 0;
@@ -50,6 +63,7 @@ body.dark .navbar {
   background-color: var(--dark-white-color);
 }
 
+/* Logo */
 .logo_item {
   display: flex;
   align-items: center;
@@ -70,6 +84,7 @@ body.dark .logo_item {
   border-radius: 50%;
 }
 
+/* Search bar */
 .search_bar {
   height: 47px;
   max-width: 430px;
@@ -94,6 +109,7 @@ body.dark .search_bar input {
   border: 1px solid var(--dark-grey-light-color);
 }
 
+/* Navbar content */
 .navbar_content {
   display: flex;
   align-items: center;
@@ -111,6 +127,7 @@ body.dark .navbar_content i {
   color: var(--dark-grey-color);
 }
 
+/* Sidebar */
 .sidebar {
   background-color: var(--white-color);
   width: 260px;
@@ -143,6 +160,7 @@ body.dark .sidebar.close {
   display: none;
 }
 
+/* Menu content */
 .menu_content {
   position: relative;
 }
@@ -195,6 +213,7 @@ body.dark .sidebar.close .menu_title::before {
   background: var(--dark-grey-light-color);
 }
 
+/* Menu items */
 .menu_items {
   padding: 0;
   list-style: none;
@@ -264,6 +283,7 @@ body.dark .sidebar.close .nav_link:hover {
   background: var(--dark-white-color);
 }
 
+/* Submenu */
 .submenu_item {
   cursor: pointer;
 }
@@ -295,6 +315,7 @@ body.dark .sidebar.close .nav_link:hover {
   padding: 15px 15px 15px 52px;
 }
 
+/* Bottom content */
 .bottom_content {
   position: fixed;
   bottom: 60px;
@@ -359,6 +380,7 @@ body.dark .sidebar.close .bottom_content {
   display: none;
 }
 
+/* Sidebar open button for smaller screens */
 #sidebarOpen {
   display: none;
 }
@@ -389,8 +411,9 @@ body.dark .sidebar.close .bottom_content {
   }
 }
 
+/* Form styles */
 form {
-  background-color: #F5FAFF;
+  background-color: #f5faff;
   padding-top: 25px;
   transition: background-color 0.5s ease, color 0.5s ease;
 }
@@ -414,7 +437,7 @@ body.dark form label {
 }
 
 body.dark .form-label {
-  color: #BFBFBF;
+  color: #bfbfbf;
 }
 
 form input:focus {
@@ -428,17 +451,21 @@ body.dark form input:focus {
 form input,
 .form-text,
 .form-check-label {
-  color: var(--grey-color);
+  color: var(--grey-color) !important;
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 body.dark form input {
-  background-color: #DDDDDD;
+  background-color: #dddddd;
   color: var(--input-focus-dark-color);
 }
 
 body.dark form h3 {
-  color: #BFBFBF;
+  color: #bfbfbf;
+}
+
+body.dark .form-label {
+  color: #bfbfbf;
 }
 
 form button {
@@ -452,7 +479,7 @@ form button {
 }
 
 .errors {
-  background-color: #F5FAFF;
+  background-color: #f5faff;
   height: 200px;
   max-width: 15% !important;
   transform: translate(350%, -170%);
@@ -519,28 +546,28 @@ body.dark input:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* Esconder a barra de pesquisa na navbar em telas menores */
+  /* Hide search bar in navbar on smaller screens */
   .search_bar {
     display: none;
   }
 
-  /* Ajustes para a sidebar */
+  /* Adjustments for sidebar on smaller screens */
   .sidebar {
-    width: 260px; /* Largura padrão da sidebar */
-    padding: 65px 30px; /* Espaçamento padrão da sidebar */
+    width: 260px; /* Default width of sidebar */
+    padding: 65px 30px; /* Default padding of sidebar */
   }
 
   .sidebar.close {
-    width: 80px; /* Largura reduzida quando a sidebar está fechada */
-    padding: 60px 0; /* Espaçamento reduzido quando a sidebar está fechada */
+    width: 80px; /* Reduced width when sidebar is closed */
+    padding: 60px 0; /* Reduced padding when sidebar is closed */
   }
 
-  /* Fechar a sidebar completamente em telas menores */
+  /* Completely hide sidebar on smaller screens */
   .sidebar.close {
-    left: -100%; /* Esconde completamente a sidebar */
+    left: -100%; /* Completely hides the sidebar */
   }
 
-  /* Mostrar o botão de abrir a sidebar */
+  /* Show sidebar open button */
   #sidebarOpen {
     display: block;
     font-size: 25px;

@@ -62,3 +62,19 @@ form {
     width: 120px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  /* Ajustes para o formulário em telas menores */
+  form {
+    padding: 20px; /* Espaçamento interno do formulário */
+    margin: auto; /* Centraliza o formulário */
+  }
+
+  .btn-primary {
+    width: 100%; /* Botão de largura total */
+    max-width: none; /* Remove a largura máxima do botão */
+    margin-top: 10px; /* Espaçamento superior do botão */
+    font-size: 16px; /* Tamanho da fonte do botão */
+    padding: 10px; /* Espaçamento interno do botão */
+  }
+}

@@ -517,3 +517,35 @@ body.dark input:focus {
   box-shadow: 0 0 2px var(--input-focus-dark-color);
   outline: none;
 }
+
+@media screen and (max-width: 768px) {
+  /* Esconder a barra de pesquisa na navbar em telas menores */
+  .search_bar {
+    display: none;
+  }
+
+  /* Ajustes para a sidebar */
+  .sidebar {
+    width: 260px; /* Largura padrão da sidebar */
+    padding: 65px 30px; /* Espaçamento padrão da sidebar */
+  }
+
+  .sidebar.close {
+    width: 80px; /* Largura reduzida quando a sidebar está fechada */
+    padding: 60px 0; /* Espaçamento reduzido quando a sidebar está fechada */
+  }
+
+  /* Fechar a sidebar completamente em telas menores */
+  .sidebar.close {
+    left: -100%; /* Esconde completamente a sidebar */
+  }
+
+  /* Mostrar o botão de abrir a sidebar */
+  #sidebarOpen {
+    display: block;
+    font-size: 25px;
+    margin-right: 10px;
+    cursor: pointer;
+    color: var(--grey-color);
+  }
+}

@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d353d5b3-a44a-41b7-9a44-f85753503180" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/styles/sidebar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/styles/sidebar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/principal/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/principal/create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,23 +56,18 @@
     &quot;Application.RegexApplication.executor&quot;: &quot;Run&quot;,
     &quot;Application.Startup.executor&quot;: &quot;Run&quot;,
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
     &quot;JUnit.UsersRepositoryTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.UsersRepositoryTest.testGivenUsersList_WhenFindAll_ThenReturnUsersList.executor&quot;: &quot;Run&quot;,
     &quot;Maven.Pitest.executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;ignore.preview.features.used&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Documents/regex/src/main/resources&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/User/Documents/regex/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
@@ -202,9 +196,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Startup" />
         <item itemvalue="JUnit.UsersRepositoryTest.testGivenUsersList_WhenFindAll_ThenReturnUsersList" />
         <item itemvalue="JUnit.UsersRepositoryTest" />
+        <item itemvalue="Application.Startup" />
+        <item itemvalue="Application.Startup" />
+        <item itemvalue="JUnit.UsersRepositoryTest.testGivenUsersList_WhenFindAll_ThenReturnUsersList" />
       </list>
     </recent_temporary>
   </component>
@@ -224,6 +220,19 @@
       <option name="presentableId" value="Default" />
       <updated>1717114941202</updated>
     </task>
+    <task id="LOCAL-00001" summary="fix: corrigindo commit8">
+      <option name="closed" value="true" />
+      <created>1719437686229</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1719437686230</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fix: corrigindo commit8" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: corrigindo commit8" />
   </component>
 </project>

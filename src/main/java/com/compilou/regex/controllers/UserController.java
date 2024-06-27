@@ -2,8 +2,8 @@ package com.compilou.regex.controllers;
 
 import com.compilou.regex.exceptions.CustomDataIntegrityViolationException;
 import com.compilou.regex.models.User;
-import com.compilou.regex.models.enums.RoleName;
 import com.compilou.regex.models.records.CreateUserRequestDto;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.compilou.regex.models.records.LoginUserRequestDto;
 import com.compilou.regex.models.records.RecoveryJwtTokenDto;
 import com.compilou.regex.repositories.UserRepository;
@@ -17,7 +17,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -246,7 +245,7 @@ public class UserController {
             }
     )
     public String authenticateUser(LoginUserRequestDto loginUserRequestDto,
-                                   Model model, HttpServletResponse response) {
+                                   Model model, HttpServletResponse response, RedirectAttributes redirectAttributes) {
         try {
             RecoveryJwtTokenDto token = userService.authenticateUser(loginUserRequestDto);
             Cookie cookie = new Cookie("token", token.token());
@@ -255,7 +254,7 @@ public class UserController {
             response.addCookie(cookie);
             return "redirect:/users/create-html";
         } catch (Exception e) {
-            model.addAttribute("error", "E-mail ou senha inválida!");
+            redirectAttributes.addFlashAttribute("error", "E-mail ou senha inválida!");
             return "redirect:/";
         }
     }

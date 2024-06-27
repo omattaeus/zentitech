@@ -400,6 +400,30 @@ body.dark .sidebar.close .bottom_content {
 
   .sidebar.close {
     left: -100%;
+    width: calc(50vw - 20px);
+    max-width: 80%;
+    padding: 65px 30px;
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    left: 0;
+    transform: translateX(0);
+  }
+
+  .sidebar.close {
+    width: 80px;
+    padding: 60px 0;
+  }
+
+  .sidebar .menu_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sidebar .menu_items {
+    width: 100%;
   }
 
   .search_bar {
@@ -543,36 +567,4 @@ body.dark input:focus {
   border-color: var(--input-focus-dark-color);
   box-shadow: 0 0 2px var(--input-focus-dark-color);
   outline: none;
-}
-
-@media screen and (max-width: 768px) {
-  /* Hide search bar in navbar on smaller screens */
-  .search_bar {
-    display: none;
-  }
-
-  /* Adjustments for sidebar on smaller screens */
-  .sidebar {
-    width: 260px; /* Default width of sidebar */
-    padding: 65px 30px; /* Default padding of sidebar */
-  }
-
-  .sidebar.close {
-    width: 80px; /* Reduced width when sidebar is closed */
-    padding: 60px 0; /* Reduced padding when sidebar is closed */
-  }
-
-  /* Completely hide sidebar on smaller screens */
-  .sidebar.close {
-    left: -100%; /* Completely hides the sidebar */
-  }
-
-  /* Show sidebar open button */
-  #sidebarOpen {
-    display: block;
-    font-size: 25px;
-    margin-right: 10px;
-    cursor: pointer;
-    color: var(--grey-color);
-  }
 }

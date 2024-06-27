@@ -1,5 +1,5 @@
 server:
-  port: 8181
+  port: 8080
   address: 0.0.0.0
 twilio:
   account_sid: ${TWILIO_SID}
@@ -19,9 +19,9 @@ spring:
       FAIL_ON_EMPTY_BEANS: false
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ${DB_URL}
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
+    url: ${MYSQLURL}
+    username: ${MYSQLUSER}
+    password: ${MYSQLPASSWORD}
   jpa:
     hibernate:
       ddl-auto: none

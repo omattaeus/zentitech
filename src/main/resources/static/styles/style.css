@@ -1,76 +1,80 @@
-body {
-    overflow-x: hidden;
-    overflow-y: hidden;
-}
-
 #user-register {
-    text-align: flex-start;
-    margin-top: 0;
+  text-align: flex-start;
+  margin-top: 0;
 }
 
 form {
-    display: flex;
-    position: fixed;
-    height: 800px;
-    max-height: 100%;
-    max-width: 100%;
-    padding-left: 50px;
-    padding-bottom: 80px;
-    left: 20%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: auto;
+  max-width: 100%;
+  padding: 20px;
+  margin: auto;
 }
 
-.form-label {
-    display: flex;
-    width: 100%;
+.form-label,
+.form-text,
+.form-check-label {
+  width: 100%;
 }
 
-.form-label {
-    display: flex;
-    width: 100%;
-}
-
-.form-text {
-    display: flex;
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-#cellphone {
-    margin-bottom: 10px;
-    width: 220px;
-}
-
-#cellphone-id {
-    margin-top: 10px;
-}
-
-#comunication-id {
-    margin-top: 10px;
-    transform: translate(3%, 0%);
-}
-
-#comunication{
-    width: 220px;
-    transform: translate(3%, 0%);
+#cellphone,
+#comunication {
+  width: 100%;
 }
 
 .mb-3 {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .btn-primary {
-    margin-top: 10px;
-    width: 120px;
-    max-width: 100%;
-    font-size: 16px;
-    padding: 10px;
+  margin-top: 10px;
+  width: 100%;
+  max-width: 100%;
+  font-size: 16px;
+  padding: 10px;
 }
 
 .form-check-input {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
-.form-check-label {
-   display: flex;
-   width: 100%;
+@media screen and (min-width: 768px) {
+  form {
+    flex-direction: row;
+    align-items: flex-start;
+    height: 800px;
+    padding: 50px;
+    left: 20%;
+    position: fixed;
+  }
+
+  .form-label,
+  .form-text,
+  .form-check-label,
+  #cellphone,
+  #comunication {
+    width: auto;
+  }
+
+  .btn-primary {
+    width: 120px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* Ajustes para o formulário em telas menores */
+  form {
+    padding: 20px; /* Espaçamento interno do formulário */
+    margin: auto; /* Centraliza o formulário */
+  }
+
+  .btn-primary {
+    width: 100%; /* Botão de largura total */
+    max-width: none; /* Remove a largura máxima do botão */
+    margin-top: 10px; /* Espaçamento superior do botão */
+    font-size: 16px; /* Tamanho da fonte do botão */
+    padding: 10px; /* Espaçamento interno do botão */
+  }
 }

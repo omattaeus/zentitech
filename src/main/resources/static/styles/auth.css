@@ -1,20 +1,24 @@
 body {
     background-color: #f8f9fa;
     font-family: Arial, sans-serif;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar-brand {
     height: 100px;
     display: flex;
-    margin: 0 auto;
-    justify-content: center
+    justify-content: center;
 }
 
 .container {
+    width: 100%;
     max-width: 400px;
-    margin-top: 30px !important;
     background-color: #ffffff;
     padding: 30px;
     border-radius: 8px;
@@ -43,4 +47,44 @@ h2 {
 
 .alert-danger {
     margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        box-shadow: none;
+    }
+
+    .navbar-brand img {
+        max-width: 70px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .btn-primary {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    .navbar-brand img {
+        max-width: 50px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .btn-primary {
+        font-size: 12px;
+        padding: 6px;
+    }
 }

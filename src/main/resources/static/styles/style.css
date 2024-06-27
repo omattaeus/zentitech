@@ -13,11 +13,14 @@ form {
   margin: auto;
 }
 
-.form-label, .form-text, .form-check-label {
+.form-label,
+.form-text,
+.form-check-label {
   width: 100%;
 }
 
-#cellphone, #comunication {
+#cellphone,
+#comunication {
   width: 100%;
 }
 
@@ -47,7 +50,11 @@ form {
     position: fixed;
   }
 
-  .form-label, .form-text, .form-check-label, #cellphone, #comunication {
+  .form-label,
+  .form-text,
+  .form-check-label,
+  #cellphone,
+  #comunication {
     width: auto;
   }
 

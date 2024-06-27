@@ -23,7 +23,8 @@
   --input-focus-dark-color: #808080;
 }
 
-html, body {
+html,
+body {
   background-color: #F5FAFF;
   transition: all 0.5s ease;
 }

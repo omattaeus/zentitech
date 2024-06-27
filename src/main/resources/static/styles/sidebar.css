@@ -339,6 +339,17 @@ body.dark .bottom_content {
   cursor: pointer;
 }
 
+body.dark #logout-pointer {
+  color: #fff !important;
+  cursor: pointer;
+}
+
+body.dark #logout-pointer2 {
+  color: #fff !important;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
 .bottom {
   position: absolute;
   display: flex;
@@ -398,21 +409,32 @@ body.dark .sidebar.close .bottom_content {
     color: var(--dark-grey-color);
   }
 
-  .sidebar.close {
-    left: -100%;
-    width: calc(50vw - 20px);
-    max-width: 80%;
+  .sidebar {
+    position: fixed; /* Garante que o sidebar fique fixo na tela */
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 45%; /* Largura ajustada para 45% */
+    background-color: var(--white-color);
     padding: 65px 30px;
+    z-index: 100;
+    overflow-y: scroll;
+    box-shadow: 0 0 1px var(--grey-color-light);
+    transition: all 0.5s ease;
+  }
+
+  .sidebar.close {
+    width: 45%; /* Alterado para ocupar 45% da tela */
+    max-width: 80%;
     transform: translateX(-100%);
   }
 
   .sidebar.open {
-    left: 0;
     transform: translateX(0);
   }
 
   .sidebar.close {
-    width: 80px;
+    width: 80px; /* Largura do sidebar fechado */
     padding: 60px 0;
   }
 
@@ -432,6 +454,16 @@ body.dark .sidebar.close .bottom_content {
 
   .sidebar.close .bottom_content {
     left: -100%;
+  }
+
+  .bottom_content {
+    width: 45%; /* Garantir que a largura da div seja 100% do sidebar */
+    display: flex;
+    justify-content: center; /* Centralizar o conteúdo dentro da div */
+  }
+
+  .bottom.collapse_sidebar {
+    width: 100%; /* Garantir que a largura da div seja 100% do sidebar */
   }
 }
 
@@ -503,7 +535,7 @@ form button {
 }
 
 .errors {
-  background-color: #f5faff;
+  background-color: transparent;
   height: 200px;
   max-width: 15% !important;
   transform: translate(350%, -170%);
@@ -511,10 +543,15 @@ form button {
   transition: none !important;
 }
 
-body.dark .errors {
-  background-color: #333 !important;
-  color: #4070f4 !important;
-  transition: none !important;
+.errors ul, .errors p {
+    margin: 0; /* Remove margens internas para evitar espaçamento extra */
+    padding: 0; /* Remove espaçamento interno */
+    list-style: none; /* Remove os marcadores de lista */
+}
+
+.errors li, .errors p {
+    color: #4070f4; /* Cor do texto da mensagem */
+    font-size: 16px; /* Tamanho da fonte */
 }
 
 li {

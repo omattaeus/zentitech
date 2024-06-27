@@ -145,10 +145,6 @@
             </li>
         </ul>
         <div class="bottom_content">
-            <div class="bottom expand_sidebar">
-                <span> Expand</span>
-                <i class='bx bx-log-in' ></i>
-            </div>
             <div class="bottom collapse_sidebar">
                 <a id="logout-pointer2" th:href="@{/logout}">Logout</a>
                 <a th:href="@{/logout}" id="logout-pointer">
@@ -208,12 +204,12 @@
         <div class="col-12">
             <button class="btn btn-primary" type="submit">Enviar</button>
         </div>
-        <div th:if="${errors}" class="errors">
+        <div th:if="${errors}" class="col-12 errors">
             <ul>
                 <li th:each="error : ${errors}" th:text="${error.defaultMessage}"></li>
             </ul>
         </div>
-        <div th:if="${error}" class="errors">
+        <div th:if="${error}" class="col-12 errors">
             <p th:text="${error}"></p>
         </div>
     </form>

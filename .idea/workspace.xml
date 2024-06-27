@@ -7,6 +7,7 @@
     <list default="true" id="d353d5b3-a44a-41b7-9a44-f85753503180" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/styles/sidebar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/styles/sidebar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/principal/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/principal/create.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

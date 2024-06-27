@@ -11,9 +11,15 @@ body {
 }
 
 .navbar-brand {
-    height: 100px;
     display: flex;
     justify-content: center;
+}
+
+.navbar-logo {
+    height: auto;
+    width: 100px; /* Default size */
+    max-width: 100%; /* Ensure it doesn't exceed the container width */
+    object-fit: contain; /* Ensure the image maintains its aspect ratio */
 }
 
 .container {
@@ -55,8 +61,8 @@ h2 {
         box-shadow: none;
     }
 
-    .navbar-brand img {
-        max-width: 70px;
+    .navbar-logo {
+        width: 70px;
     }
 
     h2 {
@@ -75,8 +81,8 @@ h2 {
         padding: 15px;
     }
 
-    .navbar-brand img {
-        max-width: 50px;
+    .navbar-logo {
+        width: 50px;
     }
 
     h2 {

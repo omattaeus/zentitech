@@ -145,11 +145,13 @@
             </li>
         </ul>
         <div class="bottom_content">
+            <div class="bottom expand_sidebar">
+                <span> Expand</span>
+                <i class='bx bx-log-in' ></i>
+            </div>
             <div class="bottom collapse_sidebar">
-                <a id="logout-pointer2" th:href="@{/logout}">Logout</a>
-                <a th:href="@{/logout}" id="logout-pointer">
-                    <i class='bx bx-log-out'></i>
-                </a>
+                <span id="logout-pointer2">Logout</span>
+                <i class='bx bx-log-out' id="logout-pointer"></i>
             </div>
         </div>
     </div>
@@ -204,33 +206,38 @@
         <div class="col-12">
             <button class="btn btn-primary" type="submit">Enviar</button>
         </div>
-        <div th:if="${errors}" class="col-12 errors">
+        <div th:if="${errors}" class="errors">
             <ul>
                 <li th:each="error : ${errors}" th:text="${error.defaultMessage}"></li>
             </ul>
         </div>
-        <div th:if="${error}" class="col-12 errors">
+        <div th:if="${error}" class="errors">
             <p th:text="${error}"></p>
         </div>
     </form>
 </main>
-<script th:inline="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3f43bRup0p+M0uK2Q68f9KZ+6N+l8OmtDdC7rWfj/CjW79v+lnmKRYTWt+Jp0vK" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <script th:inline="javascript">
     $(document).ready(function() {
+        // Sidebar toggle functionality
         const body = $('body');
         const sidebar = $('.sidebar');
         const sidebarOpen = $('#sidebarOpen');
         const themeToggle = $('#themeToggle');
 
+        // Abrir e fechar a sidebar
         sidebarOpen.on('click', function() {
             sidebar.toggleClass('close');
         });
 
+        // Alternar o tema claro e escuro
         themeToggle.on('click', function() {
             body.toggleClass('dark');
             $(this).toggleClass('bx-sun bx-moon');
         });
 
+        // Função para lidar com submenus
         $('.submenu_item').on('click', function() {
             $(this).toggleClass('show_submenu');
         });

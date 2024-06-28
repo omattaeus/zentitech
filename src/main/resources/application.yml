@@ -1,12 +1,10 @@
 server:
-  port: 9090
+  port: 8080
   address: 0.0.0.0
-
 twilio:
   account_sid: ${TWILIO_SID}
   auth_token: ${TWILIO_TOKEN}
   trial_number: +13475376942
-
 spring:
   thymeleaf:
     prefix: classpath:/templates/
@@ -20,15 +18,12 @@ spring:
     serialization:
       FAIL_ON_EMPTY_BEANS: false
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ${MYSQL_URL}
-    username: ${MYSQLUSER}
-    password: ${MYSQL_ROOT_PASSWORD}
+    url: ${MYSQL_GOOGLE_URL}
+    username: ${MYSQL_GOOGLE_USER}
+    password: ${MYSQL_GOOGLE_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: none
-    properties:
-      hibernate.dialect: org.hibernate.dialect.MySQLDialect
   mail:
     host: smtp.gmail.com
     port: 587

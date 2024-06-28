@@ -3,7 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Criar Usuário</title>
+    <title>Home</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/static/favicons/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicons/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicons/safari-pinned-tab.svg" color="#100d28">
+    <link rel="shortcut icon" href="/static/favicons/favicon.ico">
+    <meta name="apple-mobile-web-app-title" content="Zentitech">
+    <meta name="application-name" content="Zentitech">
+    <meta name="msapplication-TileColor" content="#100d28">
+    <meta name="msapplication-TileImage" content="/static/favicons/mstile-144x144.png">
+    <meta name="msapplication-config" content="/static/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#100d28">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" media="all" href="/static/styles/style.css" th:href="@{/static/styles/style.css}">
     <link rel="stylesheet" type="text/css" media="all" href="/static/styles/sidebar.css" th:href="@{/static/styles/sidebar.css}">
@@ -14,7 +27,7 @@
 <nav class="navbar">
     <div class="logo_item">
         <i class="bx bx-menu" id="sidebarOpen"></i>
-        <img src="/static/image/logo-users-api.png" alt=""/>API Users
+        <img src="/static/image/logo-zentitech-redondo.png" alt=""/>Zentitech
     </div>
     <div class="search_bar">
         <input type="text" placeholder="Search..."/>
@@ -143,6 +156,7 @@
                 </a>
             </div>
         </div>
+
     </div>
 </nav>
 <main>
@@ -205,23 +219,28 @@
         </div>
     </form>
 </main>
-<script th:inline="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3f43bRup0p+M0uK2Q68f9KZ+6N+l8OmtDdC7rWfj/CjW79v+lnmKRYTWt+Jp0vK" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <script th:inline="javascript">
     $(document).ready(function() {
+        // Sidebar toggle functionality
         const body = $('body');
         const sidebar = $('.sidebar');
         const sidebarOpen = $('#sidebarOpen');
         const themeToggle = $('#themeToggle');
 
+        // Abrir e fechar a sidebar
         sidebarOpen.on('click', function() {
             sidebar.toggleClass('close');
         });
 
+        // Alternar o tema claro e escuro
         themeToggle.on('click', function() {
             body.toggleClass('dark');
             $(this).toggleClass('bx-sun bx-moon');
         });
 
+        // Função para lidar com submenus
         $('.submenu_item').on('click', function() {
             $(this).toggleClass('show_submenu');
         });

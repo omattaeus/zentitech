@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/sms")
+@RequestMapping(value = {"/api/sms", "admin/api/sms"} )
 @Tag(name = "Sms", description = "Endpoints for send SMS")
 public class TwilioController {
 

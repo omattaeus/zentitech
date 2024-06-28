@@ -18,10 +18,9 @@ spring:
     serialization:
       FAIL_ON_EMPTY_BEANS: false
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ${MYSQLURL}
-    username: ${MYSQLUSER}
-    password: ${MYSQLPASSWORD}
+    url: ${MYSQL_GOOGLE_URL}
+    username: ${MYSQL_GOOGLE_USER}
+    password: ${MYSQL_GOOGLE_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: none

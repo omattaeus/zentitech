@@ -4,6 +4,7 @@ public class AuthUtil {
 
     public static final String [] ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED_SITE = {
             "/resources/**",
+            "/static**",
             "/static/**",
             "/static/styles/**",
             "/static/image/**",
@@ -37,7 +38,7 @@ public class AuthUtil {
             "/users/test"
     };
 
-    public static final String [] ENDPOINTS_CUSTOMER = {
+    public static final String[] ENDPOINTS_CUSTOMER = {
             "/users/test/customer",
             "/users/id/{id}",
             "/users/update",
@@ -55,8 +56,22 @@ public class AuthUtil {
             "/users/update"
     };
 
-    public static final String [] ENDPOINTS_ADMIN = {
-            "/users/test/administrator",
-            "/users/delete/{id}"
+    public static final String[] ENDPOINTS_ADMIN = {
+            "/admin/test/administrator",
+            "/admin/delete/{id}",
+            "/admin/id/{id}",
+            "/admin/update",
+            "/admin/find/by/{firstName}",
+            "/admin/api/sms/send",
+            "/admin/success",
+            "/admin/all",
+            "/admin/all-users",
+            "/admin/all**",
+            "/admin/create",
+            "/admin/create-html",
+            "/admin/create-user",
+            "/admin/search",
+            "/admin/update-html",
+            "/admin/update"
     };
 }

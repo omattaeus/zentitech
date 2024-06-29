@@ -14,7 +14,8 @@ public class AuthUtil {
             "/templates/auth/**",
             "/templates/email/**",
             "/templates/js/**",
-            "/templates/principal/**"
+            "/templates/principal/**",
+            "/ads.txt"
     };
 
     public static final String [] ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED = {

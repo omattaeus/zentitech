@@ -21,6 +21,7 @@ public class AuthUtil {
     public static final String [] ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED = {
             "/auth",
             "/",
+            "/users/teste",
             "/login",
             "/register",
             "/register-user",

@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d353d5b3-a44a-41b7-9a44-f85753503180" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/ads.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/ads.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/principal/teste.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UsersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/util/AuthUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/util/AuthUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +23,8 @@
         <option value="Record" />
         <option value="AnnotationType" />
         <option value="Interface" />
-        <option value="HTML File" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -83,9 +87,9 @@
       <recent name="C:\Users\User\Documents\regex\src\main\resources\static\styles" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Documents\regex\src\main\resources\templates\principal" />
       <recent name="C:\Users\User\Documents\regex\src\main\resources\static" />
       <recent name="C:\Users\User\Documents\regex" />
-      <recent name="C:\Users\User\Documents\regex\src\main\resources\templates\principal" />
       <recent name="C:\Users\User\Documents\regex\src\main\resources\templates\email" />
       <recent name="C:\Users\User\Documents\regex\src\main\resources\templates\auth" />
     </key>

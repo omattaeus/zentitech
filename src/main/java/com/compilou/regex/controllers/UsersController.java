@@ -423,4 +423,9 @@ public class UsersController {
 
         return "principal/list";
     }
+
+    @GetMapping(value = "/teste")
+    public String showHomePageHtml() {
+        return "principal/teste";
+    }
 }

@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d353d5b3-a44a-41b7-9a44-f85753503180" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/auth/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/auth/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/auth/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/auth/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/principal/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/principal/create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/principal/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/principal/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/principal/update.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/principal/update.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/principal/users_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/principal/users_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ads.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/ads.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

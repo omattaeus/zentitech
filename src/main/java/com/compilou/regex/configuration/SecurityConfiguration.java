@@ -71,7 +71,8 @@ public class SecurityConfiguration {
                 "/swagger-ui/**",
                 "/v3/api-docs/**",
                 "/verify-account",
-                "/verify-account**"
+                "/verify-account**",
+                "/"
         );
     }
 

@@ -423,9 +423,4 @@ public class UsersController {
 
         return "principal/list";
     }
-
-    @GetMapping(value = "/index")
-    public String showHomePageHtml() {
-        return "principal/index";
-    }
 }

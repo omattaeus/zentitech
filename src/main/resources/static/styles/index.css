@@ -1289,6 +1289,8 @@ a {
   letter-spacing: 0;
   line-height: normal;
   white-space: nowrap;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
 }
 
 .element .teste-gratuito-wrapper {
@@ -1302,6 +1304,7 @@ a {
   gap: 10px;
   padding: 12px 24px;
   border-radius: 23px;
+  cursor: pointer;
 }
 
 .element .teste-gratuito {
@@ -1350,6 +1353,7 @@ a {
   letter-spacing: 0;
   line-height: normal;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .element .small-down {
@@ -1370,6 +1374,7 @@ a {
   letter-spacing: 0;
   line-height: normal;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .element .text-wrapper-31 {
@@ -1382,6 +1387,28 @@ a {
   letter-spacing: 0;
   line-height: normal;
   white-space: nowrap;
+  cursor: pointer;
+}
+
+.text-wrapper-29::after,
+.text-wrapper-30::after,
+.text-wrapper-31::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #0056b3;
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.3s ease-in-out
+}
+
+.text-wrapper-29:hover::after,
+.text-wrapper-30:hover::after,
+.text-wrapper-31:hover::after {
+  transform: scaleX(1);
 }
 
 .element .text-wrapper-32 {
@@ -1394,9 +1421,27 @@ a {
   letter-spacing: 0;
   line-height: normal;
   white-space: nowrap;
+  cursor: pointer;
 }
 
-.element .button-primary-2 {
+.text-wrapper-32::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #0056b3;
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.3s ease-in-out;
+ }
+
+.text-wrapper-32:hover::after {
+  transform: scaleX(1); /* Mostra a linha azul ao passar o mouse */
+}
+
+ .button-primary-2 {
   position: relative;
   flex: 0 0 auto;
   background-color: var(--white);
@@ -1408,6 +1453,29 @@ a {
   gap: 10px;
   padding: 12px 24px;
   border-radius: 23px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+.button-primary-2:hover {
+  background-color: #f6f0ff; /* Altera o background-color ao passar o mouse */
+}
+
+.text-wrapper-28::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px; /* Altura da linha azul embaixo */
+  background-color: #0056b3; /* Cor da linha azul */
+  transform: scaleX(0); /* Inicialmente sem largura */
+  transform-origin: bottom left;
+  transition: transform 0.3s ease-in-out; /* Transição suave para a animação */
+}
+
+.button-primary-2:hover .text-wrapper-28::after {
+  transform: scaleX(1); /* Mostra a linha azul ao passar o mouse */
 }
 
 .element .openart {

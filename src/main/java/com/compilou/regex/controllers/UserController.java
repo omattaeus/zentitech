@@ -41,6 +41,10 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
+    @GetMapping
+    public String showHomePageHtml() {
+        return "principal/index";
+    }
 
     @PostMapping(value = "/login-user-jwt")
     @Operation(summary = "Authenticates a User",
@@ -60,7 +64,7 @@ public class UserController {
         return new ResponseEntity<>(token, HttpStatus.OK);
     }
 
-    @PostMapping(value = "create-jwt")
+    @PostMapping(value = "/create-jwt")
     @Operation(summary = "Create a new User",
             description = "Create a new User by passing in a JSON, representation of the user!",
             tags = {"Auth"},
@@ -146,7 +150,7 @@ public class UserController {
                 "Administrator successfully authenticated!", HttpStatus.OK);
     }
 
-    @GetMapping
+    @GetMapping(value = "/login-users")
     @Operation(summary = "Login - Page", description = "Login - Page",
             tags = {"Auth"},
             responses = {
@@ -251,12 +255,12 @@ public class UserController {
             RecoveryJwtTokenDto token = userService.authenticateUser(loginUserRequestDto);
             Cookie cookie = new Cookie("token", token.token());
             cookie.setHttpOnly(true);
-            cookie.setPath("/");
+            cookie.setPath("/login-user");
             response.addCookie(cookie);
             return "redirect:/users/create-html";
         } catch (Exception e) {
             model.addAttribute("error", "E-mail ou senha inválida!");
-            return "redirect:/";
+            return "redirect:/login-user";
         }
     }
 
@@ -267,12 +271,12 @@ public class UserController {
 
         if (!otp.equals(user.getOtp())) {
             model.addAttribute("error", "Código OTP inválido.");
-            return "redirect:/";
+            return "redirect:/login-user";
         }
 
         if (Duration.between(user.getOtpGeneratedTime(), LocalDateTime.now()).getSeconds() >= 60) {
             model.addAttribute("error", "O código OTP expirou. Por favor, gere um novo código.");
-            return "redirect:/";
+            return "redirect:/login-user";
         }
 
         user.setActive(true);
@@ -280,7 +284,7 @@ public class UserController {
         user.setOtpGeneratedTime(null);
         userRepository.save(user);
 
-        return "redirect:/";
+        return "redirect:/login-user";
     }
 
     @PutMapping(value = "/regenerate-otp")
@@ -332,7 +336,7 @@ public class UserController {
             return "auth/reset";
         }
 
-        return "redirect:/";
+        return "redirect:/login-user";
     }
 
     @PostMapping(value = "/regenerate-otp")

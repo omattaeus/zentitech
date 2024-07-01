@@ -30,6 +30,7 @@ a {
   flex-direction: row;
   justify-content: center;
   width: 100%;
+  position: relative;
 }
 
 .element .div {
@@ -602,6 +603,8 @@ a {
   height: 40px;
   background-image: url(./img/rectangle-366.svg);
   background-size: 100% 100%;
+  background-color: #f6f0ff;
+  border-radius: 20px;
 }
 
 .element .text-wrapper-12 {
@@ -610,7 +613,7 @@ a {
   left: 54px;
   font-family: "Roboto Flex-Medium", Helvetica;
   font-weight: 500;
-  color: #722ed1;
+  color: #722ed1 !important;
   font-size: 16px;
   letter-spacing: 0;
   line-height: normal;
@@ -689,6 +692,8 @@ a {
   height: 40px;
   background-image: url(./img/image.svg);
   background-size: 100% 100%;
+  background-color: #f6f0ff;
+  border-radius: 20px;
 }
 
 .element .text-wrapper-15 {
@@ -1163,7 +1168,7 @@ a {
 
 .element .overlap-7 {
   position: absolute;
-  width: 1548px;
+  width: 1728px !important;
   height: 746px;
   top: -10px;
   left: -94px;
@@ -1172,7 +1177,7 @@ a {
 
 .element .hero {
   position: absolute;
-  width: 1548px;
+  width: 100%;
   height: 746px;
   top: 0;
   left: 0;
@@ -1180,7 +1185,7 @@ a {
 
 .element .overlap-8 {
   position: relative;
-  width: 1280px;
+  width: 100%;
   height: 736px;
   top: 10px;
   left: 94px;

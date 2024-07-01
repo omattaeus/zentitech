@@ -426,6 +426,6 @@ public class UsersController {
 
     @GetMapping(value = "/index")
     public String showHomePageHtml() {
-        return "/index";
+        return "principal/index";
     }
 }

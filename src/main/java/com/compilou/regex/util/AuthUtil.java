@@ -12,7 +12,6 @@ public class AuthUtil {
             "/styles/**",
             "/image/**",
             "/templates/**",
-            "/templates**",
             "/templates/auth/**",
             "/templates/email/**",
             "/templates/js/**",

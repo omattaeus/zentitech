@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d353d5b3-a44a-41b7-9a44-f85753503180" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/configuration/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/util/AuthUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/util/AuthUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/configuration/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/configuration/SecurityConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/styles/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/principal/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/principal/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

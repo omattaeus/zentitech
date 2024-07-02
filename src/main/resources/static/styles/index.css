@@ -157,6 +157,7 @@ a {
   font-size: 12px;
   letter-spacing: 0;
   line-height: normal;
+  cursor: pointer;
 }
 
 .element .span {
@@ -218,35 +219,41 @@ a {
   white-space: nowrap;
 }
 
-.element .overlap-group {
+.newsletter .overlap-group {
   position: absolute;
   width: 198px;
-  height: 58px;
+  height: 32px;
   top: 34px;
-  left: -9px;
+  left: -19px;
   background-image: url(./img/group-3.png);
   background-size: 100% 100%;
 }
 
-.element .text-wrapper-4 {
+.newsletter .text-wrapper-4 {
   position: absolute;
-  top: 16px;
-  left: 25px;
-  font-family: "Roboto Flex-Medium", Helvetica;
-  font-weight: 500;
-  color: #8989a2;
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  width: calc(100% - 40px);
+  height: 100%;
+  padding: 0 8px;
+  border: none;
+  font-size: 14px;
+  background-color: #EBE9E9;
 }
 
-.element .icon-ionic-ios-send {
+.newsletter .text-wrapper-4::placeholder {
+  color: #8989a2;
+}
+
+.newsletter .icon-ionic-ios-send {
   position: absolute;
   width: 20px;
   height: 16px;
-  top: 16px;
-  left: 157px;
+  top: 50%;
+  right: 28px;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
 
 .element .logo-zentitech {
@@ -375,6 +382,7 @@ a {
   width: 199.3px;
   height: 48px;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .element .line {
@@ -402,6 +410,30 @@ a {
 
 .element .text-wrapper-9 {
   color: #722ed1;
+  position: relative;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.element .text-wrapper-9::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #0056b3;
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.element .text-wrapper-9:hover {
+  color: #0056b3;
+}
+
+.element .text-wrapper-9:hover::after {
+  transform: scaleX(1);
 }
 
 .element .client-logos {
@@ -757,7 +789,7 @@ a {
 
 .element .overlap-group-4 {
   position: relative;
-  height: 95px;
+  height: 30px;
   top: -8px;
 }
 
@@ -1234,6 +1266,7 @@ a {
   letter-spacing: 0;
   line-height: 24px;
   white-space: nowrap;
+  text-decoration: underline;
 }
 
 .element .text-wrapper-26 {
@@ -1276,6 +1309,12 @@ a {
   left: 158px;
   background-color: #ffffff;
   border-radius: 23px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.element .button-primary:hover {
+  background-color: #f0f0f0;
 }
 
 .element .text-wrapper-28 {
@@ -1305,6 +1344,11 @@ a {
   padding: 12px 24px;
   border-radius: 23px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.element .teste-gratuito-wrapper:hover {
+  background-color: #7d4cdb;
 }
 
 .element .teste-gratuito {
@@ -1438,7 +1482,7 @@ a {
  }
 
 .text-wrapper-32:hover::after {
-  transform: scaleX(1); /* Mostra a linha azul ao passar o mouse */
+  transform: scaleX(1);
 }
 
  .button-primary-2 {
@@ -1458,7 +1502,7 @@ a {
 }
 
 .button-primary-2:hover {
-  background-color: #f6f0ff; /* Altera o background-color ao passar o mouse */
+  background-color: #f6f0ff;
 }
 
 .text-wrapper-28::after {
@@ -1467,15 +1511,15 @@ a {
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 2px; /* Altura da linha azul embaixo */
-  background-color: #0056b3; /* Cor da linha azul */
-  transform: scaleX(0); /* Inicialmente sem largura */
+  height: 2px;
+  background-color: #0056b3;
+  transform: scaleX(0);
   transform-origin: bottom left;
-  transition: transform 0.3s ease-in-out; /* Transição suave para a animação */
+  transition: transform 0.3s ease-in-out;
 }
 
 .button-primary-2:hover .text-wrapper-28::after {
-  transform: scaleX(1); /* Mostra a linha azul ao passar o mouse */
+  transform: scaleX(1);
 }
 
 .element .openart {

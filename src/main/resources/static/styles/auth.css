@@ -17,16 +17,17 @@ body {
 
 .navbar-logo {
     height: auto;
-    width: 100px; /* Default size */
-    max-width: 100%; /* Ensure it doesn't exceed the container width */
-    object-fit: contain; /* Ensure the image maintains its aspect ratio */
+    width: 100px;
+    max-width: 100%;
+    object-fit: contain;
 }
 
 .container {
     width: 100%;
     max-width: 400px;
     background-color: #ffffff;
-    padding: 30px;
+    padding: 20px;
+    padding-top: 1px !important;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -48,7 +49,7 @@ h2 {
     width: 100%;
     font-size: 16px;
     padding: 10px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .alert-danger {

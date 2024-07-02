@@ -1,6 +1,8 @@
 package com.compilou.regex.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -18,6 +20,9 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull(message = "Campo Nome Completo não pode estar vazio!")
+    @Column(name = "full_name")
+    private String fullName;
     @Column(unique = true)
     private String email;
     private String password;

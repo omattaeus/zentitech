@@ -1,6 +1,7 @@
 package com.compilou.regex.services;
 
 import com.compilou.regex.models.Users;
+import com.compilou.regex.models.records.CreateUserRequestDto;
 import com.compilou.regex.util.MailUtil;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.InternetAddress;
@@ -52,6 +53,39 @@ public class EmailService {
         final Context ctx = new Context(LocaleContextHolder.getLocale());
         ctx.setVariable("email", users.getEmail());
         ctx.setVariable("name", users.getFullName());
+        ctx.setVariable("welcome", MailUtil.WELCOME_IMAGE);
+        ctx.setVariable("url", confirmationUrl);
+
+        final String htmlContent = this.htmlTemplateEngine.process(MailUtil.TEMPLATE_NAME_CREATE, ctx);
+
+        email.setText(htmlContent, true);
+
+        ClassPathResource clr = new ClassPathResource(MailUtil.WELCOME_IMAGE);
+        email.addInline("welcomeImage", clr, MailUtil.PNG_MIME);
+
+        mailSender.send(mimeMessage);
+    }
+
+    public void sendMailCreateUserDto(CreateUserRequestDto createUserRequestDto) throws MessagingException, UnsupportedEncodingException{
+        String confirmationUrl = "generated_confirmation_url";
+        String mailFrom = environment.getProperty("spring.mail.properties.mail.smtp.from");
+        String mailFromName = "no-reply";
+
+        if (mailFrom == null || mailFrom.isEmpty()) {
+            throw new MessagingException("O e-mail do endereço não está configurado corretamente.");
+        }
+
+        final MimeMessage mimeMessage = this.mailSender.createMimeMessage();
+        final MimeMessageHelper email;
+        email = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+
+        email.setTo(createUserRequestDto.email());
+        email.setSubject(MailUtil.MAIL_SUBJECT);
+        email.setFrom(new InternetAddress(mailFrom, mailFromName));
+
+        final Context ctx = new Context(LocaleContextHolder.getLocale());
+        ctx.setVariable("email", createUserRequestDto.email());
+        ctx.setVariable("name", createUserRequestDto.fullName());
         ctx.setVariable("welcome", MailUtil.WELCOME_IMAGE);
         ctx.setVariable("url", confirmationUrl);
 

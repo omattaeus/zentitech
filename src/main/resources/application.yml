@@ -23,9 +23,9 @@ spring:
     password: ${MYSQL_GOOGLE_PASSWORD}
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
   mail:
-    host: smtp.gmail.com
+    host: smtp.hostinger.com
     port: 587
     username: ${MAIL_USERNAME}
     password: ${MAIL_PASSWORD}

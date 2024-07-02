@@ -2,11 +2,11 @@ package com.compilou.regex.controllers;
 
 import com.compilou.regex.exceptions.CustomDataIntegrityViolationException;
 import com.compilou.regex.models.User;
-import com.compilou.regex.models.enums.RoleName;
 import com.compilou.regex.models.records.CreateUserRequestDto;
 import com.compilou.regex.models.records.LoginUserRequestDto;
 import com.compilou.regex.models.records.RecoveryJwtTokenDto;
 import com.compilou.regex.repositories.UserRepository;
+import com.compilou.regex.services.EmailService;
 import com.compilou.regex.services.auth.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -14,16 +14,20 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.mail.MessagingException;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.UnsupportedEncodingException;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
@@ -34,11 +38,13 @@ public class UserController {
 
     private final UserService userService;
     private final UserRepository userRepository;
+    private final EmailService emailService;
 
     @Autowired
-    public UserController(UserService userService, UserRepository userRepository) {
+    public UserController(UserService userService, UserRepository userRepository, EmailService emailService) {
         this.userService = userService;
         this.userRepository = userRepository;
+        this.emailService = emailService;
     }
 
     @GetMapping
@@ -193,7 +199,8 @@ public class UserController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
-    public String registerPage() {
+    public String showRegistrationForm(Model model) {
+        model.addAttribute("createUserRequestDto", new CreateUserRequestDto("", "", ""));
         return "auth/register";
     }
 
@@ -215,19 +222,32 @@ public class UserController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
-    public String createUserHtml(CreateUserRequestDto createUserRequestDto, Model model) {
+    public String createUserHtml(@ModelAttribute("createUserRequestDto") @Valid CreateUserRequestDto createUserRequestDto,
+                                 BindingResult bindingResult, Model model,
+                                 RedirectAttributes redirectAttributes) {
         try {
+            if (bindingResult.hasErrors()) {
+                return "auth/register";
+            }
+
             var userFromDb = userRepository.findByEmail(createUserRequestDto.email());
+
             if (userFromDb.isPresent()) {
                 throw new CustomDataIntegrityViolationException("E-mail já registrado.");
             }
 
-            userService.createUser(createUserRequestDto);
+            CreateUserRequestDto createUser = userService.createUser(createUserRequestDto);
+
+            if (createUser != null) {
+                emailService.sendMailCreateUserDto(createUser);
+            }
             model.addAttribute("message", "Usuário cadastrado com sucesso!");
             return "auth/register";
         } catch (CustomDataIntegrityViolationException e) {
             model.addAttribute("message", e.getMessage());
             return "auth/register";
+        } catch (MessagingException | UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
         }
     }
 

@@ -66,17 +66,6 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers(
-                "/swagger-ui/**",
-                "/v3/api-docs/**",
-                "/verify-account",
-                "/verify-account**",
-                "/"
-        );
-    }
-
-    @Bean
     public LogoutHandler logoutHandler() {
         return (HttpServletRequest request, HttpServletResponse response,
                 Authentication authentication) -> {

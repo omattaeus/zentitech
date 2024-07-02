@@ -255,7 +255,7 @@ public class UserController {
             RecoveryJwtTokenDto token = userService.authenticateUser(loginUserRequestDto);
             Cookie cookie = new Cookie("token", token.token());
             cookie.setHttpOnly(true);
-            cookie.setPath("/login-user");
+            cookie.setPath("/");
             response.addCookie(cookie);
             return "redirect:/users/create-html";
         } catch (Exception e) {

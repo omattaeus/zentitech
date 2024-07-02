@@ -31,6 +31,7 @@ public class AuthUtil {
             "/reset-password",
             "/reset-password**",
             "/swagger-ui/**",
+            "/v3/api-docs/**",
             "/send-reset-email",
             "/send-reset-email**",
             "/verify-account",
@@ -61,20 +62,6 @@ public class AuthUtil {
 
     public static final String[] ENDPOINTS_ADMIN = {
             "/admin/test/administrator",
-            "/admin/delete/{id}",
-            "/admin/id/{id}",
-            "/admin/update",
-            "/admin/find/by/{firstName}",
-            "/admin/api/sms/send",
-            "/admin/success",
-            "/admin/all",
-            "/admin/all-users",
-            "/admin/all**",
-            "/admin/create",
-            "/admin/create-html",
-            "/admin/create-user",
-            "/admin/search",
-            "/admin/update-html",
-            "/admin/update"
+            "/admin/delete/{id}"
     };
 }

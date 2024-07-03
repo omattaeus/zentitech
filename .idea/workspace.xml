@@ -5,17 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d353d5b3-a44a-41b7-9a44-f85753503180" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/configuration/StripeConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/PaymentIntentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/StripeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/StripeWebhookController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/mapper/request/StripeRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/mapper/response/StripeResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/Payment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/repositories/PaymentRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/PaymentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/StripeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/checkout.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/checkout.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/principal/checkout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/principal/product.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/configuration/SecurityConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UsersController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/CreateUserRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/records/CreateUserRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/EmailService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/auth/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/auth/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/util/AuthUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/util/AuthUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/styles/auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/styles/auth.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/auth/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/auth/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/email/registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/email/registration.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/principal/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/principal/create.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/principal/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/principal/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/configuration/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/configuration/SecurityConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/controllers/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/controllers/UsersController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/controllers/UsersController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/models/User.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,9 +47,9 @@
         <option value="Enum" />
         <option value="Record" />
         <option value="AnnotationType" />
+        <option value="HTML File" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -97,10 +116,10 @@
       <recent name="C:\Users\User\Documents\regex\src\main\resources\static\image" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Documents\regex\src\main\resources\static" />
       <recent name="C:\Users\User\Documents\regex\src\main\resources\templates\principal" />
       <recent name="C:\Users\User\Documents\regex\src\main\resources\static\img" />
       <recent name="C:\Users\User\Documents\regex\src\main\resources\static\styles" />
-      <recent name="C:\Users\User\Documents\regex\src\main\resources\static" />
       <recent name="C:\Users\User\Documents\regex\src\main\resources\static\assets" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -116,6 +135,7 @@
         <env name="DB_PASSWORD" value="12345678@Ta" />
         <env name="DB_URL" value="jdbc:mysql://localhost:3306/api-regex?useTimezone=true&amp;serverTimezone=UTC" />
         <env name="DB_USER" value="root" />
+        <env name="MAIL_PASSWORDD" value="Pe84Pi96@Ta1658809040" />
         <env name="MAIL_USERNAME" value="no-reply@zentitech.tech" />
         <env name="MYSQL_GOOGLE_PASSWORD" value="Pe84Pi96@Ta70801658" />
         <env name="MYSQL_GOOGLE_URL" value="jdbc:mysql://34.44.160.194:3306/zentitech?useSSL=false" />
@@ -125,9 +145,11 @@
         <env name="MYSQLPASSWORD" value="UhGWNtGjbOXOTTmtahzogRClRsAOeWmN" />
         <env name="MYSQLURL" value="jdbc:mysql://roundhouse.proxy.rlwy.net:40855/railway" />
         <env name="MYSQLUSER" value="root" />
+        <env name="STRIPE_KEY" value="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" />
+        <env name="STRIPE_PUBLIC_KEY" value="pk_live_51PY7wrAps7EZIAgBbDdZwHRl1LajARevbFpPWHl6Jr2HxsSPfruxaBRojUF3gNWriQ2bXRlRqVIxM5VKdXDonxpB00qlNodwJj" />
         <env name="TWILIO_SID" value="AC2c10bc413b6d914a9e283d8942647a43" />
         <env name="TWILIO_TOKEN" value="b5cc83c9a676c1e43333dc91b47857a4" />
-        <env name="MAIL_PASSWORDD" value="Pe84Pi96@Ta1658809040" />
+        <env name="STRIP_WEBHOOK" value="whsec_wghViGvXex67KMbVbcSNAT9NRANR8EHO" />
         <env name="MAIL_PASSWORD" value="Pe84Pi96@Ta1658809040" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="com.compilou.regex.Startup" />

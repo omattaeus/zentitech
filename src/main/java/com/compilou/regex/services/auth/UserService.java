@@ -21,6 +21,7 @@ import com.compilou.regex.util.OtpUtil;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -59,16 +60,10 @@ public class UserService {
     @Transactional
     public CreateUserRequestDto createUser(CreateUserRequestDto createUserRequestDto) {
 
-        Role customerRole = roleRepository.findByName(RoleName.ROLE_CUSTOMER);
-        if (customerRole == null) {
-            throw new IllegalStateException("Role 'ROLE_CUSTOMER' não encontrada no sistema.");
-        }
-
         User newUser = new User();
         newUser.setFullName(createUserRequestDto.fullName());
         newUser.setEmail(createUserRequestDto.email());
         newUser.setPassword(securityConfiguration.passwordEncoder().encode(createUserRequestDto.password()));
-        newUser.setRoles(Set.of(customerRole));
 
         userRepository.save(newUser);
         return createUserRequestDto;
@@ -131,5 +126,16 @@ public class UserService {
         userRepository.save(user);
 
         return "Success";
+    }
+
+    public void activateCustomerRole(Long userId) {
+        Optional<User> optionalUser = userRepository.findById(userId);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            user.activateCustomerRole();
+            userRepository.save(user);
+        } else {
+            throw new RuntimeException("Usuário não encontrado com ID: " + userId);
+        }
     }
 }

@@ -14,7 +14,7 @@ public class AuthUtil {
             "/templates/**",
             "/templates/auth/**",
             "/templates/email/**",
-            "/templates/js/**",
+            "/static/js/**",
             "/templates/principal/**",
             "/ads.txt"
     };
@@ -35,7 +35,13 @@ public class AuthUtil {
             "/send-reset-email",
             "/send-reset-email**",
             "/verify-account",
-            "/verify-account**"
+            "/verify-account**",
+            "/webhook/stripe",
+            "/payment/**",
+            "/payment**",
+            "/payment/checkout",
+            "/payment/teste",
+            "/create-payment-intent"
     };
 
     public static final String [] ENDPOINTS_WITH_AUTHENTICATION_REQUIRED = {

@@ -22,6 +22,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -49,8 +50,8 @@ public class UsersController {
         this.emailService = emailService;
     }
 
-
     @GetMapping(value = "/all-users")
+    @PreAuthorize("hasRole('ROLE_CUSTOMER')")
     @Operation(summary = "Finds all Users", description = "Finds all Users",
             tags = {"Users"},
             responses = {
@@ -79,6 +80,7 @@ public class UsersController {
     }
 
     @GetMapping(value = "/find/by/{firstName}")
+    @PreAuthorize("hasRole('ROLE_CUSTOMER')")
     @Operation(summary = "Finds Users By Usernames", description = "Finds Users By Usernames",
             tags = {"Users"},
             responses = {
@@ -108,6 +110,7 @@ public class UsersController {
     }
 
     @GetMapping(value = "/id/{id}")
+    @PreAuthorize("hasRole('ROLE_CUSTOMER')")
     @Operation(summary = "Finds Users By Id", description = "Finds Users By Id",
             tags = {"Users"},
             responses = {
@@ -144,6 +147,7 @@ public class UsersController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
+    @PreAuthorize("hasRole('ROLE_CUSTOMER')")
     public String createHtml(@Valid @ModelAttribute Users request, BindingResult result, Model model) {
         if (result.hasErrors()) {
             model.addAttribute("errors", result.getAllErrors());
@@ -195,6 +199,7 @@ public class UsersController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
+    @PreAuthorize("hasRole('ROLE_CUSTOMER')")
     public String update(@Valid @ModelAttribute Users user, Model model) throws MessagingException, UnsupportedEncodingException {
         try {
             Users updatedUser = usersServices.updateUser(user);
@@ -237,6 +242,7 @@ public class UsersController {
     }
 
     @GetMapping(value = "/create-html")
+    @PreAuthorize("hasRole('ROLE_CUSTOMER')")
     @Operation(summary = "Show Create Form", description = "Show Create Form",
             tags = {"Users"},
             responses = {
@@ -259,6 +265,7 @@ public class UsersController {
     }
 
     @GetMapping(value = "/update-html")
+    @PreAuthorize("hasRole('ROLE_CUSTOMER')")
     @Operation(summary = "Show Update Form", description = "Show Update Form",
             tags = {"Users"},
             responses = {
@@ -281,6 +288,7 @@ public class UsersController {
     }
 
     @GetMapping(value = "/search")
+    @PreAuthorize("hasRole('ROLE_CUSTOMER')")
     @Operation(summary = "Search Users", description = "Search Users",
             tags = {"Users"},
             responses = {
@@ -340,6 +348,7 @@ public class UsersController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
+    @PreAuthorize("hasRole('ROLE_CUSTOMER')")
     public String createUser(@ModelAttribute Users user) {
         try {
             Users createUser = usersServices.createHtml(user);
@@ -360,6 +369,7 @@ public class UsersController {
     }
 
     @GetMapping(value = "/success")
+    @PreAuthorize("hasRole('ROLE_CUSTOMER')")
     @Operation(summary = "Show Success Page", description = "Show Success Page",
             tags = {"Users"},
             responses = {
@@ -381,6 +391,7 @@ public class UsersController {
     }
 
     @GetMapping(value = "/all")
+    @PreAuthorize("hasRole('ROLE_CUSTOMER')")
     @Operation(summary = "Finds All Users", description = "Finds All Users",
             tags = {"Users"},
             responses = {

@@ -1,6 +1,7 @@
 package com.compilou.regex.controllers;
 
 import com.compilou.regex.exceptions.CustomDataIntegrityViolationException;
+import com.compilou.regex.mapper.request.StripeRequest;
 import com.compilou.regex.models.User;
 import com.compilou.regex.models.records.CreateUserRequestDto;
 import com.compilou.regex.models.records.LoginUserRequestDto;
@@ -17,6 +18,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,8 +30,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.UnsupportedEncodingException;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.Locale;
 
 @Controller
 @RequestMapping(value = "/")
@@ -50,6 +55,22 @@ public class UserController {
     @GetMapping
     public String showHomePageHtml() {
         return "principal/index";
+    }
+
+    @PostMapping("/process")
+    public String processSignUpForm(@ModelAttribute @Valid StripeRequest request,
+                                    BindingResult bindingResult,
+                                    RedirectAttributes attributes) {
+        if (bindingResult.hasErrors()) {
+            return "signup";
+        }
+
+
+        attributes.addFlashAttribute("amount", request.getAmount()); // Defina o valor da assinatura
+        attributes.addFlashAttribute("email", request.getEmail());
+        attributes.addFlashAttribute("productName", request.getProductName()); // Nome do produto ou plano
+
+        return "redirect:/payment";
     }
 
     @PostMapping(value = "/login-user-jwt")
@@ -224,28 +245,41 @@ public class UserController {
     )
     public String createUserHtml(@ModelAttribute("createUserRequestDto") @Valid CreateUserRequestDto createUserRequestDto,
                                  BindingResult bindingResult, Model model,
-                                 RedirectAttributes redirectAttributes) {
+                                 RedirectAttributes redirectAttributes, HttpSession session) {
         try {
             if (bindingResult.hasErrors()) {
                 return "auth/register";
             }
 
             var userFromDb = userRepository.findByEmail(createUserRequestDto.email());
-
             if (userFromDb.isPresent()) {
                 throw new CustomDataIntegrityViolationException("E-mail já registrado.");
             }
+            CreateUserRequestDto createdUser = userService.createUser(createUserRequestDto);
 
-            CreateUserRequestDto createUser = userService.createUser(createUserRequestDto);
-
-            if (createUser != null) {
-                emailService.sendMailCreateUserDto(createUser);
+            if (createdUser != null) {
+                emailService.sendMailCreateUserDto(createdUser);
             }
-            model.addAttribute("message", "Usuário cadastrado com sucesso!");
-            return "auth/register";
+
+            long amountInCents = 1490L;
+
+            DecimalFormatSymbols symbols = new DecimalFormatSymbols(new Locale("pt", "BR"));
+            symbols.setDecimalSeparator(',');
+            symbols.setGroupingSeparator('.');
+
+            DecimalFormat df = new DecimalFormat("###,##0.00", symbols);
+            String formattedAmount = "R$" + df.format(amountInCents / 100.0);  // Formata o valor para R$14,90
+
+            redirectAttributes.addFlashAttribute("email", createUserRequestDto.email());
+            redirectAttributes.addFlashAttribute("amount", formattedAmount);
+            redirectAttributes.addFlashAttribute("productName", "Plano Starter");
+
+            session.setAttribute("userEmail", createUserRequestDto.email());
+
+            return "redirect:/payment/teste";
         } catch (CustomDataIntegrityViolationException e) {
-            model.addAttribute("message", e.getMessage());
-            return "auth/register";
+            redirectAttributes.addFlashAttribute("message", e.getMessage());
+            return "redirect:/register";
         } catch (MessagingException | UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }

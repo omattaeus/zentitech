@@ -1,5 +1,6 @@
 package com.compilou.regex.models;
 
+import com.compilou.regex.models.enums.RoleName;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -35,4 +36,11 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name="role_id"))
     private Set<Role> roles;
+
+    public void activateCustomerRole() {
+        Role customerRole = new Role();
+        customerRole.setName(RoleName.ROLE_CUSTOMER);
+
+        this.roles.add(customerRole);
+    }
 }

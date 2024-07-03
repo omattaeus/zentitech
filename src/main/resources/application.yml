@@ -43,3 +43,8 @@ spring:
 admin:
   email: ${admin}
   password: ${admin_password}
+stripe:
+  api:
+    secretKey: ${STRIPE_KEY}
+    publicKey: ${STRIPE_PUBLIC_KEY}
+    webHookKey: ${STRIP_WEBHOOK}

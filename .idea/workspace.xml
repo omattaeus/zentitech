@@ -4,38 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d353d5b3-a44a-41b7-9a44-f85753503180" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/configuration/StripeConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/PaymentIntentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/StripeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/StripeWebhookController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/mapper/request/StripeRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/mapper/response/StripeResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/Payment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/repositories/PaymentRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/PaymentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/StripeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/checkout.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/checkout.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/principal/checkout.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/principal/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/configuration/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/controllers/UsersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/auth/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/services/auth/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/compilou/regex/util/AuthUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/compilou/regex/util/AuthUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/principal/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/principal/create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/principal/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/principal/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/configuration/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/configuration/SecurityConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/controllers/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/controllers/UsersController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/controllers/UsersController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/compilou/regex/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/compilou/regex/models/User.class" afterDir="false" />
-    </list>
+    <list default="true" id="d353d5b3-a44a-41b7-9a44-f85753503180" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

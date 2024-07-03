@@ -1,6 +1,12 @@
+# Ignore the .idea directory and all its contents
+.idea/
+# Ignore HELP.md file
 HELP.md
+# Ignore the target directory
 target/
+# Allow specific maven-wrapper.jar file
 !.mvn/wrapper/maven-wrapper.jar
+# Allow target directories inside specific src/main and src/test folders
 !**/src/main/**/target/
 !**/src/test/**/target/
 
@@ -14,7 +20,7 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr

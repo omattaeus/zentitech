@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d353d5b3-a44a-41b7-9a44-f85753503180" name="Changes" comment="" />
+    <list default="true" id="d353d5b3-a44a-41b7-9a44-f85753503180" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/regex.iml" beforeDir="false" afterPath="$PROJECT_DIR$/regex.iml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -105,7 +107,7 @@
         <env name="DB_URL" value="jdbc:mysql://localhost:3306/api-regex?useTimezone=true&amp;serverTimezone=UTC" />
         <env name="DB_USER" value="root" />
         <env name="MAIL_PASSWORDD" value="Pe84Pi96@Ta1658809040" />
-        <env name="MAIL_USERNAME" value="no-reply@zentitech.tech" />
+        <env name="MAIL_USERNAME" value="contato@zentitech.tech" />
         <env name="MYSQL_GOOGLE_PASSWORD" value="Pe84Pi96@Ta70801658" />
         <env name="MYSQL_GOOGLE_URL" value="jdbc:mysql://34.44.160.194:3306/zentitech?useSSL=false" />
         <env name="MYSQL_GOOGLE_USER" value="mateuspc" />
@@ -114,11 +116,11 @@
         <env name="MYSQLPASSWORD" value="UhGWNtGjbOXOTTmtahzogRClRsAOeWmN" />
         <env name="MYSQLURL" value="jdbc:mysql://roundhouse.proxy.rlwy.net:40855/railway" />
         <env name="MYSQLUSER" value="root" />
+        <env name="STRIP_WEBHOOK" value="whsec_wghViGvXex67KMbVbcSNAT9NRANR8EHO" />
         <env name="STRIPE_KEY" value="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" />
         <env name="STRIPE_PUBLIC_KEY" value="pk_live_51PY7wrAps7EZIAgBbDdZwHRl1LajARevbFpPWHl6Jr2HxsSPfruxaBRojUF3gNWriQ2bXRlRqVIxM5VKdXDonxpB00qlNodwJj" />
         <env name="TWILIO_SID" value="AC2c10bc413b6d914a9e283d8942647a43" />
         <env name="TWILIO_TOKEN" value="b5cc83c9a676c1e43333dc91b47857a4" />
-        <env name="STRIP_WEBHOOK" value="whsec_wghViGvXex67KMbVbcSNAT9NRANR8EHO" />
         <env name="MAIL_PASSWORD" value="Pe84Pi96@Ta1658809040" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="com.compilou.regex.Startup" />

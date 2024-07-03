@@ -3,6 +3,12 @@
   <component name="AdditionalModuleElements">
     <content url="file://$MODULE_DIR$" dumb="true">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/inspectionProfiles" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/libraries" />
+      <excludeFolder url="file://$MODULE_DIR$/node_modules/@isaacs/cliui/build" />
+      <excludeFolder url="file://$MODULE_DIR$/node_modules/lines-and-columns/build" />
+      <excludeFolder url="file://$MODULE_DIR$/node_modules/tailwindcss/lib/cli/build" />
+      <excludeFolder url="file://$MODULE_DIR$/node_modules/tailwindcss/src/cli/build" />
     </content>
   </component>
 </module>

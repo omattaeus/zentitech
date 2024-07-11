@@ -62,10 +62,16 @@ public class UserService {
     @Transactional
     public CreateUserRequestDto createUser(CreateUserRequestDto createUserRequestDto) {
 
+        Role customerRole = roleRepository.findByName(RoleName.ROLE_CUSTOMER);
+        if (customerRole == null) {
+            throw new IllegalStateException("Role 'ROLE_CUSTOMER' não encontrada no sistema.");
+        }
+
         User newUser = new User();
         newUser.setFullName(createUserRequestDto.fullName());
         newUser.setEmail(createUserRequestDto.email());
         newUser.setPassword(securityConfiguration.passwordEncoder().encode(createUserRequestDto.password()));
+        newUser.setRoles(Set.of(customerRole));
 
         userRepository.save(newUser);
         return createUserRequestDto;

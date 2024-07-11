@@ -44,8 +44,7 @@ public class AuthUtil {
             "/payment**",
             "/payment/checkout",
             "/payment/teste",
-            "/create-payment-intent",
-            "/users/create-html"
+            "/create-payment-intent"
     };
 
     public static final String [] ENDPOINTS_WITH_AUTHENTICATION_REQUIRED = {
@@ -63,6 +62,7 @@ public class AuthUtil {
             "/users/all-users",
             "/users/all**",
             "/users/create",
+            "/users/create-html",
             "/users/create-user",
             "/users/search",
             "/users/update-html",

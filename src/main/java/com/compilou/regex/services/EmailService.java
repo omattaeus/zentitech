@@ -132,51 +132,33 @@ public class EmailService {
         mailSender.send(mimeMessage);
     }
 
-    public void sendOtpEmail(String to, String otp, String resetLink) throws MessagingException {
-        MimeMessage message = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+    public void sendEmail(String recipientEmail, String link)
+            throws MessagingException, UnsupportedEncodingException {
 
-        helper.setTo(to);
-        helper.setSubject("Password Reset Request");
-        helper.setText(String.format("Your OTP is: %s. Click the following link to reset your password: %s", otp, resetLink), true);
+        String mailFrom = environment.getProperty("spring.mail.properties.mail.smtp.from");
+        String mailFromName = "no-reply";
+
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true); // Note o true para multipart
+
+        helper.setFrom(new InternetAddress(mailFrom, mailFromName));
+        helper.setTo(recipientEmail);
+
+        String subject = "Redefinição de Senha";
+
+        Context context = new Context();
+        context.setVariable("link", link);
+
+        context.setVariable("resetImageCid", "reset-password");
+
+        String htmlContent = this.htmlTemplateEngine.process(MailUtil.TEMPLATE_NAME_RESET, context);
+
+        helper.setSubject(subject);
+        helper.setText(htmlContent, true);
+
+        ClassPathResource resetImage = new ClassPathResource("static/image/reset-password.png");
+        helper.addInline("reset-password", resetImage);
 
         mailSender.send(message);
-    }
-
-    public static void sendOtpEmail(String email, String otp) throws MessagingException {
-        MimeMessage mimeMessage = mailSender.createMimeMessage();
-        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
-        mimeMessageHelper.setTo(email);
-        mimeMessageHelper.setSubject("Verify Account");
-        mimeMessageHelper.setText(String.format("""
-        <div>
-            <p>Click the link below to verify your account:</p>
-            <p><a href="http://localhost:8080/verify-account?email=%s&otp=%s" target="_blank">Verify Account</a></p>
-        </div>
-        """, email, otp), true);
-        mailSender.send(mimeMessage);
-    }
-
-    public static void sendResetEmail(String email, String otp) throws MessagingException {
-        MimeMessage mimeMessage = mailSender.createMimeMessage();
-        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
-        mimeMessageHelper.setTo(email);
-        mimeMessageHelper.setSubject("Reset Password OTP Verification");
-
-        String resetLink = "http://localhost:8080/reset-password?email=%s&otp=%s";
-        String emailBody = String.format("""
-        <html>
-        <body>
-            <p>Dear User,</p>
-            <p>You have requested to reset your password. Please click on the link below to proceed:</p>
-            <p><a href="%s" target="_blank">Reset Password</a></p>
-            <p>If you did not request this, please ignore this email.</p>
-            <p>Regards,<br/>Your Application Team</p>
-        </body>
-        </html>
-        """, String.format(resetLink, email, otp));
-
-        mimeMessageHelper.setText(emailBody, true);
-        mailSender.send(mimeMessage);
     }
 }

@@ -242,7 +242,6 @@ public class UsersController {
     }
 
     @GetMapping(value = "/create-html")
-    @PreAuthorize("hasRole('ROLE_CUSTOMER')")
     @Operation(summary = "Show Create Form", description = "Show Create Form",
             tags = {"Users"},
             responses = {

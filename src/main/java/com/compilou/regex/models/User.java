@@ -11,7 +11,6 @@ import java.util.Set;
 
 @Table(name = "user")
 @Entity
-@Data
 @Getter
 @Setter
 @AllArgsConstructor
@@ -29,6 +28,8 @@ public class User {
     private String password;
     @Column(name = "active")
     private boolean active;
+    @Column(name = "reset_password_token")
+    private String resetPasswordToken;
     private String otp;
     private LocalDateTime otpGeneratedTime;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)

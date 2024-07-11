@@ -1,6 +1,7 @@
 package com.compilou.regex.controllers;
 
 import com.compilou.regex.exceptions.CustomDataIntegrityViolationException;
+import com.compilou.regex.exceptions.ResourceNotFoundException;
 import com.compilou.regex.mapper.request.StripeRequest;
 import com.compilou.regex.models.User;
 import com.compilou.regex.models.records.CreateUserRequestDto;
@@ -9,6 +10,7 @@ import com.compilou.regex.models.records.RecoveryJwtTokenDto;
 import com.compilou.regex.repositories.UserRepository;
 import com.compilou.regex.services.EmailService;
 import com.compilou.regex.services.auth.UserService;
+import com.compilou.regex.util.Utility;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -17,10 +19,13 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -66,9 +71,9 @@ public class UserController {
         }
 
 
-        attributes.addFlashAttribute("amount", request.getAmount()); // Defina o valor da assinatura
+        attributes.addFlashAttribute("amount", request.getAmount());
         attributes.addFlashAttribute("email", request.getEmail());
-        attributes.addFlashAttribute("productName", request.getProductName()); // Nome do produto ou plano
+        attributes.addFlashAttribute("productName", request.getProductName());
 
         return "redirect:/payment";
     }
@@ -318,92 +323,61 @@ public class UserController {
         }
     }
 
-    @PostMapping(value = "/verify-account")
-    public String verifyAccount(@RequestParam String email, @RequestParam String otp, Model model) {
-        User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("User not found with this email: " + email));
-
-        if (!otp.equals(user.getOtp())) {
-            model.addAttribute("error", "Código OTP inválido.");
-            return "redirect:/login-user";
-        }
-
-        if (Duration.between(user.getOtpGeneratedTime(), LocalDateTime.now()).getSeconds() >= 60) {
-            model.addAttribute("error", "O código OTP expirou. Por favor, gere um novo código.");
-            return "redirect:/login-user";
-        }
-
-        user.setActive(true);
-        user.setOtp(null);
-        user.setOtpGeneratedTime(null);
-        userRepository.save(user);
-
-        return "redirect:/login-user";
+    @GetMapping("/logout")
+    public String logout() {
+        return "redirect:/";
     }
 
-    @PutMapping(value = "/regenerate-otp")
-    public ResponseEntity<String> regenerateOtp(@RequestParam String email) {
-        return new ResponseEntity<>(userService.regenerateOtp(email), HttpStatus.OK);
-    }
+    @PostMapping("/forgot_password")
+    public String processForgotPassword(HttpServletRequest request, Model model) {
+        String email = request.getParameter("email");
+        String token = RandomString.make(30);
 
-    @GetMapping(value = "/send-reset-email")
-    public String showSendResetEmailForm() {
-        return "auth/reset";
-    }
+        try {
+            userService.updateResetPasswordToken(token, email);
+            String resetPasswordLink = Utility.getSiteURL(request) + "/reset_password?token=" + token;
+            emailService.sendEmail(email, resetPasswordLink);
+            model.addAttribute("message", "Enviamos um link de redefinição de senha para seu e-mail. Verifique seu e-mail.");
 
-    @PostMapping(value = "/send-reset-email")
-    public String sendResetEmail2(@RequestParam String email, Model model) {
-        String result = userService.sendResetEmail(email);
-        if (!"Password reset email sent, please check your inbox".equals(result)) {
-            model.addAttribute("error", result);
-            return "auth/reset";
+        } catch (ResourceNotFoundException ex) {
+            model.addAttribute("error", ex.getMessage());
+        } catch (UnsupportedEncodingException | MessagingException e) {
+            model.addAttribute("error", "Erro ao enviar e-mail");
         }
-        model.addAttribute("message", "Email de reset de senha enviado com sucesso!");
+
         return "auth/login";
     }
 
-    @GetMapping(value = "/reset-password")
-    public String showResetPasswordForm(@RequestParam String email, @RequestParam String otp, Model model) {
-        model.addAttribute("email", email);
-        model.addAttribute("otp", otp);
-        return "auth/reset";
-    }
+    @GetMapping("/reset_password")
+    public String showResetPasswordForm(@Param(value = "token") String token, Model model) {
+        User user = userService.getByResetPasswordToken(token);
+        model.addAttribute("token", token);
 
-    @PostMapping(value = "/reset-password")
-    public String resetPassword(@RequestParam String email,
-                                @RequestParam String otp,
-                                @RequestParam String newPassword,
-                                @RequestParam String confirmPassword,
-                                Model model) {
-        if (!newPassword.equals(confirmPassword)) {
-            model.addAttribute("error", "As senhas não coincidem!");
-            model.addAttribute("email", email);
-            model.addAttribute("otp", otp);
-            return "auth/reset";
+        if (user == null) {
+            model.addAttribute("message", "Token Inválido");
+            return "auth/reset_password_form";
         }
 
-        String result = userService.resetPassword(email, otp, newPassword);
-        if (!"Success".equals(result)) {
-            model.addAttribute("error", result);
-            model.addAttribute("email", email);
-            model.addAttribute("otp", otp);
-            return "auth/reset";
-        }
-
-        return "redirect:/login-user";
+        return "auth/reset_password_form";
     }
 
-    @PostMapping(value = "/regenerate-otp")
-    public String regenerateOtp(@RequestParam String email, Model model) {
-        String result = userService.regenerateOtp(email);
-        if (!"Success".equals(result)) {
-            model.addAttribute("error", result);
-        }
-        return "auth/reset";
-    }
+    @PostMapping("/reset_password")
+    public String processResetPassword(HttpServletRequest request, Model model) {
+        String token = request.getParameter("token");
+        String password = request.getParameter("password");
 
-    @GetMapping("/logout")
-    public String logout() {
+        User customer = userService.getByResetPasswordToken(token);
+        model.addAttribute("title", "Redefinir sua senha");
+
+        if (customer == null) {
+            model.addAttribute("message", "Token Inválido");
+            return "message";
+        } else {
+            userService.updatePassword(customer, password);
+
+            model.addAttribute("message", "A sua senha foi atualizada com sucesso.");
+        }
+
         return "redirect:/";
     }
 }

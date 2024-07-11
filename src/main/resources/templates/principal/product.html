@@ -31,10 +31,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://js.stripe.com/v3/"></script>
 <script>
-  // Inicializar Stripe com a chave pública
   const stripe = Stripe(publicKey);
 
-  // Função para lidar com o pagamento
   async function handlePayment() {
     const emailField = document.querySelector("#email");
     const productNameField = document.querySelector("#productName");
@@ -42,10 +40,10 @@
 
     const email = emailField.value;
     const productName = productNameField.value;
-    const amount = amountField.value; // Este valor pode precisar ser convertido para centavos, se necessário
+    const amount = amountField.value;
 
     const request = {
-      amount: amount, // Verifique se o formato está correto para o endpoint do backend
+      amount: amount,
       email: email,
       productName: productName
     };
@@ -64,14 +62,11 @@
       }
 
       const paymentIntent = await response.json();
-      console.log(paymentIntent); // Aqui você pode lidar com o ID do PaymentIntent retornado
-
-      // Redirecionar para a página de checkout.html
+      console.log(paymentIntent);
       window.location.href = "/payment/checkout";
 
     } catch (error) {
       console.error('Erro ao iniciar pagamento:', error);
-      // Lidar com o erro, como exibir uma mensagem para o usuário
     }
   }
 </script>

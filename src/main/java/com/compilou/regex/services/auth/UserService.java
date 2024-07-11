@@ -1,6 +1,7 @@
 package com.compilou.regex.services.auth;
 
 import com.compilou.regex.configuration.SecurityConfiguration;
+import com.compilou.regex.exceptions.ResourceNotFoundException;
 import com.compilou.regex.models.Role;
 import com.compilou.regex.models.User;
 import com.compilou.regex.models.UserDetailsImpl;
@@ -16,6 +17,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.compilou.regex.util.OtpUtil;
 
@@ -81,37 +83,6 @@ public class UserService {
         return "Please regenerate OTP and try again";
     }
 
-    public String regenerateOtp(String email) {
-        User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("User not found with this email: " + email));
-        String otp = OtpUtil.generateOtp();
-        try {
-            emailService.sendOtpEmail(email, otp);
-        } catch (MessagingException e) {
-            throw new RuntimeException("Unable to send OTP, please try again");
-        }
-        user.setOtp(otp);
-        user.setOtpGeneratedTime(LocalDateTime.now());
-        userRepository.save(user);
-        return "Email sent... please verify account within 1 minute";
-    }
-
-    public String sendResetEmail(String email) {
-        User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("User not found with this email: " + email));
-        String otp = OtpUtil.generateOtp();
-        try {
-            String resetLink = String.format("http://localhost:8080/reset-password?email=%s&otp=%s", email, otp);
-            emailService.sendOtpEmail(email, otp, resetLink);
-        } catch (MessagingException e) {
-            throw new RuntimeException("Unable to send reset email, please try again");
-        }
-        user.setOtp(otp);
-        user.setOtpGeneratedTime(LocalDateTime.now());
-        userRepository.save(user);
-        return "Password reset email sent, please check your inbox";
-    }
-
     public String resetPassword(String email, String otp, String newPassword) {
         User user = userRepository.findByEmailAndOtp(email, otp)
                 .orElseThrow(() -> new RuntimeException("Invalid OTP or Email"));
@@ -137,5 +108,28 @@ public class UserService {
         } else {
             throw new RuntimeException("Usuário não encontrado com ID: " + userId);
         }
+    }
+
+    public void updateResetPasswordToken(String token, String email) throws ResourceNotFoundException {
+        User user = userRepository.findByEmailResetPassword(email);
+        if (user != null) {
+            user.setResetPasswordToken(token);
+            userRepository.save(user);
+        } else {
+            throw new ResourceNotFoundException("Could not find any user with the email " + email);
+        }
+    }
+
+    public User getByResetPasswordToken(String token) {
+        return userRepository.findByResetPasswordToken(token);
+    }
+
+    public void updatePassword(User user, String newPassword) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(newPassword);
+        user.setPassword(encodedPassword);
+
+        user.setResetPasswordToken(null);
+        userRepository.save(user);
     }
 }

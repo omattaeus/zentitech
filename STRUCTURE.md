@@ -47,11 +47,12 @@ Com os Diagramas podemos ter uma visão mais ampla e geral do sistema ao todo.
 ### Estrutura do projeto
 
 - [Resources](https://github.com/omattaeus/api-users/tree/master/src/main/resources)
+- [Resources/Static](https://github.com/omattaeus/api-users/tree/master/src/main/resources/static)
+- [Resources/Templates](https://github.com/omattaeus/api-users/tree/master/src/main/resources/templates)
 - [Pom.xml](https://github.com/omattaeus/api-users/blob/master/pom.xml)
 
-- `./resources`: Aqui estará toda a configuração de acesso, como a parte de conexão com o banco de dados e outras configurações.
+- `./resources`: Aqui estará toda a configuração de acesso, como a parte de conexão com o banco de dados e outras configurações e também as pasta de **Static** que contém os estilos CSS, imagens e até mesmo o código em Javascript. Já na pasta **Templates** podemos ter toda a parte do HTML do sistema.
 - `./pom.xml`: Aqui está todas as dependências necessária para que o projeto funcione.
-
 
 # ENDPOINTS
 ### ENDPOINTS PARA LOGIN
@@ -63,28 +64,58 @@ Aqui temos o ROLE do Usuário (qual ENDPOINTS o usuário terá liberado para est
 
 #### ENDPOINTS QUE NÃO PRECISAM DE AUTENTICAÇÃO
 
-    localhost:8080/users
-    localhost:8080/users/login
+            "/auth",
+            "/",
+            "/login",
+            "/login-users",
+            "/register",
+            "/register-user",
+            "/verify-account",
+            "/regenerate-otp",
+            "/reset-password",
+            "/reset-password**",
+            "/swagger-ui/**",
+            "/v3/api-docs/**",
+            "/send-reset-email",
+            "/send-reset-email**",
+            "/verify-account",
+            "/verify-account**",
+            "/webhook/stripe",
+            "/payment/**",
+            "/payment**",
+            "/payment/checkout",
+            "/payment/teste",
+            "/create-payment-intent",
+            "/ads.txt",
+            "/forgot_password",
+            "/reset_password"
     
 #### ENDPOINTS QUE PRECISAM DE AUTENTICAÇÃO
 
-    localhost:8080/users/test
+            "/users/test"
 
 #### ENDPOINTS DE CUSTOMER
 
-     localhost:8080/users/test/customer
-     localhost:8080/regex/create
-     localhost:8080/regex/all
-     localhost:8080/regex/id/{id}
-     localhost:8080/regex/update
-     localhost:8080/regex/find/by/{firstName}
+            "/users/test/customer",
+            "/users/id/{id}",
+            "/users/update",
+            "/users/find/by/{firstName}",
+            "/api/sms/send",
+            "/users/success",
+            "/users/all",
+            "/users/all-users",
+            "/users/all**",
+            "/users/create",
+            "/users/create-html",
+            "/users/create-user",
+            "/users/search",
+            "/users/update-html",
+            "/users/update"
 
 ### ENDPOINTS DE ADMIN
 
-
-    localhost:8080/users/test/administrator
-    localhost:8080/regex/delete/{id}
-
+            "/admin/test/administrator",
+            "/admin/delete/{id}"
 
 #### POST
 

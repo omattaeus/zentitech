@@ -40,9 +40,9 @@
         <i class="bx bx-menu" id="sidebarOpen"></i>
         <img src="/static/image/logo-zentitech-redondo.png" alt=""/>Zentitech
     </div>
-    <div class="search_bar">
-        <input type="text" placeholder="Search..."/>
-    </div>
+    <form class="search_bar" th:action="@{/users/search}" role="search" method="get">
+        <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="firstName" th:value="${firstName}"/>
+    </form>
     <div class="navbar_content">
         <i class="bx bx-sun toggle-switch" id="themeToggle"></i>
         <i class="bx bx-bell"></i>

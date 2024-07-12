@@ -62,6 +62,7 @@ body.dark .navbar {
   font-weight: 500;
   color: var(--grey-color);
   padding-left: 30px;
+  margin-right: auto !important;
 }
 
 body.dark .logo_item {
@@ -75,9 +76,16 @@ body.dark .logo_item {
 }
 
 .search_bar {
-  height: 47px;
+  height: 42px;
   max-width: 430px;
   width: 100%;
+  display: flex;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 170px !important;
+  padding: 0;
+  flex-grow: 1;
+  background-color: #fff;
 }
 
 .search_bar input {
@@ -98,11 +106,16 @@ body.dark .search_bar input {
   border: 1px solid var(--dark-grey-light-color);
 }
 
+body.dark .search_bar {
+  background-color: var(--dark-white-color);
+}
+
 .navbar_content {
   display: flex;
   align-items: center;
   column-gap: 25px;
   padding-right: 30px;
+  margin-left: auto !important;
 }
 
 .navbar_content i {

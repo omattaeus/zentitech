@@ -376,7 +376,7 @@ public class UserController {
             userService.updateResetPasswordToken(token, email);
             String resetPasswordLink = Utility.getSiteURL(request) + "/reset_password?token=" + token;
             emailService.sendEmail(email, resetPasswordLink);
-            model.addAttribute("message", "Enviamos um link de redefinição de senha para seu e-mail. Verifique seu e-mail.");
+            model.addAttribute("error", "Enviamos um link de redefinição de senha para seu e-mail. Verifique seu e-mail.");
 
         } catch (ResourceNotFoundException ex) {
             model.addAttribute("error", ex.getMessage());
@@ -443,14 +443,14 @@ public class UserController {
         model.addAttribute("title", "Redefinir sua senha");
 
         if (customer == null) {
-            model.addAttribute("message", "Token Inválido");
-            return "message";
+            model.addAttribute("error", "Token Inválido");
+            return "auth/login";
         } else {
             userService.updatePassword(customer, password);
 
-            model.addAttribute("message", "A sua senha foi atualizada com sucesso.");
+            model.addAttribute("error", "A sua senha foi atualizada com sucesso.");
         }
 
-        return "redirect:/";
+        return "auth/login";
     }
 }

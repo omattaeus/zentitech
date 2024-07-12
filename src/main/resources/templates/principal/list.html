@@ -70,8 +70,8 @@
                     <a class="nav-link disabled" aria-disabled="true">Desabilitado</a>
                 </li>
             </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex" th:action="@{/users/search}" role="search" method="get">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="firstName" th:value="${firstName}">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>

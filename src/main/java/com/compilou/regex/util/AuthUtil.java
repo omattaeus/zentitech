@@ -16,10 +16,6 @@ public class AuthUtil {
             "/templates/email/**",
             "/static/js/**",
             "/templates/principal/**",
-            "/ads.txt",
-            "/forgot_password",
-            "/reset_password"
-
     };
 
     public static final String [] ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED = {
@@ -44,7 +40,10 @@ public class AuthUtil {
             "/payment**",
             "/payment/checkout",
             "/payment/teste",
-            "/create-payment-intent"
+            "/create-payment-intent",
+            "/ads.txt",
+            "/forgot_password",
+            "/reset_password"
     };
 
     public static final String [] ENDPOINTS_WITH_AUTHENTICATION_REQUIRED = {

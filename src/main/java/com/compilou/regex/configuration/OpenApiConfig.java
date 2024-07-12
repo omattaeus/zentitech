@@ -27,8 +27,11 @@ public class OpenApiConfig {
     public GroupedOpenApi api() {
         return GroupedOpenApi.builder()
                 .group("REST API")
-                .pathsToMatch("/auth/**",
-                                "/users/**/**/**")
-            .build();
+                .pathsToMatch("/**", "/users/**",
+                        "/payment/**",
+                        "/webhook/stripe/**",
+                        "/create-payment-intent",
+                        "/api/sms/**", "admin/api/sms/**")
+                .build();
     }
 }

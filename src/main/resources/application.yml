@@ -4,7 +4,7 @@ server:
 twilio:
   account_sid: ${TWILIO_SID}
   auth_token: ${TWILIO_TOKEN}
-  trial_number: +13475376942
+  trial_number: ${TWILIO_NUMBER}
 spring:
   thymeleaf:
     prefix: classpath:/templates/
@@ -48,5 +48,3 @@ stripe:
     secretKey: ${STRIPE_KEY}
     publicKey: ${STRIPE_PUBLIC_KEY}
     webHookKey: ${STRIP_WEBHOOK}
-
-### teste

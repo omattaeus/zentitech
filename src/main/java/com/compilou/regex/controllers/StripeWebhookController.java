@@ -8,6 +8,12 @@ import com.stripe.exception.StripeException;
 import com.stripe.model.Event;
 import com.stripe.model.PaymentIntent;
 import com.stripe.model.StripeObject;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,6 +25,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/webhook/stripe")
+@Tag(name = "Stripe", description = "Endpoints for Managing Payment With Stripe")
 public class StripeWebhookController {
 
     @Value("${stripe.api.webHookKey}")
@@ -39,6 +46,23 @@ public class StripeWebhookController {
     }
 
     @PostMapping
+    @Operation(summary = "Webhook to view Stripe events in real time", description = "Webhook to view Stripe events in real time",
+            tags = {"Stripe"},
+            responses = {
+                    @ApiResponse(description = "Success", responseCode = "200",
+                            content = {
+                                    @Content(
+                                            mediaType = "application/json",
+                                            array = @ArraySchema(schema = @Schema(implementation = User.class))
+                                    )
+                            }),
+                    @ApiResponse(description = "No Content", responseCode = "204", content = @Content),
+                    @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+                    @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
+                    @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+                    @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
+            }
+    )
     public ResponseEntity<String> handleStripeWebhook(@RequestBody String payload, @RequestHeader("Stripe-Signature") String sigHeader) {
         try {
             Event event = stripeService.constructEvent(payload, sigHeader);

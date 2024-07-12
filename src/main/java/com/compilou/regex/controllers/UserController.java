@@ -58,11 +58,45 @@ public class UserController {
     }
 
     @GetMapping
+    @Operation(summary = "Show Index Page - Main Page", description = "Show Index Page - Main Page",
+            tags = {"Auth"},
+            responses = {
+                    @ApiResponse(description = "Success", responseCode = "200",
+                            content = {
+                                    @Content(
+                                            mediaType = "application/json",
+                                            array = @ArraySchema(schema = @Schema(implementation = User.class))
+                                    )
+                            }),
+                    @ApiResponse(description = "No Content", responseCode = "204", content = @Content),
+                    @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+                    @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
+                    @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+                    @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
+            }
+    )
     public String showHomePageHtml() {
         return "principal/index";
     }
 
     @PostMapping("/process")
+    @Operation(summary = "Process Payment", description = "Process Payment",
+            tags = {"Auth"},
+            responses = {
+                    @ApiResponse(description = "Success", responseCode = "200",
+                            content = {
+                                    @Content(
+                                            mediaType = "application/json",
+                                            array = @ArraySchema(schema = @Schema(implementation = User.class))
+                                    )
+                            }),
+                    @ApiResponse(description = "No Content", responseCode = "204", content = @Content),
+                    @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+                    @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
+                    @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+                    @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
+            }
+    )
     public String processSignUpForm(@ModelAttribute @Valid StripeRequest request,
                                     BindingResult bindingResult,
                                     RedirectAttributes attributes) {
@@ -200,11 +234,41 @@ public class UserController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
-    public String loginPage(Model model, String error) {
-        if (error != null) {
-            model.addAttribute("error", "Invalid email or password");
-        }
+    public String loginPage() {
         return "auth/login";
+    }
+
+    @PostMapping(value = "/login")
+    @Operation(summary = "Authenticated User", description = "Authenticated User",
+            tags = {"Auth"},
+            responses = {
+                    @ApiResponse(description = "Success", responseCode = "200",
+                            content = {
+                                    @Content(
+                                            mediaType = "application/json",
+                                            array = @ArraySchema(schema = @Schema(implementation = User.class))
+                                    )
+                            }),
+                    @ApiResponse(description = "No Content", responseCode = "204", content = @Content),
+                    @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+                    @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
+                    @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+                    @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
+            }
+    )
+    public String authenticateUser(LoginUserRequestDto loginUserRequestDto,
+                                   Model model, HttpServletResponse response) {
+        try {
+            RecoveryJwtTokenDto token = userService.authenticateUser(loginUserRequestDto);
+            Cookie cookie = new Cookie("token", token.token());
+            cookie.setHttpOnly(true);
+            cookie.setPath("/");
+            response.addCookie(cookie);
+            return "redirect:/users/create-html";
+        } catch (Exception e) {
+            model.addAttribute("error", "E-mail ou senha inválida!");
+            return "auth/login";
+        }
     }
 
     @GetMapping(value = "/register")
@@ -248,50 +312,24 @@ public class UserController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
-    public String createUserHtml(@ModelAttribute("createUserRequestDto") @Valid CreateUserRequestDto createUserRequestDto,
-                                 BindingResult bindingResult, Model model,
-                                 RedirectAttributes redirectAttributes, HttpSession session) {
+    public String createUserHtml(CreateUserRequestDto createUserRequestDto, Model model) {
         try {
-            if (bindingResult.hasErrors()) {
-                return "auth/register";
-            }
-
             var userFromDb = userRepository.findByEmail(createUserRequestDto.email());
             if (userFromDb.isPresent()) {
                 throw new CustomDataIntegrityViolationException("E-mail já registrado.");
             }
-            CreateUserRequestDto createdUser = userService.createUser(createUserRequestDto);
 
-            if (createdUser != null) {
-                emailService.sendMailCreateUserDto(createdUser);
-            }
-
-            long amountInCents = 1490L;
-
-            DecimalFormatSymbols symbols = new DecimalFormatSymbols(new Locale("pt", "BR"));
-            symbols.setDecimalSeparator(',');
-            symbols.setGroupingSeparator('.');
-
-            DecimalFormat df = new DecimalFormat("###,##0.00", symbols);
-            String formattedAmount = "R$" + df.format(amountInCents / 100.0);  // Formata o valor para R$14,90
-
-            redirectAttributes.addFlashAttribute("email", createUserRequestDto.email());
-            redirectAttributes.addFlashAttribute("amount", formattedAmount);
-            redirectAttributes.addFlashAttribute("productName", "Plano Starter");
-
-            session.setAttribute("userEmail", createUserRequestDto.email());
-
-            return "redirect:/payment/teste";
+            userService.createUser(createUserRequestDto);
+            model.addAttribute("message", "Usuário cadastrado com sucesso!");
+            return "auth/register";
         } catch (CustomDataIntegrityViolationException e) {
-            redirectAttributes.addFlashAttribute("message", e.getMessage());
-            return "redirect:/register";
-        } catch (MessagingException | UnsupportedEncodingException e) {
-            throw new RuntimeException(e);
+            model.addAttribute("message", e.getMessage());
+            return "auth/register";
         }
     }
 
-    @PostMapping(value = "/login")
-    @Operation(summary = "Authenticated User", description = "Authenticated User",
+    @GetMapping("/logout")
+    @Operation(summary = "Logout", description = "Logout",
             tags = {"Auth"},
             responses = {
                     @ApiResponse(description = "Success", responseCode = "200",
@@ -308,27 +346,28 @@ public class UserController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
-    public String authenticateUser(LoginUserRequestDto loginUserRequestDto,
-                                   Model model, HttpServletResponse response) {
-        try {
-            RecoveryJwtTokenDto token = userService.authenticateUser(loginUserRequestDto);
-            Cookie cookie = new Cookie("token", token.token());
-            cookie.setHttpOnly(true);
-            cookie.setPath("/");
-            response.addCookie(cookie);
-            return "redirect:/users/create-html";
-        } catch (Exception e) {
-            model.addAttribute("error", "E-mail ou senha inválida!");
-            return "redirect:/login-user";
-        }
-    }
-
-    @GetMapping("/logout")
     public String logout() {
         return "redirect:/";
     }
 
     @PostMapping("/forgot_password")
+    @Operation(summary = "Forgot Password", description = "Forgot Password",
+            tags = {"Auth"},
+            responses = {
+                    @ApiResponse(description = "Success", responseCode = "200",
+                            content = {
+                                    @Content(
+                                            mediaType = "application/json",
+                                            array = @ArraySchema(schema = @Schema(implementation = User.class))
+                                    )
+                            }),
+                    @ApiResponse(description = "No Content", responseCode = "204", content = @Content),
+                    @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+                    @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
+                    @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+                    @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
+            }
+    )
     public String processForgotPassword(HttpServletRequest request, Model model) {
         String email = request.getParameter("email");
         String token = RandomString.make(30);
@@ -349,6 +388,23 @@ public class UserController {
     }
 
     @GetMapping("/reset_password")
+    @Operation(summary = "Reset Password", description = "Reset Password",
+            tags = {"Auth"},
+            responses = {
+                    @ApiResponse(description = "Success", responseCode = "200",
+                            content = {
+                                    @Content(
+                                            mediaType = "application/json",
+                                            array = @ArraySchema(schema = @Schema(implementation = User.class))
+                                    )
+                            }),
+                    @ApiResponse(description = "No Content", responseCode = "204", content = @Content),
+                    @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+                    @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
+                    @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+                    @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
+            }
+    )
     public String showResetPasswordForm(@Param(value = "token") String token, Model model) {
         User user = userService.getByResetPasswordToken(token);
         model.addAttribute("token", token);
@@ -362,6 +418,23 @@ public class UserController {
     }
 
     @PostMapping("/reset_password")
+    @Operation(summary = "Reset Password", description = "Reset Password",
+            tags = {"Auth"},
+            responses = {
+                    @ApiResponse(description = "Success", responseCode = "200",
+                            content = {
+                                    @Content(
+                                            mediaType = "application/json",
+                                            array = @ArraySchema(schema = @Schema(implementation = User.class))
+                                    )
+                            }),
+                    @ApiResponse(description = "No Content", responseCode = "204", content = @Content),
+                    @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+                    @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
+                    @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+                    @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
+            }
+    )
     public String processResetPassword(HttpServletRequest request, Model model) {
         String token = request.getParameter("token");
         String password = request.getParameter("password");

@@ -72,6 +72,7 @@ public class UserService {
         newUser.setEmail(createUserRequestDto.email());
         newUser.setPassword(securityConfiguration.passwordEncoder().encode(createUserRequestDto.password()));
         newUser.setRoles(Set.of(customerRole));
+        newUser.setActive(true);
 
         userRepository.save(newUser);
         return createUserRequestDto;

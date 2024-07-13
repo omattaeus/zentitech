@@ -123,7 +123,7 @@ public class UserService {
             user.setResetPasswordToken(token);
             userRepository.save(user);
         } else {
-            throw new ResourceNotFoundException("Could not find any user with the email " + email);
+            throw new ResourceNotFoundException("Não foi possível encontrar nenhum usuário com o e-mail: " + email);
         }
     }
 
